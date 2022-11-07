@@ -11,7 +11,7 @@ namespace ModernGUI.Controls
         private Calendar _calendar;
         #endregion
 
-        #region Ctor
+        #region Constructor
 
         /// <summary>
         /// Creates a new collection that will belong to the specified calendar.

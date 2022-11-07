@@ -13,7 +13,7 @@ namespace ModernGUI.Controls
         private float _selectedItemBorder;
         #endregion
 
-        #region Ctor
+        #region Constructor
 
         public CalendarSystemRenderer(Calendar calendar)
             : base(calendar)

@@ -9,7 +9,7 @@ namespace ModernGUI.Controls
         private bool _isLast;
         #endregion
 
-        #region Ctor
+        #region Constructor
 
         /// <summary>
         /// Creates a new Event

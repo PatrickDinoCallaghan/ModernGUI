@@ -17,7 +17,7 @@ namespace ModernGUI.Controls
         private object _tag;
         #endregion
 
-        #region Ctor
+        #region Constructor
 
         /// <summary>
         /// Use it wisely just to initialize some stuff

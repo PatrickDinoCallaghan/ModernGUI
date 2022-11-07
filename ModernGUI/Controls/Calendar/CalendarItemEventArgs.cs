@@ -3,7 +3,7 @@ namespace ModernGUI.Controls
     public class CalendarItemEventArgs
         : EventArgs
     {
-        #region Ctor
+        #region Constructor
 
         /// <summary>
         /// Creates a new <see cref="CalendarItemEventArgs"/>

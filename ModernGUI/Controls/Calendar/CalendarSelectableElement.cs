@@ -13,7 +13,7 @@ namespace ModernGUI.Controls
         private bool _selected;
         #endregion
 
-        #region Ctor
+        #region Constructor
 
         /// <summary>
         /// Creates a new Element

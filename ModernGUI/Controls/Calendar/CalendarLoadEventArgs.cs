@@ -13,7 +13,7 @@ namespace ModernGUI.Controls
 
         #endregion
 
-        #region Ctor
+        #region Constructor
 
         public CalendarLoadEventArgs(Calendar calendar, DateTime dateStart, DateTime dateEnd)
         {

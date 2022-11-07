@@ -24,7 +24,6 @@
 
   <ItemGroup>
     <Folder Include="Controls\DataGridView\" />
-    <Folder Include="Controls\Calendar\" />
     <Folder Include="Controls\ScalablePictureBox\" />
     <Folder Include="Controls\TimeControls\" />
     <Folder Include="Controls\NumericUpDown\" />

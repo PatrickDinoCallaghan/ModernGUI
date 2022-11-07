@@ -15,7 +15,7 @@ namespace ModernGUI.Controls
         private List<CalendarItem> _passingItems;
         #endregion
 
-        #region Ctor
+        #region Constructor
 
         /// <summary>
         /// Creates a new DayTop for the specified day

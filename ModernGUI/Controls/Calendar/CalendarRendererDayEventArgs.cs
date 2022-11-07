@@ -10,7 +10,7 @@ namespace ModernGUI.Controls
         private CalendarDay _day;
         #endregion
 
-        #region Ctor
+        #region Constructor
 
         /// <summary>
         /// Creates a new <see cref="CalendarRendererDayEventArgs"/> object

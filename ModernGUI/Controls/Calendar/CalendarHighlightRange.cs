@@ -16,7 +16,7 @@ namespace ModernGUI.Controls
         private TimeSpan _endTime;
         #endregion
 
-        #region Ctor
+        #region Constructor
 
         /// <summary>
         /// Creates a new empty range

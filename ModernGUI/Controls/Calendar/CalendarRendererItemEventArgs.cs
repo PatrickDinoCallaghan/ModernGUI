@@ -10,7 +10,7 @@ namespace ModernGUI.Controls
         private CalendarItem _item;
         #endregion
 
-        #region Ctor
+        #region Constructor
 
 
         public CalendarRendererItemEventArgs(CalendarRendererEventArgs original, CalendarItem item)

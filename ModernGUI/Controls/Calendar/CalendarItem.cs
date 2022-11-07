@@ -51,7 +51,7 @@ namespace ModernGUI.Controls
         private string _text;
         #endregion
 
-        #region Ctor
+        #region Constructor
 
         /// <summary>
         /// Creates a new Item that belongs to the specified calendar

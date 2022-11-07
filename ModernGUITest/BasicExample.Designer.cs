@@ -81,6 +81,7 @@ namespace MaterialSkinExample
             this.Calendar_tabPage = new System.Windows.Forms.TabPage();
             this.monthView1 = new ModernGUI.Controls.MonthView();
             this.calendar1 = new ModernGUI.Controls.Calendar();
+            this.Graph_tabPage = new System.Windows.Forms.TabPage();
             this.ContextMenuStrip1 = new ModernGUI.Controls.ContextMenuStrip();
             this.item1ToolStripMenuItem = new ModernGUI.Controls.ToolStripMenuItem();
             this.subItem1ToolStripMenuItem = new ModernGUI.Controls.ToolStripMenuItem();
@@ -91,7 +92,6 @@ namespace MaterialSkinExample
             this.item3ToolStripMenuItem = new ModernGUI.Controls.ToolStripMenuItem();
             this.FlatButton3 = new ModernGUI.Controls.FlatButton();
             this.AddRemove = new ModernGUI.Controls.AddRemoveColumn();
-            this.Graph_tabPage = new System.Windows.Forms.TabPage();
             this.TabControl1.SuspendLayout();
             this.TextField_tabPage.SuspendLayout();
             this.SelectionBox_tabPage.SuspendLayout();
@@ -659,7 +659,7 @@ namespace MaterialSkinExample
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Depth = 0;
             this.dataGridView1.HeaderColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.dataGridView1.HeaderFont = new System.Drawing.Font("Open Sans Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dataGridView1.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dataGridView1.HeaderHeight = 50;
             this.dataGridView1.Location = new System.Drawing.Point(41, 41);
             this.dataGridView1.MouseState = ModernGUI.MouseState.HOVER;
@@ -763,6 +763,16 @@ namespace MaterialSkinExample
             this.calendar1.TabIndex = 0;
             this.calendar1.Text = "calendar1";
             // 
+            // Graph_tabPage
+            // 
+            this.Graph_tabPage.Location = new System.Drawing.Point(4, 24);
+            this.Graph_tabPage.Name = "Graph_tabPage";
+            this.Graph_tabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.Graph_tabPage.Size = new System.Drawing.Size(742, 332);
+            this.Graph_tabPage.TabIndex = 7;
+            this.Graph_tabPage.Text = "Graph";
+            this.Graph_tabPage.UseVisualStyleBackColor = true;
+            // 
             // ContextMenuStrip1
             // 
             this.ContextMenuStrip1.BackColor = System.Drawing.Color.White;
@@ -854,16 +864,6 @@ namespace MaterialSkinExample
             this.AddRemove.FillWeight = 117.2269F;
             this.AddRemove.Name = "AddRemove";
             this.AddRemove.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Graph_tabPage
-            // 
-            this.Graph_tabPage.Location = new System.Drawing.Point(4, 24);
-            this.Graph_tabPage.Name = "Graph_tabPage";
-            this.Graph_tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.Graph_tabPage.Size = new System.Drawing.Size(742, 332);
-            this.Graph_tabPage.TabIndex = 7;
-            this.Graph_tabPage.Text = "Graph";
-            this.Graph_tabPage.UseVisualStyleBackColor = true;
             // 
             // BasicExample
             // 

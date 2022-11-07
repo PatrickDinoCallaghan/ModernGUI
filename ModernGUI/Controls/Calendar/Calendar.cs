@@ -253,7 +253,6 @@ namespace ModernGUI.Controls
             _allowNew = true;
             _allowItemResize = true;
 
-            
         }
 
 
@@ -433,7 +432,7 @@ namespace ModernGUI.Controls
         /// <summary>
         /// Gets or sets the <see cref="CalendarRenderer"/> of the <see cref="Calendar"/>
         /// </summary>
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
         public CalendarRenderer Renderer
         {
             get { return _renderer; }

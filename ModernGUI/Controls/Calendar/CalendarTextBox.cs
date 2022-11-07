@@ -7,7 +7,7 @@ namespace ModernGUI.Controls
         private Calendar _calendar;
         #endregion
 
-        #region Ctor
+        #region Constructor
 
         /// <summary>
         /// Creates a new <see cref="CalendarTextBox"/> for the specified <see cref="Calendar"/>

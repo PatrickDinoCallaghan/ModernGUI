@@ -21,7 +21,7 @@ namespace ModernGUI.Controls
         private bool _visible;
         #endregion
 
-        #region Ctor
+        #region Constructor
 
         /// <summary>
         /// Creates a new <see cref="CalendarTimeScaleUnit"/>

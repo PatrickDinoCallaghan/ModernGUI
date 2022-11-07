@@ -14,7 +14,7 @@ namespace ModernGUI.Controls
         private CalendarTimeScaleUnit _unit;
         #endregion
 
-        #region Ctor
+        #region Constructor
 
         public CalendarRendererTimeUnitEventArgs(CalendarRendererEventArgs original, CalendarTimeScaleUnit unit)
             : base(original)

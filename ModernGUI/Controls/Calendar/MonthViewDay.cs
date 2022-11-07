@@ -11,7 +11,7 @@ namespace ModernGUI.Controls
 
         #endregion
 
-        #region Ctor
+        #region Constructor
 
         internal MonthViewDay(MonthViewMonth month, DateTime date)
         {

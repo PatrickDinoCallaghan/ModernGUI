@@ -16,7 +16,7 @@ namespace ModernGUI.Controls
         private Size _textSize;
         #endregion
 
-        #region Ctor
+        #region Constructor
 
         /// <summary>
         /// Initializes some fields

@@ -91,7 +91,7 @@ namespace ModernGUI.Controls
 
         #endregion
 
-        #region Ctors
+        #region Constructors
 
         public MonthView()
         {

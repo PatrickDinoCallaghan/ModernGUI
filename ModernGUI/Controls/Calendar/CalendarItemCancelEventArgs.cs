@@ -5,7 +5,7 @@ namespace ModernGUI.Controls
     public class CalendarItemCancelEventArgs
         : CancelEventArgs
     {
-        #region Ctor
+        #region Constructor
 
         /// <summary>
         /// Creates a new <see cref="CalendarItemEventArgs"/>

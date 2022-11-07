@@ -15,7 +15,7 @@ namespace ModernGUI.Controls
         private DateTime _firstDay;
         #endregion
 
-        #region Ctor
+        #region Constructor
 
         /// <summary>
         /// Creates a new week for the specified calendar

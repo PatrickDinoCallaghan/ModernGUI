@@ -16,7 +16,7 @@ namespace ModernGUI.Controls
         private TextFormatFlags _TextFlags;
         #endregion
 
-        #region Ctor
+        #region Constructor
 
         internal MonthViewBoxEventArgs(Graphics g, Rectangle bounds, string text, StringAlignment textAlign, Color textColor, Color backColor, Color borderColor)
         {
