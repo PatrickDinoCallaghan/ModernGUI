@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModernGUI", "ModernGUI\ModernGUI.csproj", "{F10E139D-2D63-4448-ADE3-601B3D028AF2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModernGUITest", "ModernGUITest\ModernGUITest.csproj", "{A38C07BD-DABC-4975-929C-029B30FA0129}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F10E139D-2D63-4448-ADE3-601B3D028AF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F10E139D-2D63-4448-ADE3-601B3D028AF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F10E139D-2D63-4448-ADE3-601B3D028AF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F10E139D-2D63-4448-ADE3-601B3D028AF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A38C07BD-DABC-4975-929C-029B30FA0129}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A38C07BD-DABC-4975-929C-029B30FA0129}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A38C07BD-DABC-4975-929C-029B30FA0129}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A38C07BD-DABC-4975-929C-029B30FA0129}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FD334B71-61E6-47C0-832C-65A2B6BD3308}
+	EndGlobalSection
+EndGlobal
