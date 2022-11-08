@@ -33,7 +33,7 @@ namespace ModernGUI.Controls
 		protected override void OnCreateControl()
 		{
 			base.OnCreateControl();
-			Font = SkinManager.OpenSans_MEDIUM_10;
+			Font =  SkinManager.openSans[10, OpenSans.Weight.Medium];
             BackColorChanged += (sender, args) => ForeColor = SkinManager.GetPrimaryTextColor();
         }
 	}
@@ -54,11 +54,11 @@ namespace ModernGUI.Controls
 			{
 				var itemRect = GetItemRect(e.Item);
 				var textRect = new Rectangle(24, itemRect.Y, itemRect.Width - (24 + 16), itemRect.Height);
-				g.DrawString(e.Text, SkinManager.OpenSans_MEDIUM_10, e.Item.Enabled ? SkinManager.GetPrimaryTextBrush() : SkinManager.GetDisabledOrHintBrush(), textRect, new StringFormat() { LineAlignment = StringAlignment.Center });
+				g.DrawString(e.Text,  SkinManager.openSans[10, OpenSans.Weight.Medium], e.Item.Enabled ? SkinManager.GetPrimaryTextBrush() : SkinManager.GetDisabledOrHintBrush(), textRect, new StringFormat() { LineAlignment = StringAlignment.Center });
 			}
 			else
 			{
-				g.DrawString(e.Text, SkinManager.OpenSans_MEDIUM_10, Brushes.White, e.TextRectangle, new StringFormat() { LineAlignment = StringAlignment.Center });
+				g.DrawString(e.Text,  SkinManager.openSans[10, OpenSans.Weight.Medium], Brushes.White, e.TextRectangle, new StringFormat() { LineAlignment = StringAlignment.Center });
 			}
 		}
 

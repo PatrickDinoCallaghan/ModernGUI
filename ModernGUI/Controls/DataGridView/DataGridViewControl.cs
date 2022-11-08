@@ -222,12 +222,9 @@ namespace ModernGUI.Controls
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, this, new object[] { true });
 
-  
-
-            this.Rows.Clear();
+             this.Rows.Clear();
 
             DataGridViewCellStyle dataGridViewCellStyleCells = new DataGridViewCellStyle();
-
 
             dataGridViewCellStyleCells.Font = _Font;
             this.RowsDefaultCellStyle = dataGridViewCellStyleCells;
@@ -242,8 +239,8 @@ namespace ModernGUI.Controls
         private void SetColorSchemeAndFont()
         {
             this.BackgroundColor = Color.White;
-            _Font = SkinManager.OpenSans_REGULAR_11;
-            _HeaderFont = SkinManager.OpenSans_REGULAR_12;
+            _Font = SkinManager.openSans[11, OpenSans.Weight.Regular];
+            _HeaderFont = SkinManager.openSans[12, OpenSans.Weight.Regular];
             _HeaderColor = SkinManager.ColorScheme.PrimaryColor;
         }
         #endregion

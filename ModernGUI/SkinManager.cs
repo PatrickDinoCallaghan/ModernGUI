@@ -224,29 +224,24 @@ namespace ModernGUI
         {
             return Theme == Themes.LIGHT ? BACKGROUND_LIGHT : BACKGROUND_DARK;
         }
-
-        //Roboto font
-        public Font OpenSans_REGULAR_10;
-        public Font OpenSans_REGULAR_11;
-        public Font OpenSans_REGULAR_12;
-        public Font OpenSans_MEDIUM_10;
-        public Font OpenSans_MEDIUM_11;
-        public Font OpenSans_MEDIUM_12;
+  
+      
 
         //Other constants
         public int FORM_PADDING = 14;
 
-        [DllImport("gdi32.dll")]
-        private static extern IntPtr AddFontMemResourceEx(IntPtr pbFont, uint cbFont, IntPtr pvd, [In] ref uint pcFonts);
+        //OpenSans font
+        public OpenSans openSans;
 
         private SkinManager()
         {
-            OpenSans_MEDIUM_12 = new Font(LoadFont(Resources.OpenSans_Medium), 12f);
+            openSans = new OpenSans();
+           /* OpenSans_MEDIUM_12 = new Font(LoadFont(Resources.OpenSans_Medium), 12f);
             OpenSans_MEDIUM_10 = new Font(LoadFont(Resources.OpenSans_Medium), 10f);
             OpenSans_REGULAR_10 = new Font(LoadFont(Resources.OpenSans_Regular), 10f);
             OpenSans_REGULAR_11 = new Font(LoadFont(Resources.OpenSans_Regular), 11f);
             OpenSans_REGULAR_12 = new Font(LoadFont(Resources.OpenSans_Regular), 12f);
-            OpenSans_MEDIUM_11 = new Font(LoadFont(Resources.OpenSans_Medium), 11f);
+            OpenSans_MEDIUM_11 = new Font(LoadFont(Resources.OpenSans_Medium), 11f);*/
             Theme = Themes.LIGHT;
             ColorScheme = new ColorScheme(ColorSchemes.Indigo);
         }
@@ -264,20 +259,7 @@ namespace ModernGUI
             _formsToManage.Remove(InForm);
         }
 
-        private readonly PrivateFontCollection privateFontCollection = new PrivateFontCollection();
 
-        private FontFamily LoadFont(byte[] fontResource)
-        {
-            int dataLength = fontResource.Length;
-            IntPtr fontPtr = Marshal.AllocCoTaskMem(dataLength);
-            Marshal.Copy(fontResource, 0, fontPtr, dataLength);
-
-            uint cFonts = 0;
-            AddFontMemResourceEx(fontPtr, (uint)fontResource.Length, IntPtr.Zero, ref cFonts);
-            privateFontCollection.AddMemoryFont(fontPtr, dataLength);
-
-            return privateFontCollection.Families.Last();
-        }
 
         private void UpdateBackgrounds()
         {

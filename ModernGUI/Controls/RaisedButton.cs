@@ -56,7 +56,7 @@ namespace ModernGUI.Controls
             set
             {
                 base.Text = value;
-                _textSize = CreateGraphics().MeasureString(value.ToUpper(), SkinManager.OpenSans_MEDIUM_10);
+                _textSize = CreateGraphics().MeasureString(value.ToUpper(), SkinManager.openSans[10, OpenSans.Weight.Medium]);
                 if (AutoSize)
                     Size = GetPreferredSize();
                 Invalidate();
@@ -132,7 +132,7 @@ namespace ModernGUI.Controls
 
             g.DrawString(
                 Text.ToUpper(),
-                SkinManager.OpenSans_MEDIUM_10,
+                 SkinManager.openSans[10, OpenSans.Weight.Medium],
                 SkinManager.GetRaisedButtonTextBrush(Primary),
                 textRect,
                 new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center });

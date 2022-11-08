@@ -955,7 +955,7 @@ namespace ModernGUI.Controls
             _baseTextBox = new BaseTextBox
             {
                 BorderStyle = BorderStyle.None,
-                Font = SkinManager.OpenSans_REGULAR_11,
+                Font = SkinManager.openSans[11, OpenSans.Weight.Regular],
                 ForeColor = SkinManager.GetPrimaryTextColor(),
                 Location = new Point(0, 0),
                 Width = Width,

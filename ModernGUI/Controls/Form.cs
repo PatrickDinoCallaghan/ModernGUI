@@ -562,7 +562,7 @@ namespace ModernGUI.Controls
             }
 
             //Form title
-            g.DrawString(Text, SkinManager.OpenSans_MEDIUM_12, SkinManager.ColorScheme.TextBrush, new Rectangle(SkinManager.FORM_PADDING, STATUS_BAR_HEIGHT, Width, ACTION_BAR_HEIGHT), new StringFormat { LineAlignment = StringAlignment.Center });
+            g.DrawString(Text, SkinManager.openSans[12, OpenSans.Weight.Medium], SkinManager.ColorScheme.TextBrush, new Rectangle(SkinManager.FORM_PADDING, STATUS_BAR_HEIGHT, Width, ACTION_BAR_HEIGHT), new StringFormat { LineAlignment = StringAlignment.Center });
         }
 
         private void InitializeComponent()

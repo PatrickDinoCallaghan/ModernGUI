@@ -28,6 +28,7 @@
     <Folder Include="Controls\TimeControls\" />
     <Folder Include="Controls\NumericUpDown\" />
     <Folder Include="Controls\TextBox\" />
+    <Folder Include="Graphs\Gantt\" />
   </ItemGroup>
 
   <ItemGroup>

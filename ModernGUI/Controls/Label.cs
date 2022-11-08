@@ -16,7 +16,7 @@ namespace ModernGUI.Controls
             base.OnCreateControl();
 
             ForeColor = SkinManager.GetPrimaryTextColor();
-            Font = SkinManager.OpenSans_REGULAR_11;
+            Font = SkinManager.openSans[12, OpenSans.Weight.Regular];
 
             BackColorChanged += (sender, args) => ForeColor = SkinManager.GetPrimaryTextColor();
         }

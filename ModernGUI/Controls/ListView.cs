@@ -63,7 +63,7 @@ namespace ModernGUI.Controls
         {
             e.Graphics.FillRectangle(new SolidBrush(SkinManager.GetApplicationBackgroundColor()), new Rectangle(e.Bounds.X, e.Bounds.Y, Width, e.Bounds.Height));
             e.Graphics.DrawString(e.Header.Text,
-                SkinManager.OpenSans_MEDIUM_10,
+                SkinManager.openSans[10, OpenSans.Weight.Medium],
                 SkinManager.GetSecondaryTextBrush(),
                 new Rectangle(e.Bounds.X + ITEM_PADDING, e.Bounds.Y + ITEM_PADDING, e.Bounds.Width - ITEM_PADDING * 2, e.Bounds.Height - ITEM_PADDING * 2),
                 getStringFormat());
@@ -97,7 +97,7 @@ namespace ModernGUI.Controls
             foreach (ListViewItem.ListViewSubItem subItem in e.Item.SubItems)
             {
                 //Draw text
-                g.DrawString(subItem.Text, SkinManager.OpenSans_MEDIUM_10, SkinManager.GetPrimaryTextBrush(),
+                g.DrawString(subItem.Text, SkinManager.openSans[10, OpenSans.Weight.Medium], SkinManager.GetPrimaryTextBrush(),
                                  new Rectangle(subItem.Bounds.X + ITEM_PADDING, ITEM_PADDING, subItem.Bounds.Width - 2 * ITEM_PADDING, subItem.Bounds.Height - 2 * ITEM_PADDING),
                                  getStringFormat());
             }
@@ -145,7 +145,7 @@ namespace ModernGUI.Controls
             // This hack tries to apply the Roboto (24) font to all ListViewItems in this ListView
             // It only succeeds if the font is installed on the system.
             // Otherwise, a default sans serif font is used.
-            var roboto24 = new Font(SkinManager.OpenSans_MEDIUM_12.FontFamily, 24);
+            var roboto24 = SkinManager.openSans[24, OpenSans.Weight.Medium];
             var roboto24Logfont = new LogFont();
             roboto24.ToLogFont(roboto24Logfont);
 

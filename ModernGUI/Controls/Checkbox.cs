@@ -83,7 +83,7 @@ namespace ModernGUI.Controls
 
         public override Size GetPreferredSize(Size proposedSize)
         {
-            var w = _boxOffset + CHECKBOX_SIZE + 2 + (int)CreateGraphics().MeasureString(Text, SkinManager.OpenSans_MEDIUM_10).Width;
+            var w = _boxOffset + CHECKBOX_SIZE + 2 + (int)CreateGraphics().MeasureString(Text, SkinManager.openSans[10, OpenSans.Weight.Medium]).Width;
             return Ripple ? new Size(w, 30) : new Size(w, 20);
         }
 
@@ -160,10 +160,10 @@ namespace ModernGUI.Controls
             }
 
             // draw checkbox text
-            SizeF stringSize = g.MeasureString(Text, SkinManager.OpenSans_MEDIUM_10);
+            SizeF stringSize = g.MeasureString(Text, SkinManager.openSans[10, OpenSans.Weight.Medium]);
             g.DrawString(
                 Text,
-                SkinManager.OpenSans_MEDIUM_10,
+              SkinManager.openSans[10, OpenSans.Weight.Medium],
                 Enabled ? SkinManager.GetPrimaryTextBrush() : SkinManager.GetDisabledOrHintBrush(),
                 _boxOffset + TEXT_OFFSET, Height / 2 - stringSize.Height / 2);
 
@@ -210,7 +210,7 @@ namespace ModernGUI.Controls
         protected override void OnCreateControl()
         {
             base.OnCreateControl();
-            Font = SkinManager.OpenSans_MEDIUM_10;
+            Font = SkinManager.openSans[10, OpenSans.Weight.Medium];
 
             if (DesignMode) return;
 

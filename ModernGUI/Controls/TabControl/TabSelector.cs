@@ -100,7 +100,7 @@ namespace ModernGUI.Controls
                 var currentTabIndex = _baseTabControl.TabPages.IndexOf(tabPage);
                 Brush textBrush = new SolidBrush(Color.FromArgb(CalculateTextAlpha(currentTabIndex, animationProgress), SkinManager.ColorScheme.TextColor));
 
-                g.DrawString(tabPage.Text.ToUpper(), SkinManager.OpenSans_MEDIUM_10, textBrush, _tabRects[currentTabIndex], new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center });
+                g.DrawString(tabPage.Text.ToUpper(),  SkinManager.openSans[10, OpenSans.Weight.Medium], textBrush, _tabRects[currentTabIndex], new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center });
                 textBrush.Dispose();
             }
 
@@ -165,10 +165,10 @@ namespace ModernGUI.Controls
             {
                 using (var g = Graphics.FromImage(b))
                 {
-                    _tabRects.Add(new Rectangle(SkinManager.FORM_PADDING, 0, TAB_HEADER_PADDING * 2 + (int)g.MeasureString(_baseTabControl.TabPages[0].Text, SkinManager.OpenSans_MEDIUM_10).Width, Height));
+                    _tabRects.Add(new Rectangle(SkinManager.FORM_PADDING, 0, TAB_HEADER_PADDING * 2 + (int)g.MeasureString(_baseTabControl.TabPages[0].Text, SkinManager.openSans[10, OpenSans.Weight.Medium]).Width, Height));
                     for (int i = 1; i < _baseTabControl.TabPages.Count; i++)
                     {
-                        _tabRects.Add(new Rectangle(_tabRects[i - 1].Right, 0, TAB_HEADER_PADDING * 2 + (int)g.MeasureString(_baseTabControl.TabPages[i].Text, SkinManager.OpenSans_MEDIUM_10).Width, Height));
+                        _tabRects.Add(new Rectangle(_tabRects[i - 1].Right, 0, TAB_HEADER_PADDING * 2 + (int)g.MeasureString(_baseTabControl.TabPages[i].Text, SkinManager.openSans[10, OpenSans.Weight.Medium]).Width, Height));
                     }
                 }
             }
