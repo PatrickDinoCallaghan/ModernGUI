@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using ModernGUI;
 using ModernGUI.Controls;
 
-namespace MaterialSkinExample
+namespace ModernGUITest
 {
     public partial class BasicExample : ModernGUI.Controls.Form
     {
@@ -29,11 +29,11 @@ namespace MaterialSkinExample
 			//Define
 			var data = new[]
 	        {
-		        new []{"Lollipop", "392", "0.2", "0"},
-				new []{"KitKat", "518", "26.0", "7"},
-				new []{"Ice cream sandwich", "237", "9.0", "4.3"},
-				new []{"Jelly Bean", "375", "0.0", "0.0"},
-				new []{"Honeycomb", "408", "3.2", "6.5"}
+		        new []{"First", "111", "0.2", "0"},
+				new []{"Second", "222", "26.0", "7"},
+				new []{"third", "333", "9.0", "4.3"},
+				new []{"Forth", "444", "0.0", "0.0"},
+				new []{"Fith", "555", "3.2", "6.5"}
 	        };
 
 			//Add

@@ -13,6 +13,10 @@ using System.Threading.Tasks;
 
 namespace ModernGUI
 {
+
+    /// <summary>
+    /// This instantiate OpenSans fonts as and when they are required in one neat easy to use class.
+    /// </summary>
     public class OpenSans
     {
         [DllImport("gdi32.dll")]
@@ -36,6 +40,7 @@ namespace ModernGUI
 
             return privateFontCollection.Families.Last();
         }
+
         private readonly PrivateFontCollection privateFontCollection = new PrivateFontCollection();
 
         /// <summary>

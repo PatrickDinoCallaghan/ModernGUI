@@ -29,6 +29,7 @@
     <Folder Include="Controls\NumericUpDown\" />
     <Folder Include="Controls\TextBox\" />
     <Folder Include="Graphs\Gantt\" />
+    <Folder Include="Resources\Cursors\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using ModernGUI;
 using ModernGUI.Controls;
 
-namespace MaterialSkinExample
+namespace ModernGUITest
 {
     partial class BasicExample
     {
@@ -566,7 +566,7 @@ namespace MaterialSkinExample
             this.Label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Label2.Depth = 0;
-            this.Label2.Font = new System.Drawing.Font("Open Sans Medium", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Label2.Font = new System.Drawing.Font("Open Sans Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.Label2.Location = new System.Drawing.Point(4, 17);
             this.Label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -787,7 +787,7 @@ namespace MaterialSkinExample
             this.ContextMenuStrip1.Margin = new System.Windows.Forms.Padding(16, 8, 16, 8);
             this.ContextMenuStrip1.MouseState = ModernGUI.MouseState.HOVER;
             this.ContextMenuStrip1.Name = "ContextMenuStrip1";
-            this.ContextMenuStrip1.Size = new System.Drawing.Size(166, 130);
+            this.ContextMenuStrip1.Size = new System.Drawing.Size(181, 152);
             // 
             // item1ToolStripMenuItem
             // 
@@ -831,7 +831,7 @@ namespace MaterialSkinExample
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(162, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // item3ToolStripMenuItem
             // 

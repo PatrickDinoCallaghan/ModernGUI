@@ -236,14 +236,9 @@ namespace ModernGUI
         private SkinManager()
         {
             openSans = new OpenSans();
-           /* OpenSans_MEDIUM_12 = new Font(LoadFont(Resources.OpenSans_Medium), 12f);
-            OpenSans_MEDIUM_10 = new Font(LoadFont(Resources.OpenSans_Medium), 10f);
-            OpenSans_REGULAR_10 = new Font(LoadFont(Resources.OpenSans_Regular), 10f);
-            OpenSans_REGULAR_11 = new Font(LoadFont(Resources.OpenSans_Regular), 11f);
-            OpenSans_REGULAR_12 = new Font(LoadFont(Resources.OpenSans_Regular), 12f);
-            OpenSans_MEDIUM_11 = new Font(LoadFont(Resources.OpenSans_Medium), 11f);*/
             Theme = Themes.LIGHT;
             ColorScheme = new ColorScheme(ColorSchemes.Indigo);
+
         }
 
         public static SkinManager Instance => _instance ?? (_instance = new SkinManager());

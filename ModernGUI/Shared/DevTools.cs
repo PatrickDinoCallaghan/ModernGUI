@@ -42,55 +42,6 @@ namespace ModernGUI.Shared
             }
         }
 
-        public static class CursorTools
-        {
-            /// <summary>
-            /// Load colored cursor handle from a file
-            /// </summary>
-            /// <param name="fileName"></param>
-            /// <returns></returns>
-            [DllImport("user32.dll", EntryPoint = "LoadCursorFromFileW", CharSet = CharSet.Unicode)]
-            static public extern IntPtr LoadCursorFromFile(string fileName);
-
-            /// <summary>
-            /// Create cursor from embedded cursor
-            /// </summary>
-            /// <param name="cursorResourceName">embedded cursor resource name</param>
-            /// <returns>cursor</returns>
-            public static Cursor CreateCursorFromFile(String cursorResourceName)
-            {
-                // read cursor resource binary data
-                Stream inputStream = GetEmbeddedResourceStream(cursorResourceName);
-                byte[] buffer = new byte[inputStream.Length];
-                inputStream.Read(buffer, 0, buffer.Length);
-                inputStream.Close();
-
-                // create temporary cursor file
-                String tmpFileName = System.IO.Path.GetRandomFileName();
-                FileInfo tempFileInfo = new FileInfo(tmpFileName);
-                FileStream outputStream = tempFileInfo.Create();
-                outputStream.Write(buffer, 0, buffer.Length);
-                outputStream.Close();
-
-                // create cursor
-                IntPtr cursorHandle = LoadCursorFromFile(tmpFileName);
-                Cursor cursor = new Cursor(cursorHandle);
-
-                tempFileInfo.Delete();  // delete temporary cursor file
-                return cursor;
-            }
-
-            /// <summary>
-            /// Get embedded resource stream
-            /// </summary>
-            /// <param name="resourceName">resource name</param>
-            /// <returns>the stream of embedded resource</returns>
-            private static Stream GetEmbeddedResourceStream(string resourceName)
-            {
-                return System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName);
-            }
-        }
-
         /// <summary>
         /// This will reset the form position so that it exists clearly within the screen.
         /// </summary>
@@ -124,7 +75,6 @@ namespace ModernGUI.Shared
             }
 
         }
-
 
         public static byte[] ObjectToByteArray(string fileName)
         {
