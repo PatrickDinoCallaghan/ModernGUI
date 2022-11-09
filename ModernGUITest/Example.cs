@@ -24,10 +24,22 @@ namespace ModernGUITest
             _SkinManager.Theme = SkinManager.Themes.LIGHT;
             _SkinManager.ColorScheme = new ColorScheme(ColorSchemes.Indigo);
         }
-        MoreCursors a = new MoreCursors();
+
         private void Example_Load(object sender, EventArgs e)
         {
-            Cursor = a[MoreCursors.Name.ZoomIn32];
+            List<TreeNode> Studies = new List<TreeNode>();
+
+            TreeNode Study = new TreeNode("Cool");
+            TreeNode Study1 = new TreeNode("1");
+            TreeNode Study2 = new TreeNode("1123123");
+            TreeNode Study3 = new TreeNode("11212312313123");
+            Study2.Nodes.Add("cool");
+            Studies.Add(Study);
+            Studies.Add(Study1);
+            Studies.Add(Study2);
+            Studies.Add(Study3);
+            TreeNode[] Studies_Arr = Studies.ToArray();
+            multiSelectTreeview1.Nodes.AddRange(Studies_Arr);
         }
     }
 }

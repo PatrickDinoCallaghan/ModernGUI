@@ -40,6 +40,7 @@ namespace ModernGUITest
             ModernGUI.Controls.CalendarHighlightRange calendarHighlightRange3 = new ModernGUI.Controls.CalendarHighlightRange();
             ModernGUI.Controls.CalendarHighlightRange calendarHighlightRange4 = new ModernGUI.Controls.CalendarHighlightRange();
             ModernGUI.Controls.CalendarHighlightRange calendarHighlightRange5 = new ModernGUI.Controls.CalendarHighlightRange();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BasicExample));
             this.FlatButton2 = new ModernGUI.Controls.FlatButton();
             this.FlatButton1 = new ModernGUI.Controls.FlatButton();
             this.Divider1 = new ModernGUI.Controls.Divider();
@@ -82,6 +83,7 @@ namespace ModernGUITest
             this.monthView1 = new ModernGUI.Controls.MonthView();
             this.calendar1 = new ModernGUI.Controls.Calendar();
             this.Graph_tabPage = new System.Windows.Forms.TabPage();
+            this.multiSelectTreeview1 = new ModernGUI.Controls.MultiSelectTreeview();
             this.ContextMenuStrip1 = new ModernGUI.Controls.ContextMenuStrip();
             this.item1ToolStripMenuItem = new ModernGUI.Controls.ToolStripMenuItem();
             this.subItem1ToolStripMenuItem = new ModernGUI.Controls.ToolStripMenuItem();
@@ -100,6 +102,7 @@ namespace ModernGUITest
             this.DGV_tabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.Calendar_tabPage.SuspendLayout();
+            this.Graph_tabPage.SuspendLayout();
             this.ContextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -765,6 +768,7 @@ namespace ModernGUITest
             // 
             // Graph_tabPage
             // 
+            this.Graph_tabPage.Controls.Add(this.multiSelectTreeview1);
             this.Graph_tabPage.Location = new System.Drawing.Point(4, 24);
             this.Graph_tabPage.Name = "Graph_tabPage";
             this.Graph_tabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -772,6 +776,14 @@ namespace ModernGUITest
             this.Graph_tabPage.TabIndex = 7;
             this.Graph_tabPage.Text = "Graph";
             this.Graph_tabPage.UseVisualStyleBackColor = true;
+            // 
+            // multiSelectTreeview1
+            // 
+            this.multiSelectTreeview1.Location = new System.Drawing.Point(25, 37);
+            this.multiSelectTreeview1.Name = "multiSelectTreeview1";
+            this.multiSelectTreeview1.SelectedNodes = ((System.Collections.Generic.List<System.Windows.Forms.TreeNode>)(resources.GetObject("multiSelectTreeview1.SelectedNodes")));
+            this.multiSelectTreeview1.Size = new System.Drawing.Size(250, 156);
+            this.multiSelectTreeview1.TabIndex = 0;
             // 
             // ContextMenuStrip1
             // 
@@ -787,7 +799,7 @@ namespace ModernGUITest
             this.ContextMenuStrip1.Margin = new System.Windows.Forms.Padding(16, 8, 16, 8);
             this.ContextMenuStrip1.MouseState = ModernGUI.MouseState.HOVER;
             this.ContextMenuStrip1.Name = "ContextMenuStrip1";
-            this.ContextMenuStrip1.Size = new System.Drawing.Size(181, 152);
+            this.ContextMenuStrip1.Size = new System.Drawing.Size(166, 130);
             // 
             // item1ToolStripMenuItem
             // 
@@ -831,7 +843,7 @@ namespace ModernGUITest
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(162, 6);
             // 
             // item3ToolStripMenuItem
             // 
@@ -892,6 +904,7 @@ namespace ModernGUITest
             this.DGV_tabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.Calendar_tabPage.ResumeLayout(false);
+            this.Graph_tabPage.ResumeLayout(false);
             this.ContextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -953,5 +966,6 @@ namespace ModernGUITest
         private ModernGUI.Controls.RadioButton RadioButton2;
         private ModernGUI.Controls.RadioButton RadioButton3;
         private TabPage Graph_tabPage;
+        private MultiSelectTreeview multiSelectTreeview1;
     }
 }

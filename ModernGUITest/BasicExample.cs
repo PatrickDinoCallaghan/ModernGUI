@@ -21,7 +21,10 @@ namespace ModernGUITest
 			// Add dummy data to the listview
 	        seedListView();
 
-			dataGridView1.Rows.Add();
+            // Add dummy data to the MultiSelectTreeview
+            seedmultiSelectTreeview();
+
+            dataGridView1.Rows.Add();
         }
 
 	    private void seedListView()
@@ -43,6 +46,24 @@ namespace ModernGUITest
 				ListView1.Items.Add(item);
 			}
 	    }
+
+		private void seedmultiSelectTreeview()
+		{
+
+            List<TreeNode> Studies = new List<TreeNode>();
+
+            TreeNode Study = new TreeNode("Cool");
+            TreeNode Study1 = new TreeNode("1");
+            TreeNode Study2 = new TreeNode("1123123");
+            TreeNode Study3 = new TreeNode("11212312313123");
+            Study2.Nodes.Add("cool");
+            Studies.Add(Study);
+            Studies.Add(Study1);
+            Studies.Add(Study2);
+            Studies.Add(Study3);
+            TreeNode[] Studies_Arr = Studies.ToArray();
+            multiSelectTreeview1.Nodes.AddRange(Studies_Arr);
+        }
 
         private void Button1_Click(object sender, EventArgs e)
         {
