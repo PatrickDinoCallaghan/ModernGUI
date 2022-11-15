@@ -1,17 +1,11 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: PatchForms.StarRatingControl
-// Assembly: PatchForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: 283715CC-2AF5-431F-BADB-9DEBC1FF45C0
-// Assembly location: C:\Users\patri\Desktop\PatchForms.dll
-
-using System;
+﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 
 #nullable enable
-namespace PatchForms
+namespace ModernGUI.Controls
 {
   public class StarRatingControl : Control
   {

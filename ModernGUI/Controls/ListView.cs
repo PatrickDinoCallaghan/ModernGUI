@@ -83,13 +83,13 @@ namespace ModernGUI.Controls
             {
                 //selected background
                 g.FillRectangle(SkinManager.GetFlatButtonPressedBackgroundBrush(), new Rectangle(new Point(e.Bounds.X, 0), e.Bounds.Size));
+
             }
             else if (e.Bounds.Contains(MouseLocation) && MouseState == MouseState.HOVER)
             {
                 //hover background
                 g.FillRectangle(SkinManager.GetFlatButtonHoverBackgroundBrush(), new Rectangle(new Point(e.Bounds.X, 0), e.Bounds.Size));
             }
-
 
             //Draw separator
             g.DrawLine(new Pen(SkinManager.GetDividersColor()), e.Bounds.Left, 0, e.Bounds.Right, 0);

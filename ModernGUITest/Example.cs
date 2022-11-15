@@ -1,9 +1,13 @@
 ﻿using ModernGUI;
+using ModernGUI.Controls;
+using ModernGUITest.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,29 +21,47 @@ namespace ModernGUITest
         public Example()
         {
             InitializeComponent();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Example));
 
             // Initialize MaterialSkinManager
             _SkinManager = SkinManager.Instance;
             _SkinManager.AddFormToManage(this);
             _SkinManager.Theme = SkinManager.Themes.LIGHT;
             _SkinManager.ColorScheme = new ColorScheme(ColorSchemes.Indigo);
+
+
+
         }
 
+        public Bitmap ResizeImage(double scaleFactor, Image image)
+        {
+            var newWidth = 15;
+            var newHeight = 15;
+            var thumbnailBitmap = new Bitmap(newWidth, newHeight);
+
+            var thumbnailGraph = Graphics.FromImage(thumbnailBitmap);
+            thumbnailGraph.CompositingQuality = CompositingQuality.HighQuality;
+            thumbnailGraph.SmoothingMode = SmoothingMode.HighQuality;
+            thumbnailGraph.InterpolationMode = InterpolationMode.HighQualityBicubic;
+
+            var imageRectangle = new Rectangle(0, 0, newWidth, newHeight);
+            thumbnailGraph.DrawImage(image, imageRectangle);
+
+
+            //   thumbnailBitmap.Save(toStream, image.RawFormat);
+
+            return null;
+            thumbnailGraph.Dispose();
+            thumbnailBitmap.Dispose();
+            image.Dispose();
+        }
         private void Example_Load(object sender, EventArgs e)
         {
-            List<TreeNode> Studies = new List<TreeNode>();
+        }
 
-            TreeNode Study = new TreeNode("Cool");
-            TreeNode Study1 = new TreeNode("1");
-            TreeNode Study2 = new TreeNode("1123123");
-            TreeNode Study3 = new TreeNode("11212312313123");
-            Study2.Nodes.Add("cool");
-            Studies.Add(Study);
-            Studies.Add(Study1);
-            Studies.Add(Study2);
-            Studies.Add(Study3);
-            TreeNode[] Studies_Arr = Studies.ToArray();
-            multiSelectTreeview1.Nodes.AddRange(Studies_Arr);
+        private void spinner1_ButtonClick(object sender, Spinner.ButtonClicked e)
+        {
+            MessageBox.Show(e.ToString());
         }
     }
 }

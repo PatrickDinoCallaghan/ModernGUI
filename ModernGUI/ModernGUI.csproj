@@ -27,6 +27,7 @@
     <Folder Include="Controls\ScalablePictureBox\" />
     <Folder Include="Controls\NumericUpDown\" />
     <Folder Include="Controls\TextBox\" />
+    <Folder Include="Controls\TimeControls\" />
     <Folder Include="Graphs\Gantt\" />
     <Folder Include="Resources\Cursors\" />
   </ItemGroup>
@@ -36,6 +37,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Controls\Spinner.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\StarRatingControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="Controls\TreeView\MultiSelectTreeview.cs">
       <SubType>Component</SubType>
     </Compile>

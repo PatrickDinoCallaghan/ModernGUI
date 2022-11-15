@@ -7,7 +7,8 @@ namespace ModernGUI
     {
         BlueGrey,
         Indigo,
-        Green
+        Green,
+        Red
     }
     //Color constantes
     public enum TextShade
@@ -48,6 +49,13 @@ namespace ModernGUI
                     primary = 0x43A047;
                     darkPrimary = 0x388E3C;
                     lightPrimary = 0xA5D6A7;
+                    accent = 0xFFCDD2;
+                    textShade = TextShade.WHITE;
+                    break;
+                case ColorSchemes.Red:
+                    primary = 0xED3419;
+                    darkPrimary = 0xDF2C14;
+                    lightPrimary = 0xFF4122;
                     accent = 0xFFCDD2;
                     textShade = TextShade.WHITE;
                     break;

@@ -24,6 +24,7 @@ namespace ModernGUITest
             // Add dummy data to the MultiSelectTreeview
             seedmultiSelectTreeview();
 
+
             dataGridView1.Rows.Add();
         }
 
@@ -70,11 +71,11 @@ namespace ModernGUITest
             _SkinManager.Theme = _SkinManager.Theme == SkinManager.Themes.DARK ? SkinManager.Themes.LIGHT : SkinManager.Themes.DARK;
         }
 
-	    private int colorSchemeIndex;
+	    private int colorSchemeIndex = 1;
         private void RaisedButton1_Click(object sender, EventArgs e)
         {
 	        colorSchemeIndex++;
-	        if (colorSchemeIndex > 2) colorSchemeIndex = 0;
+	        if (colorSchemeIndex > 3) colorSchemeIndex = 0;
 
 			//These are just example color schemes
 	        switch (colorSchemeIndex)
@@ -85,9 +86,12 @@ namespace ModernGUITest
 				case 1:
                     _SkinManager.ColorScheme = new ColorScheme(ColorSchemes.Indigo);
 			        break;
-				case 2:
-                    _SkinManager.ColorScheme = new ColorScheme(ColorSchemes.Green);
-					break;
+                case 2:
+                    _SkinManager.ColorScheme = new ColorScheme(ColorSchemes.Green); 
+                    break;
+                case 3:
+                    _SkinManager.ColorScheme = new ColorScheme(ColorSchemes.Red);
+                    break;
 	        }
         }
 

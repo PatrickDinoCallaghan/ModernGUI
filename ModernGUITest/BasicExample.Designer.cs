@@ -83,6 +83,7 @@ namespace ModernGUITest
             this.monthView1 = new ModernGUI.Controls.MonthView();
             this.calendar1 = new ModernGUI.Controls.Calendar();
             this.Graph_tabPage = new System.Windows.Forms.TabPage();
+            this.label1 = new ModernGUI.Controls.Label();
             this.multiSelectTreeview1 = new ModernGUI.Controls.MultiSelectTreeview();
             this.ContextMenuStrip1 = new ModernGUI.Controls.ContextMenuStrip();
             this.item1ToolStripMenuItem = new ModernGUI.Controls.ToolStripMenuItem();
@@ -94,6 +95,7 @@ namespace ModernGUITest
             this.item3ToolStripMenuItem = new ModernGUI.Controls.ToolStripMenuItem();
             this.FlatButton3 = new ModernGUI.Controls.FlatButton();
             this.AddRemove = new ModernGUI.Controls.AddRemoveColumn();
+            this.timePicker1 = new ECN.SchoolSoundSystem.TimePicker();
             this.TabControl1.SuspendLayout();
             this.TextField_tabPage.SuspendLayout();
             this.SelectionBox_tabPage.SuspendLayout();
@@ -768,6 +770,7 @@ namespace ModernGUITest
             // 
             // Graph_tabPage
             // 
+            this.Graph_tabPage.Controls.Add(this.label1);
             this.Graph_tabPage.Controls.Add(this.multiSelectTreeview1);
             this.Graph_tabPage.Location = new System.Drawing.Point(4, 24);
             this.Graph_tabPage.Name = "Graph_tabPage";
@@ -777,12 +780,25 @@ namespace ModernGUITest
             this.Graph_tabPage.Text = "Graph";
             this.Graph_tabPage.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Depth = 0;
+            this.label1.Font = new System.Drawing.Font("Open Sans Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label1.Location = new System.Drawing.Point(25, 11);
+            this.label1.MouseState = ModernGUI.MouseState.HOVER;
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(162, 23);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "MultiSelectTreeview";
+            // 
             // multiSelectTreeview1
             // 
             this.multiSelectTreeview1.Location = new System.Drawing.Point(25, 37);
             this.multiSelectTreeview1.Name = "multiSelectTreeview1";
             this.multiSelectTreeview1.SelectedNodes = ((System.Collections.Generic.List<System.Windows.Forms.TreeNode>)(resources.GetObject("multiSelectTreeview1.SelectedNodes")));
-            this.multiSelectTreeview1.Size = new System.Drawing.Size(250, 156);
+            this.multiSelectTreeview1.Size = new System.Drawing.Size(254, 156);
             this.multiSelectTreeview1.TabIndex = 0;
             // 
             // ContextMenuStrip1
@@ -877,6 +893,19 @@ namespace ModernGUITest
             this.AddRemove.Name = "AddRemove";
             this.AddRemove.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
+            // timePicker1
+            // 
+            this.timePicker1.Hours = 0;
+            this.timePicker1.Location = new System.Drawing.Point(180, 467);
+            this.timePicker1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.timePicker1.Milliseconds = 0;
+            this.timePicker1.Minutes = 0;
+            this.timePicker1.Name = "timePicker1";
+            this.timePicker1.Seconds = 0;
+            this.timePicker1.Size = new System.Drawing.Size(88, 23);
+            this.timePicker1.TabIndex = 20;
+            this.timePicker1.Value = System.TimeSpan.Parse("00:00:00");
+            // 
             // BasicExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -884,6 +913,7 @@ namespace ModernGUITest
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(780, 511);
             this.ContextMenuStrip = this.ContextMenuStrip1;
+            this.Controls.Add(this.timePicker1);
             this.Controls.Add(this.FlatButton3);
             this.Controls.Add(this.FlatButton2);
             this.Controls.Add(this.TabSelector1);
@@ -905,6 +935,7 @@ namespace ModernGUITest
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.Calendar_tabPage.ResumeLayout(false);
             this.Graph_tabPage.ResumeLayout(false);
+            this.Graph_tabPage.PerformLayout();
             this.ContextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -967,5 +998,7 @@ namespace ModernGUITest
         private ModernGUI.Controls.RadioButton RadioButton3;
         private TabPage Graph_tabPage;
         private MultiSelectTreeview multiSelectTreeview1;
+        private ModernGUI.Controls.Label label1;
+        private ECN.SchoolSoundSystem.TimePicker timePicker1;
     }
 }
