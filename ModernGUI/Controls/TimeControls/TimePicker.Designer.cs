@@ -1,4 +1,4 @@
-﻿namespace ECN.SchoolSoundSystem
+﻿namespace ModernGUI.Controls.TimeControls
 {
     partial class TimePicker
     {
@@ -28,35 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.TheTimeBox = new System.Windows.Forms.TextBox();
+            this.spinner1 = new ModernGUI.Controls.Spinner();
             this.SuspendLayout();
             // 
-            // TheTimeBox
+            // spinner1
             // 
-            this.TheTimeBox.Location = new System.Drawing.Point(0, 0);
-            this.TheTimeBox.Name = "TheTimeBox";
-            this.TheTimeBox.Size = new System.Drawing.Size(75, 20);
-            this.TheTimeBox.TabIndex = 0;
-            this.TheTimeBox.Text = "00:00:00.000";
-            this.TheTimeBox.Click += new System.EventHandler(this.TheTimeBox_Click);
-            this.TheTimeBox.TextChanged += new System.EventHandler(this.TheTimeBox_TextChanged);
-            this.TheTimeBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TheTimeBox_KeyDown);
+            this.spinner1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.spinner1.Location = new System.Drawing.Point(96, 0);
+            this.spinner1.Name = "spinner1";
+            this.spinner1.Size = new System.Drawing.Size(16, 22);
+            this.spinner1.TabIndex = 0;
             // 
             // TimePicker
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.TheTimeBox);
+            this.Controls.Add(this.spinner1);
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "TimePicker";
-            this.Size = new System.Drawing.Size(75, 20);
+            this.Size = new System.Drawing.Size(112, 22);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox TheTimeBox;
-
+        private BaseTextBox _baseTextBox;
+        private Spinner spinner1;
     }
 }

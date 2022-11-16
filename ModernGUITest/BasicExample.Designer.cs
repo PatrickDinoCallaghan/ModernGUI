@@ -95,7 +95,6 @@ namespace ModernGUITest
             this.item3ToolStripMenuItem = new ModernGUI.Controls.ToolStripMenuItem();
             this.FlatButton3 = new ModernGUI.Controls.FlatButton();
             this.AddRemove = new ModernGUI.Controls.AddRemoveColumn();
-            this.timePicker1 = new ECN.SchoolSoundSystem.TimePicker();
             this.TabControl1.SuspendLayout();
             this.TextField_tabPage.SuspendLayout();
             this.SelectionBox_tabPage.SuspendLayout();
@@ -893,19 +892,6 @@ namespace ModernGUITest
             this.AddRemove.Name = "AddRemove";
             this.AddRemove.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
-            // timePicker1
-            // 
-            this.timePicker1.Hours = 0;
-            this.timePicker1.Location = new System.Drawing.Point(180, 467);
-            this.timePicker1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.timePicker1.Milliseconds = 0;
-            this.timePicker1.Minutes = 0;
-            this.timePicker1.Name = "timePicker1";
-            this.timePicker1.Seconds = 0;
-            this.timePicker1.Size = new System.Drawing.Size(88, 23);
-            this.timePicker1.TabIndex = 20;
-            this.timePicker1.Value = System.TimeSpan.Parse("00:00:00");
-            // 
             // BasicExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -913,7 +899,6 @@ namespace ModernGUITest
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(780, 511);
             this.ContextMenuStrip = this.ContextMenuStrip1;
-            this.Controls.Add(this.timePicker1);
             this.Controls.Add(this.FlatButton3);
             this.Controls.Add(this.FlatButton2);
             this.Controls.Add(this.TabSelector1);
@@ -999,6 +984,5 @@ namespace ModernGUITest
         private TabPage Graph_tabPage;
         private MultiSelectTreeview multiSelectTreeview1;
         private ModernGUI.Controls.Label label1;
-        private ECN.SchoolSoundSystem.TimePicker timePicker1;
     }
 }

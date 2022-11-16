@@ -104,5 +104,9 @@ namespace ModernGUITest
         {
              ProgressBar1.Value = Math.Max(ProgressBar1.Value - 10, 0);
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+                    }
     }
 }

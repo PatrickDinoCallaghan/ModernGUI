@@ -9,6 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Spinner.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Spinner.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ModernGUI\ModernGUI.csproj" />
   </ItemGroup>
 

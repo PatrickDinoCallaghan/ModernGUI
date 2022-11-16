@@ -28,23 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.spinner1 = new ModernGUITest.Spinner();
+            this.timePicker1 = new ModernGUI.Controls.TimeControls.TimePicker();
             this.SuspendLayout();
             // 
-            // spinner1
+            // timePicker1
             // 
-            this.spinner1.Location = new System.Drawing.Point(646, 205);
-            this.spinner1.Name = "spinner1";
-            this.spinner1.Size = new System.Drawing.Size(16, 28);
-            this.spinner1.TabIndex = 0;
-            this.spinner1.ButtonClick += new ModernGUITest.Spinner.OnButtonClick(this.spinner1_ButtonClick);
+            this.timePicker1.Depth = 0;
+            this.timePicker1.Hours = 0;
+            this.timePicker1.Location = new System.Drawing.Point(274, 200);
+            this.timePicker1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.timePicker1.Milliseconds = 0;
+            this.timePicker1.Minutes = 0;
+            this.timePicker1.MouseState = ModernGUI.MouseState.HOVER;
+            this.timePicker1.Name = "timePicker1";
+            this.timePicker1.Seconds = 0;
+            this.timePicker1.Size = new System.Drawing.Size(112, 22);
+            this.timePicker1.TabIndex = 0;
+            this.timePicker1.TabStop = false;
+            this.timePicker1.Value = System.TimeSpan.Parse("00:00:00");
             // 
             // Example
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 483);
-            this.Controls.Add(this.spinner1);
+            this.Controls.Add(this.timePicker1);
             this.Name = "Example";
             this.Text = "Example";
             this.Load += new System.EventHandler(this.Example_Load);
@@ -54,6 +62,6 @@
 
         #endregion
 
-        private Spinner spinner1;
+        private ModernGUI.Controls.TimeControls.TimePicker timePicker1;
     }
 }
