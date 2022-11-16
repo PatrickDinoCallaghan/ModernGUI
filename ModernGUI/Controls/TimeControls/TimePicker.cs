@@ -103,21 +103,50 @@ namespace ModernGUI.Controls.TimeControls
                 SetText(Parts[0], Parts[1], SecondParts[0], SecondParts[1]);
             }
         }
+
+        private TimeSpan _Value = new TimeSpan();
+
         public TimeSpan Value
         {
             get
             {
-                return new TimeSpan(0, Hours, Minutes, Seconds, Milliseconds);
+                if (Negative)
+                {
+                    return -new TimeSpan(0, Hours, Minutes, Seconds, Milliseconds);
+                }
+                else
+                {
+
+                    return new TimeSpan(0, Hours, Minutes, Seconds, Milliseconds);
+                }
             }
             set
             {
-                Hours = value.Hours;
-                Minutes = value.Minutes;
-                Seconds = value.Seconds;
-                Milliseconds = value.Milliseconds;
+                if (value >= new TimeSpan(0,0,0))
+                {
+                    Hours = value.Hours;
+                    Minutes = value.Minutes;
+                    Seconds = value.Seconds;
+                    Milliseconds = value.Milliseconds;
+                }
+                else
+                {
+                    Negative = !Negative;
+
+                    TimeSpan timeSpan =  Shared.Maths.mod(value);
+                    Hours = timeSpan.Hours;
+                    Minutes = timeSpan.Minutes;
+                    Seconds = timeSpan.Seconds;
+                    Milliseconds = timeSpan.Milliseconds;
+                    this.Invalidate();
+
+                }
+
+                _Value = Shared.Maths.mod(value);
             }
         }
 
+        private bool Negative = false;
         public TimePicker()
         {
             InitializeComponent();
@@ -140,7 +169,7 @@ namespace ModernGUI.Controls.TimeControls
                 Font = SkinManager.openSans[11, OpenSans.Weight.Regular],
                 ForeColor = SkinManager.GetPrimaryTextColor(),
                 Location = new Point(0, 0),
-                Width = this.Width-16,
+                Width = this.Width - 16,
                 Height = Height - 2
             };
 
@@ -172,65 +201,11 @@ namespace ModernGUI.Controls.TimeControls
             this.Height = _baseTextBox.Height + 3;
 
             spinner1.ButtonClick += Spinner1_ButtonClick;
+
         }
 
-        private void Spinner1_ButtonClick(object sender, Spinner.ButtonClicked e)
-        {
-            int increment = 0;
-            if (e == Spinner.ButtonClicked.Up)
-            {
-                increment = 1;
-            }
-            else if (e == Spinner.ButtonClicked.Down)
-            {
-                increment = -1;
-            }
+        #region Formatting, style and Behavior
 
-            if (_baseTextBox.SelectionStart <= 2)
-            {
-
-                Value = Value.Add(new TimeSpan(increment, 0, 0));
-                _baseTextBox.Select(0, 2);
-
-            }
-            else if (_baseTextBox.SelectionStart <= 5)
-            {
-                Value = Value.Add(new TimeSpan(0, increment, 0));
-                _baseTextBox.Select(3, 2);
-            }
-            else if (_baseTextBox.SelectionStart <= 8)
-            {
-                Value = Value.Add(new TimeSpan(0, 0, increment));
-                _baseTextBox.Select(6, 2);
-            }
-            else
-            {
-                Value = Value.Add(new TimeSpan(0, 0, 0, 0, increment));
-                _baseTextBox.Select(10, 3);
-            }
-        }
-
-        protected override void OnSizeChanged(EventArgs e)
-        {
-            if (_baseTextBox != null)
-            {
-                _baseTextBox.Width = this.Width - 16;
-                this.Height = _baseTextBox.Height +3;
-
-            }
-            base.OnSizeChanged(e);
-        }
-        private void _baseTextBox_LostFocus(object sender, EventArgs e)
-        {
-            try
-            {
-                FormatText();
-            }
-            catch
-            {
-            }
-        }
-    
         private void FormatText()
         {
             string[] Parts = _baseTextBox.Text.Trim().Split(":".ToCharArray());
@@ -283,6 +258,7 @@ namespace ModernGUI.Controls.TimeControls
                 OnValueChanged.Invoke(null, new EventArgs());
             }
         }
+
         bool DoingFormatting = false;
 
         private void SetText(string Hour, string Minute, string Second, string Millisecond)
@@ -296,6 +272,66 @@ namespace ModernGUI.Controls.TimeControls
                 DoingFormatting = true;
                 FormatText();
                 DoingFormatting = false;
+            }
+        }
+
+        private void SelectCorrectText(int SelectedIndex)
+        {
+            if (SelectedIndex <= 2)
+            {
+                _baseTextBox.Select(0, 2);
+            }
+            else if (SelectedIndex <= 5)
+            {
+                _baseTextBox.Select(3, 2);
+            }
+            else if (SelectedIndex <= 8)
+            {
+                _baseTextBox.Select(6, 2);
+            }
+            else
+            {
+                _baseTextBox.Select(9, 3);
+            }
+        }
+
+        private void Spinner1_ButtonClick(object sender, Spinner.ButtonClicked e)
+        {
+            int increment = 0;
+            if (e == Spinner.ButtonClicked.Up)
+            {
+                increment = 1;
+            }
+            else if (e == Spinner.ButtonClicked.Down)
+            {
+                increment = -1;
+            }
+            if (Negative)
+            {
+                increment = -increment;
+            }
+
+            if (_baseTextBox.SelectionStart <= 2)
+            {
+
+                Value = _Value.Add(new TimeSpan(increment, 0, 0));
+                _baseTextBox.Select(0, 2);
+
+            }
+            else if (_baseTextBox.SelectionStart <= 5)
+            {
+                Value = _Value.Add(new TimeSpan(0, increment, 0));
+                _baseTextBox.Select(3, 2);
+            }
+            else if (_baseTextBox.SelectionStart <= 8)
+            {
+                Value = _Value.Add(new TimeSpan(0, 0, increment));
+                _baseTextBox.Select(6, 2);
+            }
+            else
+            {
+                Value = _Value.Add(new TimeSpan(0, 0, 0, 0, increment));
+                _baseTextBox.Select(9, 3);
             }
         }
 
@@ -477,30 +513,20 @@ namespace ModernGUI.Controls.TimeControls
             }
         }
         bool NonNumKeyPressed = false;
-        private void SelectCorrectText(int SelectedIndex)
-        {
-            if (SelectedIndex <= 2)
-            {
-                _baseTextBox.Select(0, 2);
-            }
-            else if (SelectedIndex <= 5)
-            {
-                _baseTextBox.Select(3, 2);
-            }
-            else if (SelectedIndex <= 8)
-            {
-                _baseTextBox.Select(6, 2);
-            }
-            else
-            {
-                _baseTextBox.Select(9, 3);
-            }
-        }
         private void _baseTextBox_Click(object sender, EventArgs e)
         {
             FormatText();
         }
-
+        private void _baseTextBox_LostFocus(object sender, EventArgs e)
+        {
+            try
+            {
+                FormatText();
+            }
+            catch
+            {
+            }
+        }
         private void _baseTextBox_TextChanged(object sender, EventArgs e)
         {
             if (NonNumKeyPressed)
@@ -509,12 +535,35 @@ namespace ModernGUI.Controls.TimeControls
                 FormatText();
             }
         }
+
+        protected override void OnSizeChanged(EventArgs e)
+        {
+            if (_baseTextBox != null)
+            {
+                _baseTextBox.Width = this.Width - 16;
+                this.Height = _baseTextBox.Height + 3;
+
+            }
+            base.OnSizeChanged(e);
+        }
+
         protected override void OnPaint(PaintEventArgs pevent)
         {
             var g = pevent.Graphics;
             g.Clear(Parent.BackColor);
 
             var lineY = this.Height -3;
+
+            if (Negative)
+            {
+                Pen BlackPen = new Pen(Color.Black);
+                _baseTextBox.Location = new Point(8, 0);
+                g.DrawLine(BlackPen, new Point(0, this.Height / 2), new Point(5, this.Height / 2));
+            }
+            else
+            {
+                _baseTextBox.Location = new Point(0, 0);
+            }
 
             if (!_animationManager.IsAnimating())
             {
@@ -535,6 +584,9 @@ namespace ModernGUI.Controls.TimeControls
                 g.FillRectangle(SkinManager.ColorScheme.PrimaryBrush, animationStart - halfAnimationWidth, lineY, animationWidth, 2);
             }
         }
+
+        #endregion
+
         private class BaseTextBox : TextBox
         {
             public new void SelectAll()

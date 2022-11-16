@@ -33,16 +33,17 @@
             // 
             // timePicker1
             // 
+            this.timePicker1.BackColor = System.Drawing.SystemColors.Window;
             this.timePicker1.Depth = 0;
             this.timePicker1.Hours = 0;
-            this.timePicker1.Location = new System.Drawing.Point(274, 200);
+            this.timePicker1.Location = new System.Drawing.Point(311, 214);
             this.timePicker1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.timePicker1.Milliseconds = 0;
             this.timePicker1.Minutes = 0;
             this.timePicker1.MouseState = ModernGUI.MouseState.HOVER;
             this.timePicker1.Name = "timePicker1";
             this.timePicker1.Seconds = 0;
-            this.timePicker1.Size = new System.Drawing.Size(112, 22);
+            this.timePicker1.Size = new System.Drawing.Size(172, 23);
             this.timePicker1.TabIndex = 0;
             this.timePicker1.TabStop = false;
             this.timePicker1.Value = System.TimeSpan.Parse("00:00:00");

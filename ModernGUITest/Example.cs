@@ -28,9 +28,6 @@ namespace ModernGUITest
             _SkinManager.AddFormToManage(this);
             _SkinManager.Theme = SkinManager.Themes.LIGHT;
             _SkinManager.ColorScheme = new ColorScheme(ColorSchemes.Indigo);
-
-
-
         }
 
         public Bitmap ResizeImage(double scaleFactor, Image image)
