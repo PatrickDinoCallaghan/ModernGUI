@@ -14,6 +14,7 @@ namespace ModernGUI.Controls.TimeControls
     [DefaultEvent("OnValueChanged")]
     public partial class TimePicker : UserControl, IControl
     {
+        private bool Negative = false;
         //Properties for managing the design properties
         [Browsable(false)]
         public int Depth { get; set; }
@@ -146,7 +147,6 @@ namespace ModernGUI.Controls.TimeControls
             }
         }
 
-        private bool Negative = false;
         public TimePicker()
         {
             InitializeComponent();

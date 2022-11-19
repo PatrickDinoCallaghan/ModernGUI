@@ -253,9 +253,6 @@ namespace ModernGUI
         {
             _formsToManage.Remove(InForm);
         }
-
-
-
         private void UpdateBackgrounds()
         {
             var newBackColor = GetApplicationBackgroundColor();
@@ -320,13 +317,11 @@ namespace ModernGUI
 
             #region DataGridview
 
-            ModernGUI.Controls.DataGridView DGV = null;
 
-            if (controlToUpdate.GetType() == typeof(ModernGUI.Controls.DataGridView))
+
+            if (controlToUpdate is (ModernGUI.Controls.DataGridView))
             {
-                DGV = (ModernGUI.Controls.DataGridView)controlToUpdate;
-
-                DGV.BackgroundColor = newBackColor;
+               ((ModernGUI.Controls.DataGridView)controlToUpdate).BackColor = newBackColor;
             }
             #endregion
 
@@ -334,6 +329,13 @@ namespace ModernGUI
             if (controlToUpdate is Divider)
             {
                 controlToUpdate.BackColor = GetDividersColor();
+            }
+            #endregion
+
+            #region Calandar
+            if (controlToUpdate is Calendar)
+            {
+                controlToUpdate.BackColor = Color.Black;
             }
             #endregion
 

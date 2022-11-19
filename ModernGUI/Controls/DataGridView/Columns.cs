@@ -287,6 +287,7 @@ namespace ModernGUI.Controls
             SelectionControl.BackColor = this.DataGridView.BackgroundColor;
 
             SetNullImage();
+            
         }
 
         private void SelectionControl_LostFocus(object sender, EventArgs e)

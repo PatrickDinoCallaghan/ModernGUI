@@ -25,7 +25,7 @@ namespace ModernGUI.Controls
             : base(c)
         {
 
-            ColorTable.Background = FromHex("#ffffff");
+            ColorTable.Background =  FromHex("#ffffff");
             ColorTable.DayBackgroundEven = FromHex("#A5BFE1");
             ColorTable.DayBackgroundOdd = FromHex("#FFFFFF");
             ColorTable.DayBackgroundSelected = FromHex("#E6EDF7");
@@ -53,7 +53,7 @@ namespace ModernGUI.Controls
             ColorTable.TimeScaleHours = FromHex("#6593CF");
             ColorTable.TimeScaleMinutes = FromHex("#6593CF");
             ColorTable.TimeUnitBackground = FromHex("#E6EDF7");
-            ColorTable.TimeUnitHighlightedBackground = Color.White;
+            ColorTable.TimeUnitHighlightedBackground = Color.White; 
             ColorTable.TimeUnitSelectedBackground = FromHex("#294C7A");
             ColorTable.TimeUnitBorderLight = FromHex("#D5E1F1");
             ColorTable.TimeUnitBorderDark = FromHex("#A5BFE1");

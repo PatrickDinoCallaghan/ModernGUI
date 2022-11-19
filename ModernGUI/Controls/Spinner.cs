@@ -25,11 +25,9 @@ namespace ModernGUI.Controls
 
         [Browsable(true)]
         public event OnButtonClick ButtonClick;
-    
         public delegate void OnButtonClick (object sender, ButtonClicked e);
         
         #region Design Code
-
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
@@ -115,6 +113,7 @@ namespace ModernGUI.Controls
 
         private void Item_MouseDown(object? sender, MouseEventArgs e)
         {
+    
             if (e.Y < ((Control)sender).Height / 2)
             {
                 ButtonClick?.Invoke(this, ButtonClicked.Up);
@@ -124,6 +123,7 @@ namespace ModernGUI.Controls
             {
                 ButtonClick?.Invoke(this, ButtonClicked.Down);
             }
+
         }
 
         #endregion

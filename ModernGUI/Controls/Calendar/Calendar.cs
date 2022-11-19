@@ -591,6 +591,22 @@ namespace ModernGUI.Controls
         }
 
         /// <summary>
+        /// Gets or sets the background color for the control.
+        /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public new Color BackColor
+        {
+            get 
+            {
+                return _renderer.Calendar.BackColor;
+            }
+            set
+            { 
+                _renderer.Calendar.BackColor = value;
+                this.Invalidate();
+            }
+        }
+        /// <summary>
         /// Gets the weeks currently visible on the calendar, if <see cref="DaysMode"/> is <see cref="CalendarDaysMode.Short"/>
         /// </summary>
         public CalendarWeek[] Weeks

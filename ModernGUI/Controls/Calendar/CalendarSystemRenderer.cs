@@ -43,8 +43,6 @@ namespace ModernGUI.Controls
             get { return _selectedItemBorder; }
             set { _selectedItemBorder = value; }
         }
-
-
         #endregion
 
         #region Overrides

@@ -1,7 +1,11 @@
 ﻿using ModernGUI;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.Drawing;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Xml;
 
 namespace ModernGUI.Controls
 {
@@ -91,22 +95,45 @@ namespace ModernGUI.Controls
             set { _BorderStyle = value; }
         }
 
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public new Color BackgroundColor
+        {
+            get { return base.BackgroundColor; }
+            set { base.BackgroundColor = value; }
+        }
 
 
         #endregion
 
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public new Color BackColor
+        {
+            get 
+            { 
+                return this.BackgroundColor; 
+            }
+            set
+            {
+                this.BackgroundColor = value;
+                Set_CellDefaultStyle(value, Shared.Drawing.ColorNegative(value));
+            }
+        }
+
         public DataGridView()
         {
-            InitializeComponent();
-            SetCellDimensions();
+            base.BackgroundColor = Color.White;
 
-            Set_CellDefaultStyle();
+            InitializeComponent();
+      
+            Set_CellDefaultStyle(Color.White, Shared.Drawing.ColorNegative(Color.White));
         }
+
 
         /// <summary>
         /// This sets a new default cell style for both readonly and editing modes
         /// </summary>
-        public void Set_CellDefaultStyle()
+        private void Set_CellDefaultStyle(Color BackGroundColor, Color CellFontColor)
         {
             if (_ReadOnly == true)
             {
@@ -115,10 +142,10 @@ namespace ModernGUI.Controls
                 dataGridViewcellStlye_ReadOnly.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(226)))), ((int)(((byte)(244)))));
                 dataGridViewcellStlye_ReadOnly.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
                 dataGridViewcellStlye_ReadOnly.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-                dataGridViewcellStlye_ReadOnly.BackColor = System.Drawing.Color.White;
+                dataGridViewcellStlye_ReadOnly.BackColor = BackGroundColor;
+              
                 dataGridViewcellStlye_ReadOnly.Font = _Font;
-                dataGridViewcellStlye_ReadOnly.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-
+                dataGridViewcellStlye_ReadOnly.ForeColor = CellFontColor;
                 dataGridViewcellStlye_ReadOnly.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
 
                 this.DefaultCellStyle = dataGridViewcellStlye_ReadOnly;
@@ -141,9 +168,10 @@ namespace ModernGUI.Controls
                 dataGridViewcellStlye.SelectionBackColor = SystemColors.Highlight;
                 dataGridViewcellStlye.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
                 dataGridViewcellStlye.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-                dataGridViewcellStlye.BackColor = System.Drawing.Color.White;
+                dataGridViewcellStlye.BackColor = BackGroundColor ;
                 dataGridViewcellStlye.Font = _Font;
                 dataGridViewcellStlye.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+                dataGridViewcellStlye.ForeColor = CellFontColor;
 
                 this.DefaultCellStyle = dataGridViewcellStlye;
                 this.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -179,7 +207,7 @@ namespace ModernGUI.Controls
 
         private new void ReadOnlyChanged()
         {
-            Set_CellDefaultStyle();
+            Set_CellDefaultStyle(BackColor, ModernGUI.Shared.Drawing.ColorNegative(BackColor));
             this.Invalidate();
         }
         #endregion
@@ -232,13 +260,27 @@ namespace ModernGUI.Controls
             this.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             this.ScrollBars = ScrollBars.None;
 
-            SetColorSchemeAndFont();
             this.Invalidate();
-        }
 
-        private void SetColorSchemeAndFont()
+            SetCellDimensions();
+
+        }
+        bool OnBackgroundColorChanged_FirstRun = false;
+        private void SetColorSchemeAndFont(Color BackGroundColor)
         {
-            this.BackgroundColor = Color.White;
+         
+            if (this.BackgroundColor == BackgroundColor && OnBackgroundColorChanged_FirstRun == false )
+            {
+                this.OnBackgroundColorChanged(new EventArgs());
+                OnBackgroundColorChanged_FirstRun = true;
+            }
+            else
+            {
+
+                this.BackgroundColor = BackGroundColor;
+
+            }
+
             _Font = SkinManager.openSans[11, OpenSans.Weight.Regular];
             _HeaderFont = SkinManager.openSans[12, OpenSans.Weight.Regular];
             _HeaderColor = SkinManager.ColorScheme.PrimaryColor;
@@ -272,9 +314,9 @@ namespace ModernGUI.Controls
         #region Drawing Control
         protected override void OnPaint(PaintEventArgs e)
         {
-            SetColorSchemeAndFont();
+        
+    SetColorSchemeAndFont(BackColor);
             base.OnPaint(e);
-
             if (_AllowUserToResize == true)
             {
                 var rc = new Rectangle(this.ClientSize.Width - grab, this.ClientSize.Height - grab, grab, grab);
@@ -373,7 +415,6 @@ namespace ModernGUI.Controls
             SetScrollBar();
             this.Invalidate();
         }
-
 
         protected override void OnColumnAdded(DataGridViewColumnEventArgs e)
         {

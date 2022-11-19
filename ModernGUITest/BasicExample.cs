@@ -108,5 +108,10 @@ namespace ModernGUITest
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
                     }
+
+        private void raisedButton3_Click(object sender, EventArgs e)
+        {
+            dataGridView1.ReadOnly = !dataGridView1.ReadOnly;
+        }
     }
 }

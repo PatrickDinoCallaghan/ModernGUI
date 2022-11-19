@@ -95,6 +95,7 @@ namespace ModernGUITest
             this.item3ToolStripMenuItem = new ModernGUI.Controls.ToolStripMenuItem();
             this.FlatButton3 = new ModernGUI.Controls.FlatButton();
             this.AddRemove = new ModernGUI.Controls.AddRemoveColumn();
+            this.raisedButton3 = new ModernGUI.Controls.RaisedButton();
             this.TabControl1.SuspendLayout();
             this.TextField_tabPage.SuspendLayout();
             this.SelectionBox_tabPage.SuspendLayout();
@@ -631,6 +632,7 @@ namespace ModernGUITest
             // 
             // DGV_tabPage
             // 
+            this.DGV_tabPage.Controls.Add(this.raisedButton3);
             this.DGV_tabPage.Controls.Add(this.dataGridView1);
             this.DGV_tabPage.Location = new System.Drawing.Point(4, 24);
             this.DGV_tabPage.Name = "DGV_tabPage";
@@ -645,7 +647,6 @@ namespace ModernGUITest
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDragDrop = false;
             this.dataGridView1.AllowUserToResize = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dataGridView1.ColumnHeadersHeight = 50;
@@ -663,7 +664,7 @@ namespace ModernGUITest
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Depth = 0;
             this.dataGridView1.HeaderColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.dataGridView1.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dataGridView1.HeaderFont = new System.Drawing.Font("Open Sans Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dataGridView1.HeaderHeight = 50;
             this.dataGridView1.Location = new System.Drawing.Point(41, 41);
             this.dataGridView1.MouseState = ModernGUI.MouseState.HOVER;
@@ -892,6 +893,24 @@ namespace ModernGUITest
             this.AddRemove.Name = "AddRemove";
             this.AddRemove.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
+            // raisedButton3
+            // 
+            this.raisedButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.raisedButton3.AutoSize = true;
+            this.raisedButton3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.raisedButton3.Depth = 0;
+            this.raisedButton3.Icon = null;
+            this.raisedButton3.Location = new System.Drawing.Point(585, 114);
+            this.raisedButton3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.raisedButton3.MouseState = ModernGUI.MouseState.HOVER;
+            this.raisedButton3.Name = "raisedButton3";
+            this.raisedButton3.Primary = true;
+            this.raisedButton3.Size = new System.Drawing.Size(93, 36);
+            this.raisedButton3.TabIndex = 1;
+            this.raisedButton3.Text = "ReadOnly";
+            this.raisedButton3.UseVisualStyleBackColor = true;
+            this.raisedButton3.Click += new System.EventHandler(this.raisedButton3_Click);
+            // 
             // BasicExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -917,6 +936,7 @@ namespace ModernGUITest
             this.Progress_tabPage.ResumeLayout(false);
             this.Progress_tabPage.PerformLayout();
             this.DGV_tabPage.ResumeLayout(false);
+            this.DGV_tabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.Calendar_tabPage.ResumeLayout(false);
             this.Graph_tabPage.ResumeLayout(false);
@@ -984,5 +1004,6 @@ namespace ModernGUITest
         private TabPage Graph_tabPage;
         private MultiSelectTreeview multiSelectTreeview1;
         private ModernGUI.Controls.Label label1;
+        private RaisedButton raisedButton3;
     }
 }
