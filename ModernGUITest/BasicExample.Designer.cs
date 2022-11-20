@@ -33,13 +33,13 @@ namespace ModernGUITest
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            ModernGUI.Controls.CalendarHighlightRange calendarHighlightRange1 = new ModernGUI.Controls.CalendarHighlightRange();
-            ModernGUI.Controls.CalendarHighlightRange calendarHighlightRange2 = new ModernGUI.Controls.CalendarHighlightRange();
-            ModernGUI.Controls.CalendarHighlightRange calendarHighlightRange3 = new ModernGUI.Controls.CalendarHighlightRange();
-            ModernGUI.Controls.CalendarHighlightRange calendarHighlightRange4 = new ModernGUI.Controls.CalendarHighlightRange();
-            ModernGUI.Controls.CalendarHighlightRange calendarHighlightRange5 = new ModernGUI.Controls.CalendarHighlightRange();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            ModernGUI.Controls.CalendarHighlightRange calendarHighlightRange6 = new ModernGUI.Controls.CalendarHighlightRange();
+            ModernGUI.Controls.CalendarHighlightRange calendarHighlightRange7 = new ModernGUI.Controls.CalendarHighlightRange();
+            ModernGUI.Controls.CalendarHighlightRange calendarHighlightRange8 = new ModernGUI.Controls.CalendarHighlightRange();
+            ModernGUI.Controls.CalendarHighlightRange calendarHighlightRange9 = new ModernGUI.Controls.CalendarHighlightRange();
+            ModernGUI.Controls.CalendarHighlightRange calendarHighlightRange10 = new ModernGUI.Controls.CalendarHighlightRange();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BasicExample));
             this.FlatButton2 = new ModernGUI.Controls.FlatButton();
             this.FlatButton1 = new ModernGUI.Controls.FlatButton();
@@ -63,18 +63,14 @@ namespace ModernGUITest
             this.RadioButton3 = new ModernGUI.Controls.RadioButton();
             this.CheckBox6 = new ModernGUI.Controls.Checkbox();
             this.CheckBox5 = new ModernGUI.Controls.Checkbox();
-            this.ListBox_tabPage = new System.Windows.Forms.TabPage();
-            this.ListView1 = new ModernGUI.Controls.ListView();
-            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
+            this.gantt_tabPage = new System.Windows.Forms.TabPage();
             this.Progress_tabPage = new System.Windows.Forms.TabPage();
             this.Label2 = new ModernGUI.Controls.Label();
             this.FlatButton4 = new ModernGUI.Controls.FlatButton();
             this.RaisedButton2 = new ModernGUI.Controls.RaisedButton();
             this.ProgressBar1 = new ModernGUI.Controls.ProgressBar();
             this.DGV_tabPage = new System.Windows.Forms.TabPage();
+            this.DGVListBoxStyle_raisedButton = new ModernGUI.Controls.RaisedButton();
             this.MoveDGV_raisedButton = new ModernGUI.Controls.RaisedButton();
             this.ReadonlyDGV_raisedButton = new ModernGUI.Controls.RaisedButton();
             this.dataGridView1 = new ModernGUI.Controls.DataGridView();
@@ -87,6 +83,10 @@ namespace ModernGUITest
             this.Graph_tabPage = new System.Windows.Forms.TabPage();
             this.label1 = new ModernGUI.Controls.Label();
             this.multiSelectTreeview1 = new ModernGUI.Controls.MultiSelectTreeview();
+            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
             this.ContextMenuStrip1 = new ModernGUI.Controls.ContextMenuStrip();
             this.item1ToolStripMenuItem = new ModernGUI.Controls.ToolStripMenuItem();
             this.subItem1ToolStripMenuItem = new ModernGUI.Controls.ToolStripMenuItem();
@@ -99,7 +99,6 @@ namespace ModernGUITest
             this.TabControl1.SuspendLayout();
             this.TextField_tabPage.SuspendLayout();
             this.SelectionBox_tabPage.SuspendLayout();
-            this.ListBox_tabPage.SuspendLayout();
             this.Progress_tabPage.SuspendLayout();
             this.DGV_tabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -303,7 +302,7 @@ namespace ModernGUITest
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TabControl1.Controls.Add(this.TextField_tabPage);
             this.TabControl1.Controls.Add(this.SelectionBox_tabPage);
-            this.TabControl1.Controls.Add(this.ListBox_tabPage);
+            this.TabControl1.Controls.Add(this.gantt_tabPage);
             this.TabControl1.Controls.Add(this.Progress_tabPage);
             this.TabControl1.Controls.Add(this.DGV_tabPage);
             this.TabControl1.Controls.Add(this.Calendar_tabPage);
@@ -495,61 +494,16 @@ namespace ModernGUITest
             this.CheckBox5.Text = "CheckBox5";
             this.CheckBox5.UseVisualStyleBackColor = true;
             // 
-            // ListBox_tabPage
+            // gantt_tabPage
             // 
-            this.ListBox_tabPage.Controls.Add(this.ListView1);
-            this.ListBox_tabPage.Location = new System.Drawing.Point(4, 24);
-            this.ListBox_tabPage.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.ListBox_tabPage.Name = "ListBox_tabPage";
-            this.ListBox_tabPage.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.ListBox_tabPage.Size = new System.Drawing.Size(742, 332);
-            this.ListBox_tabPage.TabIndex = 3;
-            this.ListBox_tabPage.Text = "ListView";
-            this.ListBox_tabPage.UseVisualStyleBackColor = true;
-            // 
-            // ListView1
-            // 
-            this.ListView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4});
-            this.ListView1.Depth = 0;
-            this.ListView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ListView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ListView1.FullRowSelect = true;
-            this.ListView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.ListView1.Location = new System.Drawing.Point(4, 3);
-            this.ListView1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.ListView1.MouseLocation = new System.Drawing.Point(0, 0);
-            this.ListView1.MouseState = ModernGUI.MouseState.HOVER;
-            this.ListView1.Name = "ListView1";
-            this.ListView1.OwnerDraw = true;
-            this.ListView1.Size = new System.Drawing.Size(734, 326);
-            this.ListView1.TabIndex = 0;
-            this.ListView1.UseCompatibleStateImageBehavior = false;
-            this.ListView1.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Dessert (100g serving)";
-            this.columnHeader1.Width = 200;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Calories";
-            this.columnHeader2.Width = 101;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Fat (g)";
-            this.columnHeader3.Width = 94;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Protein (g)";
-            this.columnHeader4.Width = 154;
+            this.gantt_tabPage.Location = new System.Drawing.Point(4, 24);
+            this.gantt_tabPage.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.gantt_tabPage.Name = "gantt_tabPage";
+            this.gantt_tabPage.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.gantt_tabPage.Size = new System.Drawing.Size(742, 332);
+            this.gantt_tabPage.TabIndex = 3;
+            this.gantt_tabPage.Text = "gantt";
+            this.gantt_tabPage.UseVisualStyleBackColor = true;
             // 
             // Progress_tabPage
             // 
@@ -632,6 +586,7 @@ namespace ModernGUITest
             // 
             // DGV_tabPage
             // 
+            this.DGV_tabPage.Controls.Add(this.DGVListBoxStyle_raisedButton);
             this.DGV_tabPage.Controls.Add(this.MoveDGV_raisedButton);
             this.DGV_tabPage.Controls.Add(this.ReadonlyDGV_raisedButton);
             this.DGV_tabPage.Controls.Add(this.dataGridView1);
@@ -642,6 +597,24 @@ namespace ModernGUITest
             this.DGV_tabPage.TabIndex = 5;
             this.DGV_tabPage.Text = "DGV";
             this.DGV_tabPage.UseVisualStyleBackColor = true;
+            // 
+            // DGVListBoxStyle_raisedButton
+            // 
+            this.DGVListBoxStyle_raisedButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DGVListBoxStyle_raisedButton.AutoSize = true;
+            this.DGVListBoxStyle_raisedButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.DGVListBoxStyle_raisedButton.Depth = 0;
+            this.DGVListBoxStyle_raisedButton.Icon = null;
+            this.DGVListBoxStyle_raisedButton.Location = new System.Drawing.Point(585, 198);
+            this.DGVListBoxStyle_raisedButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.DGVListBoxStyle_raisedButton.MouseState = ModernGUI.MouseState.HOVER;
+            this.DGVListBoxStyle_raisedButton.Name = "DGVListBoxStyle_raisedButton";
+            this.DGVListBoxStyle_raisedButton.Primary = true;
+            this.DGVListBoxStyle_raisedButton.Size = new System.Drawing.Size(113, 36);
+            this.DGVListBoxStyle_raisedButton.TabIndex = 3;
+            this.DGVListBoxStyle_raisedButton.Text = "ListBoxStyle";
+            this.DGVListBoxStyle_raisedButton.UseVisualStyleBackColor = true;
+            this.DGVListBoxStyle_raisedButton.Click += new System.EventHandler(this.DGVListBoxStyle_raisedButton_Click);
             // 
             // MoveDGV_raisedButton
             // 
@@ -689,14 +662,14 @@ namespace ModernGUITest
             this.Column1,
             this.Column2,
             this.Column3});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.Depth = 0;
             this.dataGridView1.HeaderColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.dataGridView1.HeaderHeight = 50;
@@ -705,8 +678,8 @@ namespace ModernGUITest
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeight = 40;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.RowTemplate.Height = 46;
             this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -731,7 +704,7 @@ namespace ModernGUITest
             // Column3
             // 
             this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.FillWeight = 61.28384F;
+            this.Column3.FillWeight = 61.28387F;
             this.Column3.Name = "Column3";
             this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
@@ -775,27 +748,27 @@ namespace ModernGUITest
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.calendar1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            calendarHighlightRange1.DayOfWeek = System.DayOfWeek.Monday;
-            calendarHighlightRange1.EndTime = System.TimeSpan.Parse("17:00:00");
-            calendarHighlightRange1.StartTime = System.TimeSpan.Parse("08:00:00");
-            calendarHighlightRange2.DayOfWeek = System.DayOfWeek.Tuesday;
-            calendarHighlightRange2.EndTime = System.TimeSpan.Parse("17:00:00");
-            calendarHighlightRange2.StartTime = System.TimeSpan.Parse("08:00:00");
-            calendarHighlightRange3.DayOfWeek = System.DayOfWeek.Wednesday;
-            calendarHighlightRange3.EndTime = System.TimeSpan.Parse("17:00:00");
-            calendarHighlightRange3.StartTime = System.TimeSpan.Parse("08:00:00");
-            calendarHighlightRange4.DayOfWeek = System.DayOfWeek.Thursday;
-            calendarHighlightRange4.EndTime = System.TimeSpan.Parse("17:00:00");
-            calendarHighlightRange4.StartTime = System.TimeSpan.Parse("08:00:00");
-            calendarHighlightRange5.DayOfWeek = System.DayOfWeek.Friday;
-            calendarHighlightRange5.EndTime = System.TimeSpan.Parse("17:00:00");
-            calendarHighlightRange5.StartTime = System.TimeSpan.Parse("08:00:00");
+            calendarHighlightRange6.DayOfWeek = System.DayOfWeek.Monday;
+            calendarHighlightRange6.EndTime = System.TimeSpan.Parse("17:00:00");
+            calendarHighlightRange6.StartTime = System.TimeSpan.Parse("08:00:00");
+            calendarHighlightRange7.DayOfWeek = System.DayOfWeek.Tuesday;
+            calendarHighlightRange7.EndTime = System.TimeSpan.Parse("17:00:00");
+            calendarHighlightRange7.StartTime = System.TimeSpan.Parse("08:00:00");
+            calendarHighlightRange8.DayOfWeek = System.DayOfWeek.Wednesday;
+            calendarHighlightRange8.EndTime = System.TimeSpan.Parse("17:00:00");
+            calendarHighlightRange8.StartTime = System.TimeSpan.Parse("08:00:00");
+            calendarHighlightRange9.DayOfWeek = System.DayOfWeek.Thursday;
+            calendarHighlightRange9.EndTime = System.TimeSpan.Parse("17:00:00");
+            calendarHighlightRange9.StartTime = System.TimeSpan.Parse("08:00:00");
+            calendarHighlightRange10.DayOfWeek = System.DayOfWeek.Friday;
+            calendarHighlightRange10.EndTime = System.TimeSpan.Parse("17:00:00");
+            calendarHighlightRange10.StartTime = System.TimeSpan.Parse("08:00:00");
             this.calendar1.HighlightRanges = new ModernGUI.Controls.CalendarHighlightRange[] {
-        calendarHighlightRange1,
-        calendarHighlightRange2,
-        calendarHighlightRange3,
-        calendarHighlightRange4,
-        calendarHighlightRange5};
+        calendarHighlightRange6,
+        calendarHighlightRange7,
+        calendarHighlightRange8,
+        calendarHighlightRange9,
+        calendarHighlightRange10};
             this.calendar1.Location = new System.Drawing.Point(234, 3);
             this.calendar1.Name = "calendar1";
             this.calendar1.Size = new System.Drawing.Size(505, 326);
@@ -941,7 +914,6 @@ namespace ModernGUITest
             this.TextField_tabPage.PerformLayout();
             this.SelectionBox_tabPage.ResumeLayout(false);
             this.SelectionBox_tabPage.PerformLayout();
-            this.ListBox_tabPage.ResumeLayout(false);
             this.Progress_tabPage.ResumeLayout(false);
             this.Progress_tabPage.PerformLayout();
             this.DGV_tabPage.ResumeLayout(false);
@@ -984,8 +956,7 @@ namespace ModernGUITest
 		private ModernGUI.Controls.Checkbox CheckBox6;
 		private ModernGUI.Controls.RaisedButton RaisedButton1;
         private ModernGUI.Controls.SingleLineTextField SingleLineTextField3;
-		private TabPage ListBox_tabPage;
-		private ModernGUI.Controls.ListView ListView1;
+		private TabPage gantt_tabPage;
 		private ColumnHeader columnHeader1;
 		private ColumnHeader columnHeader2;
 		private ColumnHeader columnHeader3;
@@ -1016,5 +987,6 @@ namespace ModernGUITest
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private ModernGUI.Controls.Columns.AddRemoveColumn Column3;
+        private RaisedButton DGVListBoxStyle_raisedButton;
     }
 }

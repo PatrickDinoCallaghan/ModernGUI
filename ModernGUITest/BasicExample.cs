@@ -18,9 +18,6 @@ namespace ModernGUITest
             _SkinManager.Theme = SkinManager.Themes.LIGHT;
 			_SkinManager.ColorScheme = new ColorScheme(ColorSchemes.Indigo); 
 
-			// Add dummy data to the listview
-	        seedListView();
-
             // Add dummy data to the MultiSelectTreeview
             seedmultiSelectTreeview();
 
@@ -28,25 +25,6 @@ namespace ModernGUITest
             dataGridView1.Rows.Add();
         }
 
-	    private void seedListView()
-	    {
-			//Define
-			var data = new[]
-	        {
-		        new []{"First", "111", "0.2", "0"},
-				new []{"Second", "222", "26.0", "7"},
-				new []{"third", "333", "9.0", "4.3"},
-				new []{"Forth", "444", "0.0", "0.0"},
-				new []{"Fith", "555", "3.2", "6.5"}
-	        };
-
-			//Add
-			foreach (string[] version in data)
-			{
-				var item = new ListViewItem(version);
-				ListView1.Items.Add(item);
-			}
-	    }
 
 		private void seedmultiSelectTreeview()
 		{
@@ -117,6 +95,11 @@ namespace ModernGUITest
         private void MoveDGV_raisedButton_Click(object sender, EventArgs e)
         {
             dataGridView1.AllowUserToDragDrop = !dataGridView1.AllowUserToDragDrop;
+        }
+
+        private void DGVListBoxStyle_raisedButton_Click(object sender, EventArgs e)
+        {
+            dataGridView1.ListBoxStyle = !dataGridView1.ListBoxStyle;
         }
     }
 }

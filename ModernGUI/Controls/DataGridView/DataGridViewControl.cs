@@ -40,6 +40,7 @@ namespace ModernGUI.Controls
         private bool _AllowUserToResize = false;
         private System.Windows.Forms.DataGridViewCellBorderStyle _CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
 
+        private bool _ListBoxStyle = false;
         private System.Windows.Forms.BorderStyle _BorderStyle = System.Windows.Forms.BorderStyle.None;
         #endregion
 
@@ -102,6 +103,28 @@ namespace ModernGUI.Controls
             set { base.BackgroundColor = value; }
         }
 
+        /// <summary>
+        /// Hides the in theme header of the datagridview and sets  it to read only. This gives the control a more conventional listbox style look
+        /// </summary>
+        [Browsable(true), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public bool ListBoxStyle
+        {
+            get
+            {
+                return _ListBoxStyle;
+            }
+
+            set
+            {
+                if (value == true)
+                {
+                    ReadOnly = true;
+                }
+                _ListBoxStyle = value;
+
+                this.Invalidate(); 
+            }
+        }
 
         #endregion
 
@@ -313,8 +336,9 @@ namespace ModernGUI.Controls
         #region Drawing Control
         protected override void OnPaint(PaintEventArgs e)
         {
-        
-    SetColorSchemeAndFont(BackColor);
+
+            SetColorSchemeAndFont(BackColor);
+
             base.OnPaint(e);
             if (_AllowUserToResize == true)
             {
@@ -334,11 +358,19 @@ namespace ModernGUI.Controls
             if (this.Columns.Count > 0)
             {
 
-                using (System.Drawing.Drawing2D.LinearGradientBrush gradient = new System.Drawing.Drawing2D.LinearGradientBrush(Entiretop, _HeaderColor, myRgbColor_Dark, System.Drawing.Drawing2D.LinearGradientMode.Vertical))
+                if (_ListBoxStyle == true)
                 {
-                    e.Graphics.FillRectangle(gradient, Entiretop);
-                }
 
+                    e.Graphics.FillRectangle(new SolidBrush(Parent.BackColor), Entiretop);
+                }
+                else
+                {
+                    using (System.Drawing.Drawing2D.LinearGradientBrush gradient = new System.Drawing.Drawing2D.LinearGradientBrush(Entiretop, _HeaderColor, myRgbColor_Dark, System.Drawing.Drawing2D.LinearGradientMode.Vertical))
+                    {
+                        e.Graphics.FillRectangle(gradient, Entiretop);
+                    }
+                }
+      
                 int CurrentPostion = 0;
 
                 for (int i = 0; i < this.Columns.Count; i++)
@@ -363,7 +395,15 @@ namespace ModernGUI.Controls
                                 e.Graphics.FillPolygon(new SolidBrush(Color.Gray), ModernGUI.Shared.Drawing.CommonShapes.ReturnUpArrow(CurrentPostion + this.Columns[i].Width - 20, (_HeaderHeight / 2) - 3));
                             }
                         }
-                        TextRenderer.DrawText(e.Graphics, this.Columns[i].HeaderText, _HeaderFont, rectangle, Color.White, TextFormatFlags.NoPrefix | TextFormatFlags.VerticalCenter);
+
+                        if (_ListBoxStyle == true)
+                        {
+                            TextRenderer.DrawText(e.Graphics, this.Columns[i].HeaderText, _HeaderFont, rectangle, Color.FromArgb(146,146,146), TextFormatFlags.NoPrefix | TextFormatFlags.VerticalCenter);
+                        }
+                        else
+                        {
+                            TextRenderer.DrawText(e.Graphics, this.Columns[i].HeaderText, _HeaderFont, rectangle, Color.White, TextFormatFlags.NoPrefix | TextFormatFlags.VerticalCenter);
+                        }
                     }
                 }
                 Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 7, 7));

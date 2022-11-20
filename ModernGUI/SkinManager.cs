@@ -120,6 +120,12 @@ namespace ModernGUI
         public readonly Color ACTION_BAR_TEXT_SECONDARY = Color.FromArgb(153, 255, 255, 255);
         public readonly Brush ACTION_BAR_TEXT_SECONDARY_BRUSH = new SolidBrush(Color.FromArgb(153, 255, 255, 255));
 
+        //DataGridview Background
+        public readonly Color DATAGRIDVIEW_BACKGROUND_LIGHT = Color.FromArgb(189,189,189);
+        public readonly Color DATAGRIDVIEW_BACKGROUND_DARK = Color.FromArgb(116, 116, 116);
+
+
+
         public Color GetPrimaryTextColor()
         {
             return Theme == Themes.LIGHT ? PRIMARY_TEXT_BLACK : PRIMARY_TEXT_WHITE;
@@ -224,8 +230,11 @@ namespace ModernGUI
         {
             return Theme == Themes.LIGHT ? BACKGROUND_LIGHT : BACKGROUND_DARK;
         }
-  
-      
+        public Color GetDataGridviewBackground()
+        {
+            return Theme == Themes.LIGHT ? DATAGRIDVIEW_BACKGROUND_LIGHT : DATAGRIDVIEW_BACKGROUND_DARK;
+        }
+
 
         //Other constants
         public int FORM_PADDING = 14;
@@ -321,7 +330,11 @@ namespace ModernGUI
 
             if (controlToUpdate is (ModernGUI.Controls.DataGridView))
             {
-               ((ModernGUI.Controls.DataGridView)controlToUpdate).BackColor = newBackColor;
+
+                SolidBrush brush = ((SolidBrush)GetFlatButtonPressedBackgroundBrush());
+
+                ((ModernGUI.Controls.DataGridView)controlToUpdate).BackColor = GetDataGridviewBackground();
+
             }
             #endregion
 
@@ -336,13 +349,6 @@ namespace ModernGUI
             if (controlToUpdate is Calendar)
             {
                 controlToUpdate.BackColor = Color.Black;
-            }
-            #endregion
-
-            #region List View
-            if (controlToUpdate is Controls.ListView)
-            {
-                controlToUpdate.BackColor = newBackColor;
             }
             #endregion
 
