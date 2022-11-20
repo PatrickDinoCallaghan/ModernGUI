@@ -113,5 +113,10 @@ namespace ModernGUITest
         {
             dataGridView1.ReadOnly = !dataGridView1.ReadOnly;
         }
+
+        private void MoveDGV_raisedButton_Click(object sender, EventArgs e)
+        {
+            dataGridView1.AllowUserToDragDrop = !dataGridView1.AllowUserToDragDrop;
+        }
     }
 }

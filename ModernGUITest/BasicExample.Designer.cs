@@ -75,10 +75,12 @@ namespace ModernGUITest
             this.RaisedButton2 = new ModernGUI.Controls.RaisedButton();
             this.ProgressBar1 = new ModernGUI.Controls.ProgressBar();
             this.DGV_tabPage = new System.Windows.Forms.TabPage();
+            this.MoveDGV_raisedButton = new ModernGUI.Controls.RaisedButton();
+            this.ReadonlyDGV_raisedButton = new ModernGUI.Controls.RaisedButton();
             this.dataGridView1 = new ModernGUI.Controls.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addRemoveColumn1 = new ModernGUI.Controls.AddRemoveColumn();
+            this.Column3 = new ModernGUI.Controls.Columns.AddRemoveColumn();
             this.Calendar_tabPage = new System.Windows.Forms.TabPage();
             this.monthView1 = new ModernGUI.Controls.MonthView();
             this.calendar1 = new ModernGUI.Controls.Calendar();
@@ -94,8 +96,6 @@ namespace ModernGUITest
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.item3ToolStripMenuItem = new ModernGUI.Controls.ToolStripMenuItem();
             this.FlatButton3 = new ModernGUI.Controls.FlatButton();
-            this.AddRemove = new ModernGUI.Controls.AddRemoveColumn();
-            this.raisedButton3 = new ModernGUI.Controls.RaisedButton();
             this.TabControl1.SuspendLayout();
             this.TextField_tabPage.SuspendLayout();
             this.SelectionBox_tabPage.SuspendLayout();
@@ -632,7 +632,8 @@ namespace ModernGUITest
             // 
             // DGV_tabPage
             // 
-            this.DGV_tabPage.Controls.Add(this.raisedButton3);
+            this.DGV_tabPage.Controls.Add(this.MoveDGV_raisedButton);
+            this.DGV_tabPage.Controls.Add(this.ReadonlyDGV_raisedButton);
             this.DGV_tabPage.Controls.Add(this.dataGridView1);
             this.DGV_tabPage.Location = new System.Drawing.Point(4, 24);
             this.DGV_tabPage.Name = "DGV_tabPage";
@@ -642,18 +643,52 @@ namespace ModernGUITest
             this.DGV_tabPage.Text = "DGV";
             this.DGV_tabPage.UseVisualStyleBackColor = true;
             // 
+            // MoveDGV_raisedButton
+            // 
+            this.MoveDGV_raisedButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.MoveDGV_raisedButton.AutoSize = true;
+            this.MoveDGV_raisedButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.MoveDGV_raisedButton.Depth = 0;
+            this.MoveDGV_raisedButton.Icon = null;
+            this.MoveDGV_raisedButton.Location = new System.Drawing.Point(585, 156);
+            this.MoveDGV_raisedButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.MoveDGV_raisedButton.MouseState = ModernGUI.MouseState.HOVER;
+            this.MoveDGV_raisedButton.Name = "MoveDGV_raisedButton";
+            this.MoveDGV_raisedButton.Primary = true;
+            this.MoveDGV_raisedButton.Size = new System.Drawing.Size(93, 36);
+            this.MoveDGV_raisedButton.TabIndex = 2;
+            this.MoveDGV_raisedButton.Text = "MOVEABLE";
+            this.MoveDGV_raisedButton.UseVisualStyleBackColor = true;
+            this.MoveDGV_raisedButton.Click += new System.EventHandler(this.MoveDGV_raisedButton_Click);
+            // 
+            // ReadonlyDGV_raisedButton
+            // 
+            this.ReadonlyDGV_raisedButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ReadonlyDGV_raisedButton.AutoSize = true;
+            this.ReadonlyDGV_raisedButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ReadonlyDGV_raisedButton.Depth = 0;
+            this.ReadonlyDGV_raisedButton.Icon = null;
+            this.ReadonlyDGV_raisedButton.Location = new System.Drawing.Point(585, 114);
+            this.ReadonlyDGV_raisedButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.ReadonlyDGV_raisedButton.MouseState = ModernGUI.MouseState.HOVER;
+            this.ReadonlyDGV_raisedButton.Name = "ReadonlyDGV_raisedButton";
+            this.ReadonlyDGV_raisedButton.Primary = true;
+            this.ReadonlyDGV_raisedButton.Size = new System.Drawing.Size(93, 36);
+            this.ReadonlyDGV_raisedButton.TabIndex = 1;
+            this.ReadonlyDGV_raisedButton.Text = "ReadOnly";
+            this.ReadonlyDGV_raisedButton.UseVisualStyleBackColor = true;
+            this.ReadonlyDGV_raisedButton.Click += new System.EventHandler(this.raisedButton3_Click);
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDragDrop = false;
             this.dataGridView1.AllowUserToResize = false;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dataGridView1.ColumnHeadersHeight = 50;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
-            this.addRemoveColumn1});
+            this.Column3});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -664,9 +699,8 @@ namespace ModernGUITest
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Depth = 0;
             this.dataGridView1.HeaderColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.dataGridView1.HeaderFont = new System.Drawing.Font("Open Sans Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dataGridView1.HeaderHeight = 50;
-            this.dataGridView1.Location = new System.Drawing.Point(41, 41);
+            this.dataGridView1.Location = new System.Drawing.Point(19, 15);
             this.dataGridView1.MouseState = ModernGUI.MouseState.HOVER;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
@@ -677,29 +711,29 @@ namespace ModernGUITest
             this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(508, 262);
+            this.dataGridView1.Size = new System.Drawing.Size(504, 262);
             this.dataGridView1.TabIndex = 0;
             // 
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.FillWeight = 115.4005F;
+            this.Column1.FillWeight = 134.7586F;
             this.Column1.HeaderText = "Column1";
             this.Column1.Name = "Column1";
             // 
             // Column2
             // 
             this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.FillWeight = 115.4005F;
+            this.Column2.FillWeight = 134.7586F;
             this.Column2.HeaderText = "Column2";
             this.Column2.Name = "Column2";
             // 
-            // addRemoveColumn1
+            // Column3
             // 
-            this.addRemoveColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.addRemoveColumn1.FillWeight = 51.97213F;
-            this.addRemoveColumn1.Name = "addRemoveColumn1";
-            this.addRemoveColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.FillWeight = 61.28384F;
+            this.Column3.Name = "Column3";
+            this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // Calendar_tabPage
             // 
@@ -886,31 +920,6 @@ namespace ModernGUITest
             this.FlatButton3.Text = "DISABLED";
             this.FlatButton3.UseVisualStyleBackColor = true;
             // 
-            // AddRemove
-            // 
-            this.AddRemove.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.AddRemove.FillWeight = 117.2269F;
-            this.AddRemove.Name = "AddRemove";
-            this.AddRemove.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // raisedButton3
-            // 
-            this.raisedButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.raisedButton3.AutoSize = true;
-            this.raisedButton3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.raisedButton3.Depth = 0;
-            this.raisedButton3.Icon = null;
-            this.raisedButton3.Location = new System.Drawing.Point(585, 114);
-            this.raisedButton3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.raisedButton3.MouseState = ModernGUI.MouseState.HOVER;
-            this.raisedButton3.Name = "raisedButton3";
-            this.raisedButton3.Primary = true;
-            this.raisedButton3.Size = new System.Drawing.Size(93, 36);
-            this.raisedButton3.TabIndex = 1;
-            this.raisedButton3.Text = "ReadOnly";
-            this.raisedButton3.UseVisualStyleBackColor = true;
-            this.raisedButton3.Click += new System.EventHandler(this.raisedButton3_Click);
-            // 
             // BasicExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -993,10 +1002,8 @@ namespace ModernGUITest
         private Calendar calendar1;
         private TabPage tabPage3;
         private MonthView monthView1;
-        private AddRemoveColumn AddRemove;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private AddRemoveColumn addRemoveColumn1;
+        private ModernGUI.Controls.Columns.AddRemoveColumn AddRemove;
+        private ModernGUI.Controls.Columns.AddRemoveColumn addRemoveColumn1;
         private ModernGUI.Controls.RadioButton RadioButton4;
         private ModernGUI.Controls.RadioButton RadioButton1;
         private ModernGUI.Controls.RadioButton RadioButton2;
@@ -1004,6 +1011,10 @@ namespace ModernGUITest
         private TabPage Graph_tabPage;
         private MultiSelectTreeview multiSelectTreeview1;
         private ModernGUI.Controls.Label label1;
-        private RaisedButton raisedButton3;
+        private RaisedButton ReadonlyDGV_raisedButton;
+        private RaisedButton MoveDGV_raisedButton;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private ModernGUI.Controls.Columns.AddRemoveColumn Column3;
     }
 }

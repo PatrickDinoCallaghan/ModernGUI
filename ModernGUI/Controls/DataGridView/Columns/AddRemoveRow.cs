@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Reflection;
 
-namespace ModernGUI.Controls
+namespace ModernGUI.Controls.Columns
 {
     #region Add remove Row 
 
@@ -13,8 +13,8 @@ namespace ModernGUI.Controls
         /// </summary>
         public AddRemoveColumn() : base(new AddRemove())
         {
-            ((AddRemove)base.SelectionControl).OnAddClicked += AddClicked;
-            ((AddRemove)base.SelectionControl).OnRemoveClicked += RemoveClicked;
+            ((AddRemove)SelectionControl).OnAddClicked += AddClicked;
+            ((AddRemove)SelectionControl).OnRemoveClicked += RemoveClicked;
         }
 
         private void AddClicked(int RowIndex)
@@ -31,7 +31,7 @@ namespace ModernGUI.Controls
                 DataGridView.Rows.Add();
             }
 
-            if (RowIndex > this.DataGridView.RowCount - 1)
+            if (RowIndex > DataGridView.RowCount - 1)
             {
                 SelectionControl.Visible = false;
             }
@@ -46,7 +46,7 @@ namespace ModernGUI.Controls
         public DataGridViewProgressColumn()
         {
             CellTemplate = new DataGridViewProgressCell();
-            this.DefaultCellStyle.NullValue = 0; //Untested., Delete on error
+            DefaultCellStyle.NullValue = 0; //Untested., Delete on error
         }
     }
 
@@ -66,7 +66,7 @@ namespace ModernGUI.Controls
         public new int Value { get { return _Value; } set { _Value = value; DataGridView.InvalidateCell(this); } }
         public DataGridViewProgressCell()
         {
-            this.ValueType = typeof(int);
+            ValueType = typeof(int);
         }
         // Method required to make the Progress Cell consistent with the default Image Cell. 
         // The default Image Cell assumes an Image as a value, although the value of the Progress Cell is an int.
@@ -81,7 +81,7 @@ namespace ModernGUI.Controls
 
 
 
-        protected override void Paint(System.Drawing.Graphics g, System.Drawing.Rectangle clipBounds, System.Drawing.Rectangle cellBounds, int rowIndex, DataGridViewElementStates cellState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)
+        protected override void Paint(Graphics g, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, DataGridViewElementStates cellState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)
         {
             try
             {
@@ -89,29 +89,29 @@ namespace ModernGUI.Controls
                 int progressVal = Convert.ToInt32(_Value);
 
 
-                float percentage = ((float)progressVal / 100.0f); // Need to convert to float before division; otherwise C0 returns int which is 0 for anything but 100%.
+                float percentage = progressVal / 100.0f; // Need to convert to float before division; otherwise C0 returns int which is 0 for anything but 100%.
                 Brush backColorBrush = new SolidBrush(cellStyle.BackColor);
                 Brush foreColorBrush = new SolidBrush(cellStyle.ForeColor);
                 // Draws the cell grid
                 base.Paint(g, clipBounds, cellBounds,
                  rowIndex, cellState, value, formattedValue, errorText,
-                 cellStyle, advancedBorderStyle, (paintParts & ~DataGridViewPaintParts.ContentForeground));
+                 cellStyle, advancedBorderStyle, paintParts & ~DataGridViewPaintParts.ContentForeground);
 
                 if (percentage > 0.0)
                 {
                     // Draw the progress bar and the text
-                    g.FillRectangle(new SolidBrush(Color.FromArgb(203, 235, 108)), cellBounds.X + 2, cellBounds.Y + 2, Convert.ToInt32((percentage * cellBounds.Width - 4)), cellBounds.Height - 4);
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(203, 235, 108)), cellBounds.X + 2, cellBounds.Y + 2, Convert.ToInt32(percentage * cellBounds.Width - 4), cellBounds.Height - 4);
                     //g.DrawString(progressVal.ToString() + "%", cellStyle.Font, foreColorBrush, cellBounds.X + (cellBounds.Width / 2) - 5, cellBounds.Y + 2);
 
-                    g.DrawString(progressVal.ToString() + "%", cellStyle.Font, foreColorBrush, cellBounds.X + (cellBounds.Width / 2) - 5, cellBounds.Y + (cellBounds.Height / 2) - cellStyle.Font.Height / 2);
+                    g.DrawString(progressVal.ToString() + "%", cellStyle.Font, foreColorBrush, cellBounds.X + cellBounds.Width / 2 - 5, cellBounds.Y + cellBounds.Height / 2 - cellStyle.Font.Height / 2);
                 }
                 else
                 {
                     // draw the text
-                    if (this.DataGridView.CurrentRow.Index == rowIndex)
-                        g.DrawString(progressVal.ToString() + "%", cellStyle.Font, new SolidBrush(cellStyle.SelectionForeColor), cellBounds.X + (cellBounds.Width / 2) - 5, cellBounds.Y + (cellBounds.Height / 2) - cellStyle.Font.Height / 2);
+                    if (DataGridView.CurrentRow.Index == rowIndex)
+                        g.DrawString(progressVal.ToString() + "%", cellStyle.Font, new SolidBrush(cellStyle.SelectionForeColor), cellBounds.X + cellBounds.Width / 2 - 5, cellBounds.Y + cellBounds.Height / 2 - cellStyle.Font.Height / 2);
                     else
-                        g.DrawString(progressVal.ToString() + "%", cellStyle.Font, foreColorBrush, cellBounds.X + (cellBounds.Width / 2) - 5, cellBounds.Y + (cellBounds.Height / 2) - cellStyle.Font.Height / 2);
+                        g.DrawString(progressVal.ToString() + "%", cellStyle.Font, foreColorBrush, cellBounds.X + cellBounds.Width / 2 - 5, cellBounds.Y + cellBounds.Height / 2 - cellStyle.Font.Height / 2);
                 }
 
             }
@@ -170,7 +170,7 @@ namespace ModernGUI.Controls
         public AlwaysVisibleHostedControlColumn(Control hostedControl)
         {
             SelectionControl = hostedControl;
-            this.Resizable = DataGridViewTriState.False;
+            Resizable = DataGridViewTriState.False;
 
             base.HeaderText = "";
         }
@@ -188,20 +188,20 @@ namespace ModernGUI.Controls
         private void SetListeners()
         {
             SelectionControl.LostFocus += SelectionControl_LostFocus;
-            this.DataGridView.CellMouseEnter += DataGridView_CellMouseEnter;
-            this.DataGridView.BackgroundColorChanged += DataGridView_BackgroundColorChanged;
-            this.DataGridView.RowHeightChanged += DataGridView_RowHeightChanged;
-            this.DataGridView.ColumnWidthChanged += DataGridView_ColumnWidthChanged;
-            this.DataGridView.Scroll += DataGridView_Scroll;
-            this.DataGridView.RowsAdded += DataGridView_ColumnEowNoChanged;
-            this.DataGridView.RowsRemoved += DataGridView_ColumnEowNoChanged;
-            this.DataGridView.ColumnAdded += DataGridView_ColumnEowNoChanged;
-            this.DataGridView.ColumnRemoved += DataGridView_ColumnEowNoChanged;
+            DataGridView.CellMouseEnter += DataGridView_CellMouseEnter;
+            DataGridView.BackgroundColorChanged += DataGridView_BackgroundColorChanged;
+            DataGridView.RowHeightChanged += DataGridView_RowHeightChanged;
+            DataGridView.ColumnWidthChanged += DataGridView_ColumnWidthChanged;
+            DataGridView.Scroll += DataGridView_Scroll;
+            DataGridView.RowsAdded += DataGridView_ColumnEowNoChanged;
+            DataGridView.RowsRemoved += DataGridView_ColumnEowNoChanged;
+            DataGridView.ColumnAdded += DataGridView_ColumnEowNoChanged;
+            DataGridView.ColumnRemoved += DataGridView_ColumnEowNoChanged;
         }
 
         private void DataGridView_ColumnEowNoChanged(object? sender, EventArgs e)
         {
-            System.Drawing.Point pt = DataGridView.PointToClient(Cursor.Position);
+            Point pt = DataGridView.PointToClient(Cursor.Position);
             DataGridView.HitTestInfo hittest = DataGridView.HitTest(pt.X, pt.Y);
 
             if (!(hittest.ColumnIndex == -1 || hittest.RowIndex == -1))
@@ -218,14 +218,14 @@ namespace ModernGUI.Controls
         {
             SetListeners();
 
-            this.DataGridView.Controls.Add(SelectionControl);
+            DataGridView.Controls.Add(SelectionControl);
 
             SelectionControl.Visible = false;
 
-            this.Width = SelectionControl.Width;
-            SelectionControl.BackColor = this.DataGridView.BackgroundColor;
+            Width = SelectionControl.Width;
+            SelectionControl.BackColor = DataGridView.BackgroundColor;
 
-            this.DataGridView.RowTemplate.Height = SelectionControl.Height + 1;
+            DataGridView.RowTemplate.Height = SelectionControl.Height + 1;
 
             foreach (DataGridViewRow row in DataGridView.Rows)
             {
@@ -234,7 +234,7 @@ namespace ModernGUI.Controls
 
             SetNullImage();
 
-            this.DataGridView.AllowUserToAddRows = false;
+            DataGridView.AllowUserToAddRows = false;
         }
         #endregion
 
@@ -252,7 +252,7 @@ namespace ModernGUI.Controls
 
         private void SetNullImage()
         {
-            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, this.DataGridView, new object[] { false }); // Need to turn off double buffering to set null val
+            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, DataGridView, new object[] { false }); // Need to turn off double buffering to set null val
 
             if (SelectionControlImage != null)
             {
@@ -264,11 +264,11 @@ namespace ModernGUI.Controls
 
             SelectionControl.DrawToBitmap(SelectionControlImage, new Rectangle(0, 0, SelectionControlImage.Width, SelectionControlImage.Height));
 
-            this.DefaultCellStyle.NullValue = SelectionControlImage;
+            DefaultCellStyle.NullValue = SelectionControlImage;
 
             SelectionControl.Visible = false;
 
-            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, this.DataGridView, new object[] { true });
+            typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, DataGridView, new object[] { true });
         }
 
         private void DataGridView_RowHeightChanged(object sender, DataGridViewRowEventArgs e)
@@ -284,10 +284,10 @@ namespace ModernGUI.Controls
 
         private void DataGridView_BackgroundColorChanged(object sender, EventArgs e)
         {
-            SelectionControl.BackColor = this.DataGridView.BackgroundColor;
+            SelectionControl.BackColor = DataGridView.BackgroundColor;
 
             SetNullImage();
-            
+
         }
 
         private void SelectionControl_LostFocus(object sender, EventArgs e)
@@ -297,23 +297,23 @@ namespace ModernGUI.Controls
 
         public void SetPosition(int ColumnIndex, int RowIndex)
         {
-            Rectangle celrec = this.DataGridView.GetCellDisplayRectangle(ColumnIndex, RowIndex, true);//.Rows[e.RowIndex].Cells[e.ColumnIndex].GetContentBounds();
+            Rectangle celrec = DataGridView.GetCellDisplayRectangle(ColumnIndex, RowIndex, true);//.Rows[e.RowIndex].Cells[e.ColumnIndex].GetContentBounds();
 
             int x_Offet = (celrec.Width - SelectionControl.Width) / 2;
             int y_Offet = (celrec.Height - SelectionControl.Height) / 2;
 
             SelectionControl.Location = new Point(celrec.X + x_Offet, celrec.Y + y_Offet);
             SelectionControl.Visible = true;
-            //  SelectionControl.RowIndex = RowIndex;
+            ((AddRemove)SelectionControl).RowIndex = RowIndex;
         }
 
         private void DataGridView_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == this.Index && e.RowIndex > -1)
+            if (e.ColumnIndex == Index && e.RowIndex > -1)
             {
-                Rectangle displayCellRect = this.DataGridView.GetCellDisplayRectangle(DataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].ColumnIndex, DataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].RowIndex, true);
+                Rectangle displayCellRect = DataGridView.GetCellDisplayRectangle(DataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].ColumnIndex, DataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].RowIndex, true);
 
-                if (displayCellRect.Height == this.DataGridView.Rows[DataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].RowIndex].Height)
+                if (displayCellRect.Height == DataGridView.Rows[DataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].RowIndex].Height)
                 {
                     SetPosition(e.ColumnIndex, e.RowIndex);
                 }

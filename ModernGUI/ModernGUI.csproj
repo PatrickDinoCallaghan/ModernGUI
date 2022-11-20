@@ -23,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controls\DataGridView\" />
     <Folder Include="Controls\ScalablePictureBox\" />
     <Folder Include="Controls\NumericUpDown\" />
     <Folder Include="Controls\TextBox\" />
@@ -39,9 +38,7 @@
     <Compile Update="Controls\Spinner.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Controls\StarRatingControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Update="Controls\StarRatingControl.cs" />
     <Compile Update="Controls\TimeControls\TimePicker.cs">
       <SubType>UserControl</SubType>
     </Compile>

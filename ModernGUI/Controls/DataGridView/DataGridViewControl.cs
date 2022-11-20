@@ -73,10 +73,10 @@ namespace ModernGUI.Controls
         [Browsable(true), DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public Color HeaderColor { get { return _HeaderColor; } set { _HeaderColor = value; this.Invalidate(); } }
 
-        [Browsable(true), DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Font HeaderFont { get { return _HeaderFont; } set { _HeaderFont = value; this.Invalidate(); } }
 
-        [Browsable(true), DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new Font Font { get { return _HeaderFont; } set { _HeaderFont = value; this.Invalidate(); } }
 
         [Browsable(true), DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
@@ -85,10 +85,10 @@ namespace ModernGUI.Controls
         [Browsable(true), DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public bool AllowUserToResize { get { return _AllowUserToResize; } set { _AllowUserToResize = value; this.Invalidate(); } }
 
-        [Browsable(true), DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new System.Windows.Forms.DataGridViewCellBorderStyle CellBorderStyle { get { return _CellBorderStyle; } set { base.CellBorderStyle = value; _CellBorderStyle = value; } }
 
-        [Browsable(true), DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new System.Windows.Forms.BorderStyle BorderStyle
         {
             get { return _BorderStyle; }
@@ -105,7 +105,6 @@ namespace ModernGUI.Controls
 
         #endregion
 
-
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new Color BackColor
         {
@@ -116,6 +115,7 @@ namespace ModernGUI.Controls
             set
             {
                 this.BackgroundColor = value;
+
                 Set_CellDefaultStyle(value, Shared.Drawing.ColorNegative(value));
             }
         }
@@ -128,7 +128,6 @@ namespace ModernGUI.Controls
       
             Set_CellDefaultStyle(Color.White, Shared.Drawing.ColorNegative(Color.White));
         }
-
 
         /// <summary>
         /// This sets a new default cell style for both readonly and editing modes
@@ -154,9 +153,9 @@ namespace ModernGUI.Controls
 
                 foreach (var item in this.Columns)
                 {
-                    if (item.GetType() == typeof(AddRemoveColumn))
+                    if (item.GetType() == typeof(ModernGUI.Controls.Columns.AddRemoveColumn))
                     {
-                        ((AddRemoveColumn)item).Visible = false;
+                        ((ModernGUI.Controls.Columns.AddRemoveColumn)item).Visible = false;
                     }
                 }
 
@@ -178,9 +177,9 @@ namespace ModernGUI.Controls
 
                 foreach (var item in this.Columns)
                 {
-                    if (item.GetType() == typeof(AddRemoveColumn))
+                    if (item.GetType() == typeof(ModernGUI.Controls.Columns.AddRemoveColumn))
                     {
-                        ((AddRemoveColumn)item).Visible = true;
+                        ((ModernGUI.Controls.Columns.AddRemoveColumn)item).Visible = true;
                     }
                 }
 
@@ -281,8 +280,8 @@ namespace ModernGUI.Controls
 
             }
 
-            _Font = SkinManager.openSans[11, OpenSans.Weight.Regular];
-            _HeaderFont = SkinManager.openSans[12, OpenSans.Weight.Regular];
+            _Font = SkinManager.openSans[10, OpenSans.Weight.Regular];
+            _HeaderFont = SkinManager.openSans[11, OpenSans.Weight.Regular];
             _HeaderColor = SkinManager.ColorScheme.PrimaryColor;
         }
         #endregion
@@ -351,7 +350,7 @@ namespace ModernGUI.Controls
 
                     Rectangle rectangle = new Rectangle(1 + CurrentPostion, 0, this.Columns[i].Width, _HeaderHeight);
 
-                    if (this.Columns[i].GetType() != typeof(AddRemoveColumn))
+                    if (this.Columns[i].GetType() != typeof(ModernGUI.Controls.Columns.AddRemoveColumn))
                     {
                         if (this.SortedColumn?.Index == i)
                         {
@@ -430,7 +429,7 @@ namespace ModernGUI.Controls
         {
             foreach (DataGridViewColumn column in this.Columns)
             {
-                if (column.GetType() == typeof(AddRemoveColumn))
+                if (column.GetType() == typeof(ModernGUI.Controls.Columns.AddRemoveColumn))
                 {
                     column.Width = 93;
                 }
