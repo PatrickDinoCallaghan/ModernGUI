@@ -121,8 +121,8 @@ namespace ModernGUI
         public readonly Brush ACTION_BAR_TEXT_SECONDARY_BRUSH = new SolidBrush(Color.FromArgb(153, 255, 255, 255));
 
         //DataGridview Background
-        public readonly Color DATAGRIDVIEW_BACKGROUND_LIGHT = Color.FromArgb(189,189,189);
-        public readonly Color DATAGRIDVIEW_BACKGROUND_DARK = Color.FromArgb(116, 116, 116);
+        public readonly Color DATAGRIDVIEW_BACKGROUND_LIGHT = Color.FromArgb(245, 245, 245);
+        public readonly Color DATAGRIDVIEW_BACKGROUND_DARK = Color.FromArgb(189, 189, 189);
 
 
 

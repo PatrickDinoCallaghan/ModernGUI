@@ -24,8 +24,8 @@ namespace ModernGUI.Controls
         public MouseState MouseState { get; set; }
 
         #region Feilds
-        private int _RowHeight = 40;
-        private int _HeaderHeight = 50;
+        private int _RowHeight = 30;
+        private int _HeaderHeight = 35;
         private bool _ReadOnly = false;
         private Color _HeaderColor = Color.FromArgb(109, 122, 224);
 

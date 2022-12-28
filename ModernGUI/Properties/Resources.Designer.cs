@@ -140,5 +140,49 @@ namespace ModernGUI.Properties
                 return ((byte[])(obj));
             }
         }
+        /// <summary>
+        ///   Looks up a localized resource of type Image.
+        /// </summary>
+        internal static Image ImgCollapse
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("ImgCollapse", resourceCulture);
+                return ((Image)(obj));
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized resource of type Image.
+        /// </summary>
+        internal static Image ImgExpand
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("ImgCollapse", resourceCulture);
+                return ((Image)(obj));
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized resource of type Image.
+        /// </summary>
+        internal static Image ImgMenuDropdown
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("ImgMenuDropdown", resourceCulture);
+                return ((Image)(obj));
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized resource of type Image.
+        /// </summary>
+        internal static Image ImgMenuHide
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("ImgMenuHide", resourceCulture);
+                return ((Image)(obj));
+            }
+        }
     }
 }

@@ -273,9 +273,9 @@ namespace ModernGUI.Controls.Columns
 
         private void DataGridView_RowHeightChanged(object sender, DataGridViewRowEventArgs e)
         {
-            if (e.Row.Height <= 40)
+            if (e.Row.Height <= 30)
             {
-                e.Row.Height = 40;
+                e.Row.Height = 30;
             }
 
             SelectionControl.Visible = false;

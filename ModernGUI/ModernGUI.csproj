@@ -10,6 +10,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controls\NumericUpDown\**" />
+    <Compile Remove="Controls\ScalablePictureBox\**" />
+    <Compile Remove="Controls\TextBox\**" />
+    <Compile Remove="Graphs\**" />
+    <EmbeddedResource Remove="Controls\NumericUpDown\**" />
+    <EmbeddedResource Remove="Controls\ScalablePictureBox\**" />
+    <EmbeddedResource Remove="Controls\TextBox\**" />
+    <EmbeddedResource Remove="Graphs\**" />
+    <None Remove="Controls\NumericUpDown\**" />
+    <None Remove="Controls\ScalablePictureBox\**" />
+    <None Remove="Controls\TextBox\**" />
+    <None Remove="Graphs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <COMReference Include="Microsoft.Office.Interop.Outlook">
       <WrapperTool>tlbimp</WrapperTool>
       <VersionMinor>6</VersionMinor>
@@ -23,10 +38,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controls\ScalablePictureBox\" />
-    <Folder Include="Controls\NumericUpDown\" />
-    <Folder Include="Controls\TextBox\" />
-    <Folder Include="Graphs\Gantt\" />
     <Folder Include="Resources\Cursors\" />
   </ItemGroup>
 

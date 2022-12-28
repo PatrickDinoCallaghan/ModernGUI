@@ -10,15 +10,13 @@ namespace ModernGUI.Controls
 {
     public class TabSelector : Control, IControl
     {
+        #region Public
         [Browsable(false)]
         public int Depth { get; set; }
         [Browsable(false)]
         public SkinManager SkinManager => SkinManager.Instance;
         [Browsable(false)]
         public MouseState MouseState { get; set; }
-
-        private TabControl _baseTabControl;
-
         public TabControl BaseTabControl
         {
             get { return _baseTabControl; }
@@ -44,16 +42,20 @@ namespace ModernGUI.Controls
                 {
                     Invalidate();
                 };
+
             }
         }
+        #endregion
 
+        #region Private
+        private TabControl _baseTabControl;
         private int _previousSelectedTabIndex;
         private Point _animationSource;
         private readonly AnimationManager _animationManager;
-
         private List<Rectangle> _tabRects;
         private const int TAB_HEADER_PADDING = 24;
         private const int TAB_INDICATOR_HEIGHT = 2;
+        #endregion
 
         public TabSelector()
         {
@@ -66,6 +68,58 @@ namespace ModernGUI.Controls
                 Increment = 0.04
             };
             _animationManager.OnAnimationProgress += sender => Invalidate();
+        }
+        private int CalculateTextAlpha(int tabIndex, double animationProgress)
+        {
+            int primaryA = SkinManager.ACTION_BAR_TEXT.A;
+            int secondaryA = SkinManager.ACTION_BAR_TEXT_SECONDARY.A;
+
+            if (tabIndex == _baseTabControl.SelectedIndex && !_animationManager.IsAnimating())
+            {
+                return primaryA;
+            }
+            if (tabIndex != _previousSelectedTabIndex && tabIndex != _baseTabControl.SelectedIndex)
+            {
+                return secondaryA;
+            }
+            if (tabIndex == _previousSelectedTabIndex)
+            {
+                return primaryA - (int)((primaryA - secondaryA) * animationProgress);
+            }
+            return secondaryA + (int)((primaryA - secondaryA) * animationProgress);
+        }
+        private void UpdateTabRects()
+        {
+            _tabRects = new List<Rectangle>();
+
+            //If there isn't a base tab control, the rects shouldn't be calculated
+            //If there aren't tab pages in the base tab control, the list should just be empty which has been set already; exit the void
+            if (_baseTabControl == null || _baseTabControl.TabCount == 0) return;
+
+            int SumTabRectWidth = 0;
+            //Calculate the bounds of each tab header specified in the base tab control
+
+            using (var b = new Bitmap(1, 1))
+            {
+                using (var g = Graphics.FromImage(b))
+                {
+                    _tabRects.Add(new Rectangle(SkinManager.FORM_PADDING, 0, TAB_HEADER_PADDING * 2 + (int)g.MeasureString(_baseTabControl.TabPages[0].Text, SkinManager.openSans[10, OpenSans.Weight.Medium]).Width, Height));
+                    SumTabRectWidth = SumTabRectWidth + SkinManager.FORM_PADDING + TAB_HEADER_PADDING * 2 + (int)g.MeasureString(_baseTabControl.TabPages[0].Text, SkinManager.openSans[10, OpenSans.Weight.Medium]).Width;
+                    for (int i = 1; i < _baseTabControl.TabPages.Count; i++)
+                    {
+                        _tabRects.Add(new Rectangle(_tabRects[i - 1].Right, 0, TAB_HEADER_PADDING * 2 + (int)g.MeasureString(_baseTabControl.TabPages[i].Text, SkinManager.openSans[10, OpenSans.Weight.Medium]).Width, Height));
+
+                        SumTabRectWidth = SumTabRectWidth + TAB_HEADER_PADDING * 2 + (int)g.MeasureString(_baseTabControl.TabPages[i].Text, SkinManager.openSans[10, OpenSans.Weight.Medium]).Width;
+                        //SumTabRectWidth = SumTabRectWidth + _tabRects[i - 1].Right;
+                    }
+
+                }
+            }
+
+            _baseTabControl.SizeMode = TabSizeMode.Fixed;
+            _baseTabControl.ItemSize = new Size(SumTabRectWidth / _baseTabControl.TabPages.Count, 20);
+
+
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -100,7 +154,7 @@ namespace ModernGUI.Controls
                 var currentTabIndex = _baseTabControl.TabPages.IndexOf(tabPage);
                 Brush textBrush = new SolidBrush(Color.FromArgb(CalculateTextAlpha(currentTabIndex, animationProgress), SkinManager.ColorScheme.TextColor));
 
-                g.DrawString(tabPage.Text.ToUpper(),  SkinManager.openSans[10, OpenSans.Weight.Medium], textBrush, _tabRects[currentTabIndex], new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center });
+                g.DrawString(tabPage.Text.ToUpper(), SkinManager.openSans[10, OpenSans.Weight.Medium], textBrush, _tabRects[currentTabIndex], new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center });
                 textBrush.Dispose();
             }
 
@@ -115,27 +169,6 @@ namespace ModernGUI.Controls
 
             g.FillRectangle(SkinManager.ColorScheme.AccentBrush, x, y, width, TAB_INDICATOR_HEIGHT);
         }
-
-        private int CalculateTextAlpha(int tabIndex, double animationProgress)
-        {
-            int primaryA = SkinManager.ACTION_BAR_TEXT.A;
-            int secondaryA = SkinManager.ACTION_BAR_TEXT_SECONDARY.A;
-
-            if (tabIndex == _baseTabControl.SelectedIndex && !_animationManager.IsAnimating())
-            {
-                return primaryA;
-            }
-            if (tabIndex != _previousSelectedTabIndex && tabIndex != _baseTabControl.SelectedIndex)
-            {
-                return secondaryA;
-            }
-            if (tabIndex == _previousSelectedTabIndex)
-            {
-                return primaryA - (int)((primaryA - secondaryA) * animationProgress);
-            }
-            return secondaryA + (int)((primaryA - secondaryA) * animationProgress);
-        }
-
         protected override void OnMouseUp(MouseEventArgs e)
         {
             base.OnMouseUp(e);
@@ -152,26 +185,5 @@ namespace ModernGUI.Controls
             _animationSource = e.Location;
         }
 
-        private void UpdateTabRects()
-        {
-            _tabRects = new List<Rectangle>();
-
-            //If there isn't a base tab control, the rects shouldn't be calculated
-            //If there aren't tab pages in the base tab control, the list should just be empty which has been set already; exit the void
-            if (_baseTabControl == null || _baseTabControl.TabCount == 0) return;
-
-            //Calculate the bounds of each tab header specified in the base tab control
-            using (var b = new Bitmap(1, 1))
-            {
-                using (var g = Graphics.FromImage(b))
-                {
-                    _tabRects.Add(new Rectangle(SkinManager.FORM_PADDING, 0, TAB_HEADER_PADDING * 2 + (int)g.MeasureString(_baseTabControl.TabPages[0].Text, SkinManager.openSans[10, OpenSans.Weight.Medium]).Width, Height));
-                    for (int i = 1; i < _baseTabControl.TabPages.Count; i++)
-                    {
-                        _tabRects.Add(new Rectangle(_tabRects[i - 1].Right, 0, TAB_HEADER_PADDING * 2 + (int)g.MeasureString(_baseTabControl.TabPages[i].Text, SkinManager.openSans[10, OpenSans.Weight.Medium]).Width, Height));
-                    }
-                }
-            }
-        }
     }
 }
