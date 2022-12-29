@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.ComponentModel;
 
 namespace ModernGUI.Controls
 {
@@ -25,13 +17,13 @@ namespace ModernGUI.Controls
 
         [Browsable(true)]
         public event OnButtonClick ButtonClick;
-        public delegate void OnButtonClick (object sender, ButtonClicked e);
-        
+        public delegate void OnButtonClick(object sender, ButtonClicked e);
+
         #region Design Code
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
-            this.Size =   new Size(16, this.Height);
+            this.Size = new Size(16, this.Height);
         }
         Control Updown()
         {
@@ -58,7 +50,7 @@ namespace ModernGUI.Controls
         private void Item_LocationChanged(object? sender, EventArgs e)
         {
             this.UpDownbase.Location = new Point(0, 0);
-           // this.Size = new Size(16, UpDownbase.Size.Height);
+            // this.Size = new Size(16, UpDownbase.Size.Height);
             UpDownbase.Dock = DockStyle.Fill;
         }
 
@@ -101,7 +93,7 @@ namespace ModernGUI.Controls
             // Up Down Base
             //
             this.UpDownbase = this.Updown();
-            this.UpDownbase.Location = new Point(0,0);
+            this.UpDownbase.Location = new Point(0, 0);
             this.Controls.Add(UpDownbase);
 
             this.ResumeLayout(false);
@@ -113,7 +105,7 @@ namespace ModernGUI.Controls
 
         private void Item_MouseDown(object? sender, MouseEventArgs e)
         {
-    
+
             if (e.Y < ((Control)sender).Height / 2)
             {
                 ButtonClick?.Invoke(this, ButtonClicked.Up);

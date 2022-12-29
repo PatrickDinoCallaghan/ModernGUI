@@ -596,12 +596,12 @@ namespace ModernGUI.Controls
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new Color BackColor
         {
-            get 
+            get
             {
                 return _renderer.Calendar.BackColor;
             }
             set
-            { 
+            {
                 _renderer.Calendar.BackColor = value;
                 this.Invalidate();
             }

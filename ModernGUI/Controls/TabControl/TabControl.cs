@@ -1,6 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using System.Windows.Forms;
+﻿using System.ComponentModel;
 
 namespace ModernGUI.Controls
 {
@@ -9,7 +7,7 @@ namespace ModernGUI.Controls
         [Browsable(false)]
         public int Depth { get; set; }
         [Browsable(false)]
-        public  SkinManager SkinManager =>  SkinManager.Instance;
+        public SkinManager SkinManager => SkinManager.Instance;
         [Browsable(false)]
         public MouseState MouseState { get; set; }
 

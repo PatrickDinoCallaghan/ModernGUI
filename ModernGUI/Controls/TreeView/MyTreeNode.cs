@@ -1,9 +1,7 @@
-﻿using System.Windows.Forms;
-
-namespace ModernGUI.Controls
+﻿namespace ModernGUI.Controls
 {
-  public class MyTreeNode : TreeNode
-  {
-    public int ID;
-  }
+    public class MyTreeNode : TreeNode
+    {
+        public int ID;
+    }
 }

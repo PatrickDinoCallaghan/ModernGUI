@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Windows.Media;
+﻿using System.Collections.ObjectModel;
 
 namespace RTFEditor
 {
@@ -8,7 +6,7 @@ namespace RTFEditor
     /// Generates a string list of the desired font sizes
     /// </summary>
     class FontHeight : ObservableCollection<string>
-    { 
+    {
         public FontHeight()
         {
             this.Add("8");
@@ -18,7 +16,7 @@ namespace RTFEditor
             this.Add("12");
             this.Add("14");
             this.Add("16");
-            this.Add("18");   
+            this.Add("18");
             this.Add("20");
             this.Add("22");
             this.Add("24");
@@ -27,6 +25,6 @@ namespace RTFEditor
             this.Add("36");
             this.Add("48");
             this.Add("72");
-        }        
+        }
     }
 }

@@ -1,22 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using ColorPicker;
+using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.IO;
-using ColorPicker;
-using System.Runtime.InteropServices;
-using System.Runtime.CompilerServices;
-using static System.Net.Mime.MediaTypeNames;
-using System.Reflection.Metadata;
 using System.Windows.Threading;
 
 namespace RTFEditor
@@ -24,7 +13,7 @@ namespace RTFEditor
     /// <summary>
     /// Interaction logic for "RTFBox.xaml"
     /// </summary>
-    public partial class RTFBox 
+    public partial class RTFBox
     {
         /// <summary>
         /// Constructor
@@ -32,7 +21,7 @@ namespace RTFEditor
         public RTFBox()
         {
             SetRenderFinishedEvent();
-            this.InitializeComponent();            
+            this.InitializeComponent();
         }
 
         #region Rendering Finished Event
@@ -58,7 +47,7 @@ namespace RTFEditor
         private bool dataChanged = false;
 
         // Content of the RTFBox in txt format
-        private string privateText = null; 
+        private string privateText = null;
         public string text
         {
             get
@@ -92,38 +81,38 @@ namespace RTFEditor
         public bool ShowFontToolBar
         {
             get { return ToolBarBelow.IsVisible; }
-            set 
+            set
             {
-                if (value == true) 
+                if (value == true)
                 {
                     ToolBarBelow.Visibility = Visibility.Visible;
                 }
-                else 
+                else
                 {
-                    ToolBarBelow.Visibility = Visibility.Collapsed; 
+                    ToolBarBelow.Visibility = Visibility.Collapsed;
                 }
-                 
-            
+
+
             }
         }
 
 
-        private int _CursorLineNo = 1; 
+        private int _CursorLineNo = 1;
         public int CursorLineNo
         {
             get { return _CursorLineNo; }
-            set 
-            { 
+            set
+            {
                 _CursorLineNo = value;
             }
         }
 
-        private int _CursorColumnNo = 1; 
+        private int _CursorColumnNo = 1;
         public int CursorColumnNo
         {
             get { return _CursorColumnNo; }
-            set 
-            { 
+            set
+            {
                 _CursorColumnNo = value;
             }
         }
@@ -145,7 +134,7 @@ namespace RTFEditor
 
             // Specify current row and column positions
             CursorLineNo = LineNumber();
-            CursorColumnNo = ColumnNumber();           
+            CursorColumnNo = ColumnNumber();
 
             RichTextControl.Focus();
 
@@ -161,11 +150,11 @@ namespace RTFEditor
         // ToolStripButton Print was pressed
         //
         private void ToolStripButtonPrint_Click(object sender, System.Windows.RoutedEventArgs e)
-		{
+        {
             // Configure printer dialog box
             PrintDialog dlg = new PrintDialog();
             dlg.PageRangeSelection = PageRangeSelection.AllPages;
-            dlg.UserPageRangeEnabled = true;            
+            dlg.UserPageRangeEnabled = true;
 
             // Show and process save file dialog box results
             if (dlg.ShowDialog() == true)
@@ -174,7 +163,7 @@ namespace RTFEditor
                 // dlg.PrintVisual(RichTextControl as Visual, "printing as visual");
                 dlg.PrintDocument((((IDocumentPaginatorSource)RichTextControl.Document).DocumentPaginator), "printing as paginator");
             }
-		}
+        }
 
         //
         // ToolStripButton Strikeout was pressed
@@ -209,7 +198,7 @@ namespace RTFEditor
             {
                 TextRange range = new TextRange(RichTextControl.Selection.Start, RichTextControl.Selection.End);
 
-                range.ApplyPropertyValue(FlowDocument.ForegroundProperty, new SolidColorBrush(colorDialog.SelectedColor));                
+                range.ApplyPropertyValue(FlowDocument.ForegroundProperty, new SolidColorBrush(colorDialog.SelectedColor));
             }
         }
 
@@ -251,11 +240,11 @@ namespace RTFEditor
         // In order to implement Superscript for all other fonts, the Baseline property can be changed instead)
         //
         private void ToolStripButtonSuperscript_Click(object sender, RoutedEventArgs e)
-        { 
-	        var currentAlignment = RichTextControl.Selection.GetPropertyValue(Inline.BaselineAlignmentProperty);
-    	 
-	        BaselineAlignment newAlignment = ((BaselineAlignment)currentAlignment == BaselineAlignment.Superscript) ? BaselineAlignment.Baseline : BaselineAlignment.Superscript;
-	        RichTextControl.Selection.ApplyPropertyValue(Inline.BaselineAlignmentProperty, newAlignment);
+        {
+            var currentAlignment = RichTextControl.Selection.GetPropertyValue(Inline.BaselineAlignmentProperty);
+
+            BaselineAlignment newAlignment = ((BaselineAlignment)currentAlignment == BaselineAlignment.Superscript) ? BaselineAlignment.Baseline : BaselineAlignment.Superscript;
+            RichTextControl.Selection.ApplyPropertyValue(Inline.BaselineAlignmentProperty, newAlignment);
         }
 
         //
@@ -266,7 +255,7 @@ namespace RTFEditor
             string fontHeight = (string)Fontheight.SelectedItem;
 
             if (fontHeight != null)
-            {                
+            {
                 RichTextControl.Selection.ApplyPropertyValue(System.Windows.Controls.RichTextBox.FontSizeProperty, fontHeight);
                 RichTextControl.Focus();
             }
@@ -276,11 +265,11 @@ namespace RTFEditor
         // other font selected by user
         //
         private void Fonttype_DropDownClosed(object sender, EventArgs e)
-        {            
+        {
             string fontName = (string)Fonttype.SelectedItem;
 
             if (fontName != null)
-            {                
+            {
                 RichTextControl.Selection.ApplyPropertyValue(System.Windows.Controls.RichTextBox.FontFamilyProperty, fontName);
                 RichTextControl.Focus();
             }
@@ -335,8 +324,8 @@ namespace RTFEditor
         {
             // get selected text
             TextRange selectionRange = new TextRange(RichTextControl.Selection.Start, RichTextControl.Selection.End);
-            
-            
+
+
             if (selectionRange.GetPropertyValue(FontWeightProperty).ToString() == "Bold")
             {
                 ToolStripButtonBold.IsChecked = true;
@@ -371,7 +360,7 @@ namespace RTFEditor
             else
             {
                 ToolStripButtonStrikeout.IsChecked = false;
-            } 
+            }
 
             if (selectionRange.GetPropertyValue(FlowDocument.TextAlignmentProperty).ToString() == "Left")
             {
@@ -387,10 +376,10 @@ namespace RTFEditor
             {
                 ToolStripButtonAlignRight.IsChecked = true;
             }
-            
+
             // Superscript Buttons
             try
-            {                
+            {
                 switch ((BaselineAlignment)selectionRange.GetPropertyValue(Inline.BaselineAlignmentProperty))
                 {
                     case BaselineAlignment.Subscript:
@@ -409,11 +398,11 @@ namespace RTFEditor
                         break;
                 }
             }
-            catch (Exception) 
+            catch (Exception)
             {
                 ToolStripButtonSubscript.IsChecked = false;
                 ToolStripButtonSuperscript.IsChecked = false;
-            }                    
+            }
 
             // Get selected font and height and update selection in ComboBoxes
             Fonttype.SelectedValue = selectionRange.GetPropertyValue(FlowDocument.FontFamilyProperty).ToString();
@@ -423,7 +412,7 @@ namespace RTFEditor
             CursorLineNo = LineNumber();
 
             // Output of the column number
-            CursorColumnNo = ColumnNumber(); 
+            CursorColumnNo = ColumnNumber();
         }
 
         //
@@ -546,9 +535,9 @@ namespace RTFEditor
         // Delete all data
         //
         public void Clear()
-        {            
-            dataChanged = false;            
-            RichTextControl.Document.Blocks.Clear();            
+        {
+            dataChanged = false;
+            RichTextControl.Document.Blocks.Clear();
         }
 
         //
@@ -604,7 +593,7 @@ namespace RTFEditor
             }
             catch (Exception)
             {
-                throw;                
+                throw;
             }
         }
 

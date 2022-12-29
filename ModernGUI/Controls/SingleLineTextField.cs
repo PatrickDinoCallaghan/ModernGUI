@@ -1,9 +1,6 @@
-﻿using System;
+﻿using ModernGUI.Animations;
 using System.ComponentModel;
-using System.Drawing;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using ModernGUI.Animations;
 
 namespace ModernGUI.Controls
 {
@@ -164,7 +161,7 @@ namespace ModernGUI.Controls
         {
             add
             {
-             //  _baseTextBox.ContextMenuChanged += value;
+                //  _baseTextBox.ContextMenuChanged += value;
             }
             remove
             {
@@ -1147,7 +1144,7 @@ namespace ModernGUI.Controls
             }
         }
 
-        private class TextBoxContextMenuStrip :  ContextMenuStrip
+        private class TextBoxContextMenuStrip : ContextMenuStrip
         {
             public readonly ToolStripItem Undo = new ModernGUI.Controls.ToolStripMenuItem { Text = "Undo" };
             public readonly ToolStripItem Seperator1 = new ToolStripSeparator();

@@ -1,10 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using ModernGUI.Animations;
 using System.ComponentModel;
-using System.ComponentModel.Design.Serialization;
-using System.Drawing;
 using System.Drawing.Text;
-using System.Windows.Forms;
-using ModernGUI.Animations;
 
 namespace ModernGUI.Controls
 {

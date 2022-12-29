@@ -1,9 +1,7 @@
-﻿using System.ComponentModel;
-using System.Drawing;
+﻿using ModernGUI.Animations;
+using System.ComponentModel;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
-using System.Windows.Forms;
-using ModernGUI.Animations;
 
 namespace ModernGUI.Controls
 {
@@ -95,7 +93,7 @@ namespace ModernGUI.Controls
     {
         //Properties for managing the design properties
         public int Depth { get; set; }
-        public SkinManager SkinManager =>  SkinManager.Instance;
+        public SkinManager SkinManager => SkinManager.Instance;
         public MouseState MouseState { get; set; }
 
 

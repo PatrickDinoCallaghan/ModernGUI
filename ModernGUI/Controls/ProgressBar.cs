@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System.Windows.Forms;
 
 namespace ModernGUI.Controls
 {
@@ -33,7 +32,7 @@ namespace ModernGUI.Controls
         /// The skin manager.
         /// </value>
         [Browsable(false)]
-        public  SkinManager SkinManager =>  SkinManager.Instance;
+        public SkinManager SkinManager => SkinManager.Instance;
 
         /// <summary>
         /// Gets or sets the state of the mouse.

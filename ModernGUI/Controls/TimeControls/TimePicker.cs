@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using ModernGUI.Animations;
 using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using ModernGUI.Animations;
-using System.Runtime.InteropServices;
 
 namespace ModernGUI.Controls.TimeControls
 {
@@ -25,7 +17,7 @@ namespace ModernGUI.Controls.TimeControls
 
         private readonly AnimationManager _animationManager;
 
-        [Browsable(true)] 
+        [Browsable(true)]
         public event EventHandler OnValueChanged;
 
         public int Hours
@@ -123,7 +115,7 @@ namespace ModernGUI.Controls.TimeControls
             }
             set
             {
-                if (value >= new TimeSpan(0,0,0))
+                if (value >= new TimeSpan(0, 0, 0))
                 {
                     Hours = value.Hours;
                     Minutes = value.Minutes;
@@ -134,7 +126,7 @@ namespace ModernGUI.Controls.TimeControls
                 {
                     Negative = !Negative;
 
-                    TimeSpan timeSpan =  Shared.Maths.mod(value);
+                    TimeSpan timeSpan = Shared.Maths.mod(value);
                     Hours = timeSpan.Hours;
                     Minutes = timeSpan.Minutes;
                     Seconds = timeSpan.Seconds;
@@ -209,7 +201,7 @@ namespace ModernGUI.Controls.TimeControls
         private void FormatText()
         {
             string[] Parts = _baseTextBox.Text.Trim().Split(":".ToCharArray());
-            
+
             int Hours = 0;
             if (!int.TryParse(Parts[0], out Hours))
             {
@@ -231,7 +223,7 @@ namespace ModernGUI.Controls.TimeControls
             }
 
             string[] SecondParts = Parts[2].Split(".".ToCharArray());
-            
+
             int Seconds = 0;
             if (!int.TryParse(SecondParts[0], out Seconds))
             {
@@ -252,7 +244,7 @@ namespace ModernGUI.Controls.TimeControls
                 Milliseconds = 0;
             }
 
-            SetText(Hours.ToString("D2"),Minutes.ToString("D2"), Seconds.ToString("D2"), Milliseconds.ToString("D3"));
+            SetText(Hours.ToString("D2"), Minutes.ToString("D2"), Seconds.ToString("D2"), Milliseconds.ToString("D3"));
             if (OnValueChanged != null)
             {
                 OnValueChanged.Invoke(null, new EventArgs());
@@ -552,7 +544,7 @@ namespace ModernGUI.Controls.TimeControls
             var g = pevent.Graphics;
             g.Clear(Parent.BackColor);
 
-            var lineY = this.Height -3;
+            var lineY = this.Height - 3;
 
             if (Negative)
             {

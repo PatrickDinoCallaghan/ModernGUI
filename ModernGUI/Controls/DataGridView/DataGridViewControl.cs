@@ -1,11 +1,6 @@
-﻿using ModernGUI;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Drawing;
+﻿using System.ComponentModel;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Xml;
 
 namespace ModernGUI.Controls
 {
@@ -122,7 +117,7 @@ namespace ModernGUI.Controls
                 }
                 _ListBoxStyle = value;
 
-                this.Invalidate(); 
+                this.Invalidate();
             }
         }
 
@@ -131,9 +126,9 @@ namespace ModernGUI.Controls
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new Color BackColor
         {
-            get 
-            { 
-                return this.BackgroundColor; 
+            get
+            {
+                return this.BackgroundColor;
             }
             set
             {
@@ -148,7 +143,7 @@ namespace ModernGUI.Controls
             base.BackgroundColor = Color.White;
 
             InitializeComponent();
-      
+
             Set_CellDefaultStyle(Color.White, Shared.Drawing.ColorNegative(Color.White));
         }
 
@@ -165,7 +160,7 @@ namespace ModernGUI.Controls
                 dataGridViewcellStlye_ReadOnly.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
                 dataGridViewcellStlye_ReadOnly.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
                 dataGridViewcellStlye_ReadOnly.BackColor = BackGroundColor;
-              
+
                 dataGridViewcellStlye_ReadOnly.Font = _Font;
                 dataGridViewcellStlye_ReadOnly.ForeColor = CellFontColor;
                 dataGridViewcellStlye_ReadOnly.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -190,7 +185,7 @@ namespace ModernGUI.Controls
                 dataGridViewcellStlye.SelectionBackColor = SystemColors.Highlight;
                 dataGridViewcellStlye.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
                 dataGridViewcellStlye.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-                dataGridViewcellStlye.BackColor = BackGroundColor ;
+                dataGridViewcellStlye.BackColor = BackGroundColor;
                 dataGridViewcellStlye.Font = _Font;
                 dataGridViewcellStlye.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
                 dataGridViewcellStlye.ForeColor = CellFontColor;
@@ -272,7 +267,7 @@ namespace ModernGUI.Controls
 
             typeof(DataGridView).InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, this, new object[] { true });
 
-             this.Rows.Clear();
+            this.Rows.Clear();
 
             DataGridViewCellStyle dataGridViewCellStyleCells = new DataGridViewCellStyle();
 
@@ -290,8 +285,8 @@ namespace ModernGUI.Controls
         bool OnBackgroundColorChanged_FirstRun = false;
         private void SetColorSchemeAndFont(Color BackGroundColor)
         {
-         
-            if (this.BackgroundColor == BackgroundColor && OnBackgroundColorChanged_FirstRun == false )
+
+            if (this.BackgroundColor == BackgroundColor && OnBackgroundColorChanged_FirstRun == false)
             {
                 this.OnBackgroundColorChanged(new EventArgs());
                 OnBackgroundColorChanged_FirstRun = true;
@@ -370,7 +365,7 @@ namespace ModernGUI.Controls
                         e.Graphics.FillRectangle(gradient, Entiretop);
                     }
                 }
-      
+
                 int CurrentPostion = 0;
 
                 for (int i = 0; i < this.Columns.Count; i++)
@@ -398,7 +393,7 @@ namespace ModernGUI.Controls
 
                         if (_ListBoxStyle == true)
                         {
-                            TextRenderer.DrawText(e.Graphics, this.Columns[i].HeaderText, _HeaderFont, rectangle, Color.FromArgb(146,146,146), TextFormatFlags.NoPrefix | TextFormatFlags.VerticalCenter);
+                            TextRenderer.DrawText(e.Graphics, this.Columns[i].HeaderText, _HeaderFont, rectangle, Color.FromArgb(146, 146, 146), TextFormatFlags.NoPrefix | TextFormatFlags.VerticalCenter);
                         }
                         else
                         {

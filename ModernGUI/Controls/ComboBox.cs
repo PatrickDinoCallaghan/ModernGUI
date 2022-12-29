@@ -1,13 +1,7 @@
-﻿using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.Linq;
-using System.Data;
-using System.Windows.Forms;
-using Microsoft.Office.Interop.Outlook;
+﻿using Microsoft.Office.Interop.Outlook;
 using ModernGUI.Animations;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Menu;
+using System.ComponentModel;
+using System.Data;
 using System.Runtime.InteropServices;
 
 namespace ModernGUI.Controls
@@ -386,7 +380,7 @@ namespace ModernGUI.Controls
                 foreach (string s in itemsList)
                 {
                     int newWidth = TextRenderer.MeasureText(s, SkinManager.openSans[11, OpenSans.Weight.Regular]).Width + vertScrollBarWidth + padding;
-                    
+
                     if (w < newWidth) w = newWidth;
                 }
             }

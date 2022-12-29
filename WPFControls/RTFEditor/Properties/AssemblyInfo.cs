@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using System.Resources;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows;
 
@@ -30,7 +29,7 @@ using System.Windows;
 
 [assembly: NeutralResourcesLanguage("en-UK", UltimateResourceFallbackLocation.MainAssembly)]
 
-[assembly:ThemeInfo(
+[assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //Location of topic-specific resource dictionaries
                                      //(used when a resource cannot be found on the page,
                                      // or cannot be found in the application resource directory)

@@ -1,7 +1,4 @@
-﻿using Microsoft.Office.Interop.Outlook;
-using System.Drawing;
-
-namespace ModernGUI
+﻿namespace ModernGUI
 {
     public enum ColorSchemes
     {

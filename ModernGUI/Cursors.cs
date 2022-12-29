@@ -1,16 +1,5 @@
 ﻿using ModernGUI.Properties;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Text;
-using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
-using static ModernGUI.OpenSans;
 
 namespace ModernGUI
 {
@@ -31,7 +20,7 @@ namespace ModernGUI
             Tracker,
             ZoomIn32,
             ZoomOut32
-        } 
+        }
 
         /// <summary>
         /// Load colored cursor handle from a file
@@ -72,7 +61,7 @@ namespace ModernGUI
         private Cursor CreateCursorFromFile(byte[] resourceFileByteArray)
         {
             // read cursor resource binary data
-            Stream inputStream =  new MemoryStream(resourceFileByteArray); 
+            Stream inputStream = new MemoryStream(resourceFileByteArray);
             byte[] buffer = new byte[inputStream.Length];
             inputStream.Read(buffer, 0, buffer.Length);
             inputStream.Close();
@@ -104,7 +93,7 @@ namespace ModernGUI
 
         public Cursor this[Name name]
         {
-            get 
+            get
             {
                 if ((_LoadedCursors.ContainsKey(name)))
                 {
@@ -117,7 +106,7 @@ namespace ModernGUI
                         _LoadedCursors.Add(name, CreateCursorFromFile(Resources.Hand));
                         return _LoadedCursors[name];
                     case Name.Tracker:
-                        _LoadedCursors.Add(name,CreateCursorFromFile(Resources.Tracker));
+                        _LoadedCursors.Add(name, CreateCursorFromFile(Resources.Tracker));
                         return _LoadedCursors[name];
                     case Name.ZoomIn32:
                         _LoadedCursors.Add(name, CreateCursorFromFile(Resources.ZoomIn32));

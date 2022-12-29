@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ModernGUI.Animations
+﻿namespace ModernGUI.Animations
 {
     enum AnimationType
     {

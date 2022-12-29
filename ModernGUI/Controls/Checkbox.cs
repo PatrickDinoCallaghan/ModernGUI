@@ -1,10 +1,7 @@
-﻿using System;
+﻿using ModernGUI.Animations;
 using System.ComponentModel;
-using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
-using System.Windows.Forms;
-using ModernGUI.Animations;
 
 namespace ModernGUI.Controls
 {

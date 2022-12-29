@@ -1,15 +1,8 @@
 ﻿using ModernGUI.Animations;
 using ModernGUI.Properties;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
 using System.Windows.Forms.Layout;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Menu;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace ModernGUI.Controls
 {
@@ -121,7 +114,7 @@ namespace ModernGUI.Controls
         }
         public int ItemRightImageMargin
         {
-            get 
+            get
             {
                 return this._itemRightIMGMargin;
             }
@@ -133,8 +126,8 @@ namespace ModernGUI.Controls
         }
         public Padding ItemPadding
         {
-            get 
-            { 
+            get
+            {
                 return this._itemPading;
             }
             set
@@ -145,9 +138,9 @@ namespace ModernGUI.Controls
         }
         public bool IsExpandedable
         {
-            get 
+            get
             {
-                return this._isExpandedable; 
+                return this._isExpandedable;
             }
             set
             {
@@ -238,10 +231,10 @@ namespace ModernGUI.Controls
             int num = 0;
 
             foreach (ButtonItem buttonItem in this != null ? this.Items : (ButtonItem[])null)
-            { 
+            {
                 num++;
                 DrawMainCategory(buttonItem, ref num);
-               
+
             }
         }
 
@@ -303,7 +296,7 @@ namespace ModernGUI.Controls
 
             button.BringToFront();
 
-             button.Click += (s, e) => Button_Click(s, e, btnItem, button);
+            button.Click += (s, e) => Button_Click(s, e, btnItem, button);
 
             List<CButton> cbuttonList = new List<CButton>();
 
@@ -330,7 +323,7 @@ namespace ModernGUI.Controls
                 button.MouseLeave += (EventHandler)((s, e) => pic.BackColor = button.BackColor);
                 button.Click += (EventHandler)((s, e) => pic.Image = pic.Image == pic1 ? pic2 : pic1);
 
-                 this.expandables.Add(pic);
+                this.expandables.Add(pic);
 
                 foreach (string subItem in btnItem.SubItems)
                 {
@@ -350,13 +343,13 @@ namespace ModernGUI.Controls
         private void DrawSubCategory(string str, string subItem, ref int num, ButtonItem btnItem, List<CButton> cbuttonList, CButton button)
         {
             CButton sbutton = new CButton();
-     
+
             if (this.selectedBtn == null)
             {
                 this.selectedBtn = sbutton;
             }
 
-            sbutton.Name =  num.ToString();
+            sbutton.Name = num.ToString();
             sbutton.Text = str + subItem;
             sbutton.Cursor = Cursors.Hand;
             sbutton.FlatStyle = FlatStyle.Flat;
@@ -390,7 +383,7 @@ namespace ModernGUI.Controls
         {
             foreach (CButton control1 in (ArrangedElementCollection)this.pnlContainer.Controls)
             {
-                if (selecteBtn.Name == control1.Name )
+                if (selecteBtn.Name == control1.Name)
                 {
                     if (selecteBtn.Group != null && selecteBtn.Group.Tag.GetType() == typeof(List<CButton>))
                     {
@@ -522,7 +515,7 @@ namespace ModernGUI.Controls
             CButton sbutton = (CButton)sender;
 
             if (!((IEnumerable<string>)this.DisableToggling).Contains<string>(sbutton.Tag.ToString()))
-            { 
+            {
                 this.SetSelection(sbutton);
             }
             NavigtionMenu.OnSelectEventHandler onItemSelected = this.OnItemSelected;
@@ -580,7 +573,7 @@ namespace ModernGUI.Controls
     #region Design Code
 
     public partial class NavigtionMenu : UserControl
-    {        
+    {
         private IContainer components;
         private ImageList imageList1;
         private Panel pnlContainer;
@@ -722,7 +715,7 @@ namespace ModernGUI.Controls
             this.Size = new Size(199, 544);
 
             this.Load += new EventHandler(this.NavigtionMenu_Load);
-            this.BackColorChanged += new EventHandler(delegate (object sender, EventArgs e) {this.RedrawButtons();});
+            this.BackColorChanged += new EventHandler(delegate (object sender, EventArgs e) { this.RedrawButtons(); });
             this.ForeColorChanged += new EventHandler(this.NavigtionMenu_ForeColorChanged);
 
             ((ISupportInitialize)this.MenuDropdown_PicBox).EndInit();

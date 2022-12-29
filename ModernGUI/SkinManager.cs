@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Text;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using ModernGUI.Controls;
-using ModernGUI.Properties;
+﻿using ModernGUI.Controls;
 
 namespace ModernGUI
 {
@@ -398,7 +390,7 @@ namespace ModernGUI
 
             #region Tab Control 
 
-            ModernGUI.Controls.TabControl tabControl  = null;
+            ModernGUI.Controls.TabControl tabControl = null;
 
             if (controlToUpdate.GetType() == typeof(ModernGUI.Controls.TabControl))
             {

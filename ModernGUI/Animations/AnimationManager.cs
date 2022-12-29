@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Windows.Forms;
-
-namespace ModernGUI.Animations
+﻿namespace ModernGUI.Animations
 {
     class AnimationManager
     {

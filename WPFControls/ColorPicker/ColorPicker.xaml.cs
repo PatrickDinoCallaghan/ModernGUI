@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+using System.Windows.Ink;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Windows.Ink;
 
 namespace ColorPicker
 {
@@ -36,8 +29,8 @@ namespace ColorPicker
 	/// Interaktionslogik für "MainControl.xaml"
 	/// </summary>
     public partial class ColorPickerControl : UserControl
-	{
-		#region Data
+    {
+        #region Data
         private DrawingAttributes drawingAttributes = new DrawingAttributes();
         private Color selectedColor = Colors.Transparent;
         private Boolean IsMouseDown = false;
@@ -222,5 +215,5 @@ namespace ColorPicker
             IsMouseDown = false;
         }
         #endregion
-	}
+    }
 }
