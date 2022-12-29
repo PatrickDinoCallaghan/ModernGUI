@@ -12,8 +12,8 @@ namespace ModernGUITest
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            // Application.Run(new ModernGUITest.Example());
-            Application.Run(new ModernGUITest.BasicExample());
+              Application.Run(new ModernGUITest.Example());
+           // Application.Run(new ModernGUITest.BasicExample());
         }
     }
 }

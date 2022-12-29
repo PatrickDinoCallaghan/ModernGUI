@@ -29,5 +29,28 @@ namespace ModernGUI.Shared
             return Color.FromArgb(RGBMAX - ColourToInvert.R,
               RGBMAX - ColourToInvert.G, RGBMAX - ColourToInvert.B);
         }
+
+        public static Bitmap ChangeColor(Bitmap bitmap, Color newColor)
+        {
+            Bitmap bitmap1 = new Bitmap(bitmap.Width, bitmap.Height);
+            for (int x = 0; x < bitmap.Width; ++x)
+            {
+                for (int y = 0; y < bitmap.Height; ++y)
+
+                {
+                    Color pixel = bitmap.GetPixel(x, y);
+                    if (pixel.A > (byte)150)
+                    {
+                        bitmap1.SetPixel(x, y, newColor);
+                    }
+                    else
+                    {
+                        bitmap1.SetPixel(x, y, pixel);
+                    }
+
+                }
+            }
+            return bitmap1;
+        }
     }
 }

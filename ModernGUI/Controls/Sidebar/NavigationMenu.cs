@@ -1,4 +1,5 @@
-﻿using ModernGUI.Properties;
+﻿using ModernGUI.Animations;
+using ModernGUI.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,8 +16,13 @@ namespace ModernGUI.Controls
     [DefaultEvent("OnItemSelected")]
     [DefaultProperty("Items")]
     [DebuggerStepThrough]
-    public partial class NavigtionMenu : UserControl
+    public partial class NavigtionMenu : UserControl, IControl
     {
+
+        public int Depth { get; set; }
+        public SkinManager SkinManager { get { return SkinManager.Instance; } }
+        public MouseState MouseState { get; set; }
+
         #region Private fields
 
         private bool IsLoaded;
@@ -33,6 +39,7 @@ namespace ModernGUI.Controls
         private bool _isExpandedable;
         private Color _foreColor_Selected;
 
+        private TabControl _baseTabControl;
         private ButtonItem[] _items;
         #endregion
 
@@ -166,8 +173,34 @@ namespace ModernGUI.Controls
         public event NavigtionMenu.OnSelectEventHandler OnItemSelected;
         public delegate void OnSelectEventHandler(object sender, string path, EventArgs e);
 
+        private readonly AnimationManager _animationManager;
+        int _previousSelectedTabIndex;
+        int _SelectedTabIndex;
+
+        public TabControl BaseTabControl
+        {
+            get { return _baseTabControl; }
+            set
+            {
+                _baseTabControl = value;
+
+                if (_baseTabControl == null) return;
+
+                _previousSelectedTabIndex = _baseTabControl.SelectedIndex;
+                _baseTabControl.Deselected += (sender, args) =>
+                {
+                    _previousSelectedTabIndex = _baseTabControl.SelectedIndex;
+                };
+                _baseTabControl.SelectedIndexChanged += (sender, args) =>
+                {
+                    _SelectedTabIndex = _baseTabControl.SelectedIndex;
+                };
+            }
+        }
+
         public NavigtionMenu()
         {
+            SetStyle(ControlStyles.DoubleBuffer | ControlStyles.OptimizedDoubleBuffer, true);
             _buttonHeight = 50;
             _items = new ButtonItem[0];
             _itemImageSize = new Size(20, 20);
@@ -179,8 +212,17 @@ namespace ModernGUI.Controls
             _isExpandedable = true;
             _foreColor_Selected = Color.Empty;
 
+            _animationManager = new AnimationManager
+            {
+                AnimationType = AnimationType.EaseOut,
+                Increment = 0.04
+            };
+
+            _animationManager.OnAnimationProgress += sender => Invalidate();
             InitializeComponent();
         }
+
+        #region Redraw Control
 
         private void RedrawButtons()
         {
@@ -242,8 +284,8 @@ namespace ModernGUI.Controls
             this.imageList1.Images.Add(btnItem.Icon);
 
             button.Image = this.imageList1.Images[0];
-            btnItem.ImageIdle = (Image)this.ChangeColor((Bitmap)this.imageList1.Images[0], this.ForeColor);
-            btnItem.ImageActive = (Image)this.ChangeColor((Bitmap)this.imageList1.Images[0], this.ForeColor_Selected);
+            btnItem.ImageIdle = (Image)ModernGUI.Shared.Drawing.ChangeColor((Bitmap)this.imageList1.Images[0], this.ForeColor);
+            btnItem.ImageActive = (Image)ModernGUI.Shared.Drawing.ChangeColor((Bitmap)this.imageList1.Images[0], this.ForeColor_Selected);
             button.ImageAlign = ContentAlignment.MiddleLeft;
             button.ButtonItem = btnItem;
 
@@ -268,8 +310,8 @@ namespace ModernGUI.Controls
             if (btnItem.SubItems.Length != 0)
             {
                 PictureBox pic = new PictureBox();
-                Image pic1 = (Image)this.ChangeColor(new Bitmap(this.MenuHide_PicBox.Image), this.ForeColor);
-                Image pic2 = (Image)this.ChangeColor(new Bitmap(this.MenuDropdown_PicBox.Image), this.ForeColor);
+                Image pic1 = (Image)ModernGUI.Shared.Drawing.ChangeColor(new Bitmap(this.MenuHide_PicBox.Image), this.ForeColor);
+                Image pic2 = (Image)ModernGUI.Shared.Drawing.ChangeColor(new Bitmap(this.MenuDropdown_PicBox.Image), this.ForeColor);
 
                 pic.Image = btnItem.IsExpanded ? pic2 : pic1;
                 pic.Size = this.ItemRightImageSize;
@@ -342,6 +384,8 @@ namespace ModernGUI.Controls
             cbuttonList.Add(sbutton);
         }
 
+        #endregion
+
         private void SetSelection(CButton selecteBtn, ButtonItem btnItem = null)
         {
             foreach (CButton control1 in (ArrangedElementCollection)this.pnlContainer.Controls)
@@ -380,6 +424,18 @@ namespace ModernGUI.Controls
                 }
             }
             this.selectedBtn = selecteBtn;
+
+            if (_baseTabControl != null)
+            {
+                if (_baseTabControl.TabPages.ContainsKey(selecteBtn.Text))
+                {
+                    _baseTabControl.SelectedTab = _baseTabControl.TabPages[selecteBtn.Text];
+                }
+                else
+                {
+                    MessageBox.Show("Tab doesnt exist");
+                }
+            }
         }
 
         private void Collapse()
@@ -395,11 +451,11 @@ namespace ModernGUI.Controls
             this.SetExpanderVisibility(false);
         }
 
-        private void SetExpanderVisibility(bool v)
+        private void SetExpanderVisibility(bool Visible)
         {
             foreach (Control expandable in this.expandables)
             {
-                expandable.Visible = v;
+                expandable.Visible = Visible;
             }
         }
 
@@ -409,29 +465,6 @@ namespace ModernGUI.Controls
             this.ImgCollapse_PicBox.Visible = true;
             this.ImgExpand_PicBox.Visible = false;
             this.SetExpanderVisibility(true);
-        }
-
-        public Bitmap ChangeColor(Bitmap bitmap, Color newColor)
-        {
-            Bitmap bitmap1 = new Bitmap(bitmap.Width, bitmap.Height);
-            for (int x = 0; x < bitmap.Width; ++x)
-            {
-                for (int y = 0; y < bitmap.Height; ++y)
-
-                {
-                    Color pixel = bitmap.GetPixel(x, y);
-                    if (pixel.A > (byte)150)
-                    {
-                        bitmap1.SetPixel(x, y, newColor);
-                    }
-                    else
-                    {
-                        bitmap1.SetPixel(x, y, pixel);
-                    }
-                        
-                }
-            }
-            return bitmap1;
         }
 
         #region Events
@@ -514,13 +547,13 @@ namespace ModernGUI.Controls
             {
                 this.ImgExpand_PicBox.Tag = (object)this.ImgExpand_PicBox.Image;
             }
-            this.ImgExpand_PicBox.Image = (Image)this.ChangeColor(new Bitmap((Image)this.ImgExpand_PicBox.Tag), this.ForeColor);
+            this.ImgExpand_PicBox.Image = (Image)ModernGUI.Shared.Drawing.ChangeColor(new Bitmap((Image)this.ImgExpand_PicBox.Tag), this.ForeColor);
 
             if (this.ImgCollapse_PicBox.Tag == null)
             {
                 this.ImgCollapse_PicBox.Tag = (object)this.ImgCollapse_PicBox.Image;
             }
-            this.ImgCollapse_PicBox.Image = (Image)this.ChangeColor(new Bitmap((Image)this.ImgCollapse_PicBox.Tag), this.ForeColor);
+            this.ImgCollapse_PicBox.Image = (Image)ModernGUI.Shared.Drawing.ChangeColor(new Bitmap((Image)this.ImgCollapse_PicBox.Tag), this.ForeColor);
             this.RedrawButtons();
         }
         private void ImgCollapse_Click(object sender, EventArgs e)
@@ -544,6 +577,7 @@ namespace ModernGUI.Controls
 
         #endregion
     }
+    #region Design Code
 
     public partial class NavigtionMenu : UserControl
     {        
@@ -707,6 +741,7 @@ namespace ModernGUI.Controls
             }
             base.Dispose(disposing);
         }
-
     }
+
+    #endregion
 }

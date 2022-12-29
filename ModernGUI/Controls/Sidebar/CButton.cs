@@ -15,5 +15,6 @@ namespace ModernGUI.Controls
         public CButton Group { get; set; }
 
         public ButtonItem ButtonItem { get; set; }
+
     }
 }

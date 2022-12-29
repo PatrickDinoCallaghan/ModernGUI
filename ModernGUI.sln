@@ -7,6 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModernGUI", "ModernGUI\Mode
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModernGUITest", "ModernGUITest\ModernGUITest.csproj", "{A38C07BD-DABC-4975-929C-029B30FA0129}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WPFControls", "WPFControls", "{AEA27D31-691F-4E4A-A168-12B8A80DCF2C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModernGUI.WPF.Controls.RTFEditor", "WPFControls\RTFEditor\ModernGUI.WPF.Controls.RTFEditor.csproj", "{BE098120-9EA7-4146-88A7-5EC918BFCB2E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModernGUI.WPF.Controls.ColorPicker", "WPFControls\ColorPicker\ModernGUI.WPF.Controls.ColorPicker.csproj", "{C57D5B89-C31E-40AE-B972-217133356347}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,9 +27,21 @@ Global
 		{A38C07BD-DABC-4975-929C-029B30FA0129}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A38C07BD-DABC-4975-929C-029B30FA0129}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A38C07BD-DABC-4975-929C-029B30FA0129}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE098120-9EA7-4146-88A7-5EC918BFCB2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE098120-9EA7-4146-88A7-5EC918BFCB2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE098120-9EA7-4146-88A7-5EC918BFCB2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE098120-9EA7-4146-88A7-5EC918BFCB2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C57D5B89-C31E-40AE-B972-217133356347}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C57D5B89-C31E-40AE-B972-217133356347}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C57D5B89-C31E-40AE-B972-217133356347}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C57D5B89-C31E-40AE-B972-217133356347}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BE098120-9EA7-4146-88A7-5EC918BFCB2E} = {AEA27D31-691F-4E4A-A168-12B8A80DCF2C}
+		{C57D5B89-C31E-40AE-B972-217133356347} = {AEA27D31-691F-4E4A-A168-12B8A80DCF2C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FD334B71-61E6-47C0-832C-65A2B6BD3308}
