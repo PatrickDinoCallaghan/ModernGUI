@@ -15,32 +15,11 @@
     </UserControl.Resources>   
 
     <DockPanel>
-        <ToolBar x:Name="ToolBarAbove" DockPanel.Dock="Top">
-            <Button x:Name="ToolStripButtonPrint" Click="ToolStripButtonPrint_Click">
-				<Image Source="Images\Print.png" Stretch="None"/>				
-			</Button>
-			<Separator/>
-			<Button x:Name="ToolStripButtonCut" Command="ApplicationCommands.Cut" ToolTip="Cut">
-				<Image Source="Images\Cut.png" Stretch="None"/>				
-			</Button>
-			<Button x:Name="ToolStripButtonCopy" Command="ApplicationCommands.Copy" ToolTip="Copy">
-				<Image Source="Images\Copy.png" Stretch="None"/>				
-			</Button>
-			<Button x:Name="ToolStripButtonPaste" Command="ApplicationCommands.Paste" ToolTip="Paste">
-				<Image Source="Images\Paste.png" Stretch="None"/>				
-			</Button>
-			<Button x:Name="ToolStripButtonUndo" Command="ApplicationCommands.Undo" ToolTip="Undo">
-				<Image Source="Images\Undo.png" Stretch="None"/>				
-			</Button>
-			<Button x:Name="ToolStripButtonRedo" Command="ApplicationCommands.Redo" ToolTip="Redo">
-				<Image Source="Images\Redo.png" Stretch="None"/>				
-			</Button>
-			<Separator/>
-			<ComboBox x:Name="Fonttype" ItemsSource="{Binding Mode=OneWay, Source={StaticResource FontListKlasse}}" DropDownClosed="Fonttype_DropDownClosed" />
+        <ToolBar x:Name="ToolBarTop" DockPanel.Dock="Top">
+            <Separator/>
+            <ComboBox x:Name="Fonttype" ItemsSource="{Binding Mode=OneWay, Source={StaticResource FontListKlasse}}" DropDownClosed="Fonttype_DropDownClosed" />
             <ComboBox x:Name="Fontheight" ItemsSource="{Binding Mode=OneWay, Source={StaticResource FontHeightKlasse}}"  DropDownClosed="Fontheight_DropDownClosed" />
-        </ToolBar>
-        <ToolBar x:Name="ToolBarBelow" DockPanel.Dock="Top">
-        	<ToggleButton x:Name="ToolStripButtonBold" Command="EditingCommands.ToggleBold" ToolTip="Bold">
+            <ToggleButton x:Name="ToolStripButtonBold" Command="EditingCommands.ToggleBold" ToolTip="Bold">
         		<Image Source="Images\Bold.png" Stretch="None"/>				
         	</ToggleButton>
         	<ToggleButton x:Name="ToolStripButtonItalic" Command="EditingCommands.ToggleItalic" ToolTip="Italic">
@@ -90,7 +69,26 @@
 			<ToggleButton x:Name="ToolStripButtonSuperscript" ToolTip="Superscript" Click="ToolStripButtonSuperscript_Click">
         		<Image Source="Images\Superscript.png" Stretch="None"/>				
         	</ToggleButton>
-        </ToolBar>
+            <Separator/>
+            <Button x:Name="ToolStripButtonPrint" Click="ToolStripButtonPrint_Click">
+                <Image Source="/ModernGUI.WPF.Controls.RTFEditor;component/Images/Print.png" Stretch="None"/>
+            </Button>
+            <Button x:Name="ToolStripButtonCut" Command="ApplicationCommands.Cut" ToolTip="Cut">
+                <Image Source="/ModernGUI.WPF.Controls.RTFEditor;component/Images/Cut.png" Stretch="None"/>
+            </Button>
+            <Button x:Name="ToolStripButtonCopy" Command="ApplicationCommands.Copy" ToolTip="Copy">
+                <Image Source="/ModernGUI.WPF.Controls.RTFEditor;component/Images/Copy.png" Stretch="None"/>
+            </Button>
+            <Button x:Name="ToolStripButtonPaste" Command="ApplicationCommands.Paste" ToolTip="Paste">
+                <Image Source="/ModernGUI.WPF.Controls.RTFEditor;component/Images/Paste.png" Stretch="None"/>
+            </Button>
+            <Button x:Name="ToolStripButtonUndo" Command="ApplicationCommands.Undo" ToolTip="Undo">
+                <Image Source="/ModernGUI.WPF.Controls.RTFEditor;component/Images/Undo.png" Stretch="None"/>
+            </Button>
+            <Button x:Name="ToolStripButtonRedo" Command="ApplicationCommands.Redo" ToolTip="Redo">
+                <Image Source="/ModernGUI.WPF.Controls.RTFEditor;component/Images/Redo.png" Stretch="None"/>
+            </Button>
+         </ToolBar>
         <RichTextBox x:Name="RichTextControl" SpellCheck.IsEnabled="True" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" AcceptsTab="True" SelectionChanged="RichTextControl_SelectionChanged" TextChanged="RichTextControl_TextChanged" KeyDown="RichTextControl_KeyDown" KeyUp="RichTextControl_KeyUp" />        
     </DockPanel>
 </UserControl>

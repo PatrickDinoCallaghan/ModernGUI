@@ -3,6 +3,7 @@ using ModernGUI.Properties;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows.Forms.Layout;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ModernGUI.Controls
 {
@@ -37,9 +38,7 @@ namespace ModernGUI.Controls
         #endregion
 
         #region Public properties
-
         public Dictionary<string, Action<CButton>> OnItemClick;
-
         public ButtonItem[] Items
         {
             get
@@ -52,7 +51,6 @@ namespace ModernGUI.Controls
                 this.RedrawButtons();
             }
         }
-
         public int ItemHeight
         {
             get
@@ -212,6 +210,7 @@ namespace ModernGUI.Controls
             };
 
             _animationManager.OnAnimationProgress += sender => Invalidate();
+
             InitializeComponent();
         }
 
@@ -234,7 +233,6 @@ namespace ModernGUI.Controls
             {
                 num++;
                 DrawMainCategory(buttonItem, ref num);
-
             }
         }
 
@@ -420,9 +418,15 @@ namespace ModernGUI.Controls
 
             if (_baseTabControl != null)
             {
-                if (_baseTabControl.TabPages.ContainsKey(selecteBtn.Text))
+                //MessageBox.Show(selecteBtn.Text);
+
+                foreach (TabPage item in _baseTabControl.TabPages)
                 {
-                    _baseTabControl.SelectedTab = _baseTabControl.TabPages[selecteBtn.Text];
+                   // MessageBox.Show(item.Name);
+                }
+                if (_baseTabControl.TabPages.ContainsKey(selecteBtn.Text.Trim()))
+                {
+                    _baseTabControl.SelectedIndex = _baseTabControl.TabPages.IndexOf(_baseTabControl.TabPages[selecteBtn.Text.Trim()]);
                 }
                 else
                 {
@@ -559,16 +563,18 @@ namespace ModernGUI.Controls
         }
         private void NavigtionMenu_Load(object sender, EventArgs e)
         {
-            if (this.origW == 0)
-            {
-                this.origW = this.Width;
-            }
+            this.origW = this.Width;
             this.IsLoaded = true;
             this.ImgCollapse_PicBox.Visible = this.IsExpandedable;
+
+
             this.RedrawButtons();
+            this.Width = this.origW ;
+            this.Expand(null);
         }
 
         #endregion
+
     }
     #region Design Code
 
@@ -583,7 +589,7 @@ namespace ModernGUI.Controls
         private PictureBox ImgCollapse_PicBox;
         private PictureBox MenuDropdown_PicBox;
         private PictureBox MenuHide_PicBox;
-        private ToolTip toolTip1;
+        private System.Windows.Forms.ToolTip toolTip1;
         public Panel HederPanel;
 
         private void InitializeComponent()
@@ -597,7 +603,7 @@ namespace ModernGUI.Controls
             this.ImgExpand_PicBox = new PictureBox();
             this.pnlContainer = new Panel();
             this.expandables = new List<PictureBox>();
-            this.toolTip1 = new ToolTip(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.HederPanel.SuspendLayout();
 
             ((ISupportInitialize)this.MenuDropdown_PicBox).BeginInit();
@@ -712,7 +718,7 @@ namespace ModernGUI.Controls
             this.ForeColor = Color.FromArgb(224, 224, 224);
             this.Margin = new Padding(3, 5, 3, 5);
             this.Name = nameof(NavigtionMenu);
-            this.Size = new Size(199, 544);
+            this.Size = new Size(250, 540);
 
             this.Load += new EventHandler(this.NavigtionMenu_Load);
             this.BackColorChanged += new EventHandler(delegate (object sender, EventArgs e) { this.RedrawButtons(); });

@@ -1,6 +1,8 @@
 ﻿using ColorPicker;
+using ModernGUI.WPF.Controls.RTFEditor;
 using System;
 using System.IO;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -21,7 +23,50 @@ namespace RTFEditor
         public RTFBox()
         {
             SetRenderFinishedEvent();
+
             this.InitializeComponent();
+
+            RichTextControl.SelectionChanged += RichTextControl_SelectionChanged1;
+        }
+
+        private void RichTextControl_SelectionChanged1(object sender, RoutedEventArgs e)
+        {
+            var inline = this.RichTextControl.CaretPosition.GetAdjacentElement(LogicalDirection.Forward) as Inline;
+            if (inline != null)
+            {
+                this.AddAdorner(inline.NextInline as InlineUIContainer);
+                this.AddAdorner(inline.PreviousInline as InlineUIContainer);
+            }
+        }
+
+        private void AddAdorner(InlineUIContainer container)
+        {
+            if (container != null)
+            {
+                var image = container.Child;
+                if (image != null)
+                {
+                    var al = AdornerLayer.GetAdornerLayer(image);
+                    if (al != null)
+                    {
+                        var currentAdorners = al.GetAdorners(image);
+                        if (currentAdorners != null)
+                        {
+                            foreach (var adorner in currentAdorners)
+                            {
+                                al.Remove(adorner);
+                            }
+                        }
+
+                        al.Add(new PanningAdorner(image));
+                    }
+                }
+            }
+        }
+
+        private void OnPaste(object sender, DataObjectPastingEventArgs e)
+        {
+            new Thread(() => { System.Windows.MessageBox.Show("Hello"); }).Start();
         }
 
         #region Rendering Finished Event
@@ -61,38 +106,19 @@ namespace RTFEditor
             }
         }
 
-        public bool ShowFileToolBar
+        public bool ShowToolBar
         {
-            get { return ToolBarAbove.IsVisible; }
+            get { return ToolBarTop.IsVisible; }
             set
             {
                 if (value == true)
                 {
-                    ToolBarAbove.Visibility = Visibility.Visible;
+                    ToolBarTop.Visibility = Visibility.Visible;
                 }
                 else
                 {
-                    ToolBarAbove.Visibility = Visibility.Collapsed;
+                    ToolBarTop.Visibility = Visibility.Collapsed;
                 }
-
-
-            }
-        }
-        public bool ShowFontToolBar
-        {
-            get { return ToolBarBelow.IsVisible; }
-            set
-            {
-                if (value == true)
-                {
-                    ToolBarBelow.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    ToolBarBelow.Visibility = Visibility.Collapsed;
-                }
-
-
             }
         }
 

@@ -7,6 +7,7 @@ namespace ModernGUITest
     public partial class Example : ModernGUI.Controls.Form
     {
         private readonly SkinManager _SkinManager;
+
         public Example()
         {
             InitializeComponent();
@@ -41,6 +42,7 @@ namespace ModernGUITest
             thumbnailBitmap.Dispose();
             image.Dispose();
         }
+
         private void Example_Load(object sender, EventArgs e)
         {
         }
@@ -48,6 +50,11 @@ namespace ModernGUITest
         private void spinner1_ButtonClick(object sender, Spinner.ButtonClicked e)
         {
             MessageBox.Show(e.ToString());
+        }
+
+        private void raisedButton1_Click(object sender, EventArgs e)
+        {
+            this.wpfTextEditor1.Save();
         }
     }
 }

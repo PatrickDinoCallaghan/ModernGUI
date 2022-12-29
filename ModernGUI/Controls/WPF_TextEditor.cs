@@ -30,6 +30,13 @@ namespace ModernGUI.Controls.WPF
             get { return base.Child; }
             set { /* Do nothing to solve a problem with the serializer !! */ }
         }
+
+        public void Save()
+        {
+            MessageBox.Show(box.GetRTF());
+            
+        }
+
         private RTFEditor.RTFBox box;
     }
 }
