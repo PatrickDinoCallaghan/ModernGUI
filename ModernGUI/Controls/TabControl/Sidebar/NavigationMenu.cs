@@ -3,18 +3,22 @@ using ModernGUI.Properties;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows.Forms.Layout;
+using System.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Drawing.Text;
 
 namespace ModernGUI.Controls
 {
     [DefaultEvent("OnItemSelected")]
     [DefaultProperty("Items")]
     [DebuggerStepThrough]
-    public partial class NavigtionMenu : UserControl, IControl
+    public partial class NavigtionMenu : IControl
     {
-
+        [Browsable(false)]
         public int Depth { get; set; }
-        public SkinManager SkinManager { get { return SkinManager.Instance; } }
+        [Browsable(false)]
+        public SkinManager SkinManager => SkinManager.Instance;
+        [Browsable(false)]
         public MouseState MouseState { get; set; }
 
         #region Private fields
@@ -72,6 +76,7 @@ namespace ModernGUI.Controls
             set
             {
                 this._backColor_Selected = value;
+
                 this.RedrawButtons();
             }
         }
@@ -152,6 +157,7 @@ namespace ModernGUI.Controls
             get
             {
                 return this._foreColor_Selected;
+
             }
             set
             {
@@ -415,24 +421,31 @@ namespace ModernGUI.Controls
                 }
             }
             this.selectedBtn = selecteBtn;
+            SelectTab(selecteBtn);
+        }
+
+        // Selected a tab from the linked base tab control by its label
+        private void SelectTab(CButton selecteBtn)
+        {
 
             if (_baseTabControl != null)
             {
-                //MessageBox.Show(selecteBtn.Text);
+                TabPage tabPage = ReturnTabPageByText(selecteBtn.Text.Trim());
 
-                foreach (TabPage item in _baseTabControl.TabPages)
+                if (tabPage != null)
                 {
-                   // MessageBox.Show(item.Name);
-                }
-                if (_baseTabControl.TabPages.ContainsKey(selecteBtn.Text.Trim()))
-                {
-                    _baseTabControl.SelectedIndex = _baseTabControl.TabPages.IndexOf(_baseTabControl.TabPages[selecteBtn.Text.Trim()]);
+                    _baseTabControl.SelectedIndex = _baseTabControl.TabPages.IndexOf(tabPage);
                 }
                 else
                 {
-                    MessageBox.Show("Tab doesnt exist");
+                    MessageBox.Show(" Linked basetabcontrol doesnt have the " + selecteBtn.Text.Trim() + " tab", "Tab doesnt exist", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private TabPage ReturnTabPageByText(string TabText)
+        {
+            return _baseTabControl.TabPages.OfType<TabPage>().FirstOrDefault(tab => tab.Text.Trim() == TabText);
         }
 
         private void Collapse()
@@ -569,12 +582,65 @@ namespace ModernGUI.Controls
 
 
             this.RedrawButtons();
-            this.Width = this.origW ;
+            this.Width = this.origW;
             this.Expand(null);
         }
 
         #endregion
 
+        protected override void OnPaint(PaintEventArgs e)
+        {
+           // var g = e.Graphics;
+          //  g.TextRenderingHint = TextRenderingHint.AntiAlias;
+
+          //  g.Clear(SkinManager.ColorScheme.PrimaryColor);
+
+            /*
+            if (_baseTabControl == null)
+            {
+                return;
+            }
+            if (!_animationManager.IsAnimating() || _tabRects == null || _tabRects.Count != _baseTabControl.TabCount)
+            {
+                UpdateTabRects();
+            }
+
+            var animationProgress = _animationManager.GetProgress();
+
+            //Click feedback
+            if (_animationManager.IsAnimating())
+            {
+                var rippleBrush = new SolidBrush(Color.FromArgb((int)(51 - (animationProgress * 50)), Color.White));
+                var rippleSize = (int)(animationProgress * _tabRects[_baseTabControl.SelectedIndex].Width * 1.75);
+
+                g.SetClip(_tabRects[_baseTabControl.SelectedIndex]);
+                g.FillEllipse(rippleBrush, new Rectangle(_animationSource.X - rippleSize / 2, _animationSource.Y - rippleSize / 2, rippleSize, rippleSize));
+                g.ResetClip();
+                rippleBrush.Dispose();
+            }
+
+            //Draw tab headers
+            foreach (TabPage tabPage in _baseTabControl.TabPages)
+            {
+                var currentTabIndex = _baseTabControl.TabPages.IndexOf(tabPage);
+                Brush textBrush = new SolidBrush(Color.FromArgb(CalculateTextAlpha(currentTabIndex, animationProgress), SkinManager.ColorScheme.TextColor));
+
+                g.DrawString(tabPage.Text.ToUpper(), SkinManager.openSans[10, OpenSans.Weight.Medium], textBrush, _tabRects[currentTabIndex], new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center });
+                textBrush.Dispose();
+            }
+
+            //Animate tab indicator
+            var previousSelectedTabIndexIfHasOne = _previousSelectedTabIndex == -1 ? _baseTabControl.SelectedIndex : _previousSelectedTabIndex;
+            var previousActiveTabRect = _tabRects[previousSelectedTabIndexIfHasOne];
+            var activeTabPageRect = _tabRects[_baseTabControl.SelectedIndex];
+
+            var y = activeTabPageRect.Bottom - 2;
+            var x = previousActiveTabRect.X + (int)((activeTabPageRect.X - previousActiveTabRect.X) * animationProgress);
+            var width = previousActiveTabRect.Width + (int)((activeTabPageRect.Width - previousActiveTabRect.Width) * animationProgress);
+
+            g.FillRectangle(SkinManager.ColorScheme.AccentBrush, x, y, width, TAB_INDICATOR_HEIGHT);   */
+        }
+     
     }
     #region Design Code
 
@@ -630,7 +696,7 @@ namespace ModernGUI.Controls
             this.pnlContainer.Location = new Point(0, 55);
             this.pnlContainer.Margin = new Padding(2, 4, 2, 4);
             this.pnlContainer.Name = "pnlContainer";
-            this.pnlContainer.Size = new Size(199, 489);
+            this.pnlContainer.Size = new Size(200, 500);
             this.pnlContainer.TabIndex = 1;
 
             //
@@ -644,7 +710,7 @@ namespace ModernGUI.Controls
             this.HederPanel.Location = new Point(0, 0);
             this.HederPanel.Margin = new Padding(2, 4, 2, 4);
             this.HederPanel.Name = "HederPanel";
-            this.HederPanel.Size = new Size(199, 55);
+            this.HederPanel.Size = new Size(200, 55);
             this.HederPanel.TabIndex = 0;
             this.HederPanel.ResumeLayout(false);
 
@@ -710,12 +776,12 @@ namespace ModernGUI.Controls
             this.AutoScaleDimensions = new SizeF(9f, 20f);
             this.AutoScaleMode = AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.BackColor = Color.FromArgb(28, 38, 61);
             this.Controls.Add((Control)this.pnlContainer);
             this.Controls.Add((Control)this.HederPanel);
             this.DoubleBuffered = true;
             this.Font = new Font("Segoe UI Semibold", 11.25f, FontStyle.Bold, GraphicsUnit.Point, (byte)0);
             this.ForeColor = Color.FromArgb(224, 224, 224);
+            this.BackColor = SkinManager.ColorScheme.PrimaryColor; 
             this.Margin = new Padding(3, 5, 3, 5);
             this.Name = nameof(NavigtionMenu);
             this.Size = new Size(250, 540);

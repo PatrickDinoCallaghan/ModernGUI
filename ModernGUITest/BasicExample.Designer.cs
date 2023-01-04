@@ -96,6 +96,7 @@ namespace ModernGUITest
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.item3ToolStripMenuItem = new ModernGUI.Controls.ToolStripMenuItem();
             this.FlatButton3 = new ModernGUI.Controls.FlatButton();
+            this.singleLineTextField4 = new ModernGUI.Controls.SingleLineTextField();
             this.TabControl1.SuspendLayout();
             this.TextField_tabPage.SuspendLayout();
             this.SelectionBox_tabPage.SuspendLayout();
@@ -895,6 +896,24 @@ namespace ModernGUITest
             this.FlatButton3.Text = "DISABLED";
             this.FlatButton3.UseVisualStyleBackColor = true;
             // 
+            // singleLineTextField4
+            // 
+            this.singleLineTextField4.Depth = 0;
+            this.singleLineTextField4.Hint = "";
+            this.singleLineTextField4.Location = new System.Drawing.Point(45, 469);
+            this.singleLineTextField4.MaxLength = 0;
+            this.singleLineTextField4.MouseState = ModernGUI.MouseState.HOVER;
+            this.singleLineTextField4.Name = "singleLineTextField4";
+            this.singleLineTextField4.PasswordChar = '\0';
+            this.singleLineTextField4.SelectedText = "";
+            this.singleLineTextField4.SelectionLength = 0;
+            this.singleLineTextField4.SelectionStart = 0;
+            this.singleLineTextField4.Size = new System.Drawing.Size(165, 25);
+            this.singleLineTextField4.TabIndex = 20;
+            this.singleLineTextField4.TabStop = false;
+            this.singleLineTextField4.Text = "singleLineTextField4";
+            this.singleLineTextField4.UseSystemPasswordChar = false;
+            // 
             // BasicExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -902,6 +921,7 @@ namespace ModernGUITest
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(780, 511);
             this.ContextMenuStrip = this.ContextMenuStrip1;
+            this.Controls.Add(this.singleLineTextField4);
             this.Controls.Add(this.FlatButton3);
             this.Controls.Add(this.FlatButton2);
             this.Controls.Add(this.TabSelector1);
@@ -990,5 +1010,6 @@ namespace ModernGUITest
         private DataGridViewTextBoxColumn Column2;
         private ModernGUI.Controls.Columns.AddRemoveColumn Column3;
         private RaisedButton DGVListBoxStyle_raisedButton;
+        private SingleLineTextField singleLineTextField4;
     }
 }

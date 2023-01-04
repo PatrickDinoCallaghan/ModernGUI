@@ -147,7 +147,7 @@ namespace ModernGUI.Properties
         {
             get
             {
-                object obj = ResourceManager.GetObject("ImgCollapse", resourceCulture);
+                object obj = ResourceManager.GetObject("Menu_White", resourceCulture);
                 return ((Image)(obj));
             }
         }
@@ -158,7 +158,7 @@ namespace ModernGUI.Properties
         {
             get
             {
-                object obj = ResourceManager.GetObject("ImgCollapse", resourceCulture);
+                object obj = ResourceManager.GetObject("Menu_White", resourceCulture);
                 return ((Image)(obj));
             }
         }

@@ -37,6 +37,7 @@ namespace ModernGUI.Controls
         public void Focus() { _baseTextBox.Focus(); }
 
         # region Forwarding events to baseTextBox
+        
         public event EventHandler AcceptsTabChanged
         {
             add
@@ -48,7 +49,7 @@ namespace ModernGUI.Controls
                 _baseTextBox.AcceptsTabChanged -= value;
             }
         }
-
+        
         public new event EventHandler AutoSizeChanged
         {
             add
@@ -408,6 +409,7 @@ namespace ModernGUI.Controls
             }
         }
 
+        
         public event EventHandler HideSelectionChanged
         {
             add
@@ -419,7 +421,7 @@ namespace ModernGUI.Controls
                 _baseTextBox.HideSelectionChanged -= value;
             }
         }
-
+        
         public new event EventHandler ImeModeChanged
         {
             add
@@ -539,7 +541,7 @@ namespace ModernGUI.Controls
                 _baseTextBox.MarginChanged -= value;
             }
         }
-
+        
         public event EventHandler ModifiedChanged
         {
             add
@@ -551,6 +553,7 @@ namespace ModernGUI.Controls
                 _baseTextBox.ModifiedChanged -= value;
             }
         }
+       
 
         public new event EventHandler MouseCaptureChanged
         {
@@ -683,7 +686,7 @@ namespace ModernGUI.Controls
                 _baseTextBox.Move -= value;
             }
         }
-
+        
         public event EventHandler MultilineChanged
         {
             add
@@ -695,7 +698,7 @@ namespace ModernGUI.Controls
                 _baseTextBox.MultilineChanged -= value;
             }
         }
-
+        
         public new event EventHandler PaddingChanged
         {
             add
@@ -767,7 +770,7 @@ namespace ModernGUI.Controls
                 _baseTextBox.QueryContinueDrag -= value;
             }
         }
-
+        
         public event EventHandler ReadOnlyChanged
         {
             add
@@ -779,7 +782,7 @@ namespace ModernGUI.Controls
                 _baseTextBox.ReadOnlyChanged -= value;
             }
         }
-
+        
         public new event EventHandler RegionChanged
         {
             add
@@ -875,7 +878,7 @@ namespace ModernGUI.Controls
                 _baseTextBox.TabStopChanged -= value;
             }
         }
-
+       
         public event EventHandler TextAlignChanged
         {
             add
@@ -887,6 +890,7 @@ namespace ModernGUI.Controls
                 _baseTextBox.TextAlignChanged -= value;
             }
         }
+        
 
         public new event EventHandler TextChanged
         {
@@ -1022,7 +1026,7 @@ namespace ModernGUI.Controls
             _baseTextBox.ForeColor = SkinManager.GetPrimaryTextColor();
         }
 
-        private class BaseTextBox : TextBox
+        private class BaseTextBox : System.Windows.Forms.TextBox
         {
             [DllImport("user32.dll", CharSet = CharSet.Auto)]
             private static extern IntPtr SendMessage(IntPtr hWnd, int msg, int wParam, string lParam);

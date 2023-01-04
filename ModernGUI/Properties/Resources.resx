@@ -121,17 +121,14 @@
   <data name="hand" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Cursors\hand.cur;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="ImgCollapse" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\ImgCollapse.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ImgExpand" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\ImgExpand.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="ImgMenuDropdown" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icons\ImgMenuDropdown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ImgMenuHide" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icons\ImgMenuHide.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Menu_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\Menu_White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="OpenSans-Medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FontFiles\OpenSans-Medium.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

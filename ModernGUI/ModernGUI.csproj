@@ -62,16 +62,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Controls\Spinner.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Update="Controls\Spinner.cs" />
     <Compile Update="Controls\StarRatingControl.cs" />
-    <Compile Update="Controls\TimeControls\TimePicker.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Controls\TreeView\MultiSelectTreeview.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Update="Controls\TimeControls\TimePicker.cs" />
+    <Compile Update="Controls\TreeView\MultiSelectTreeview.cs" />
   </ItemGroup>
 
 </Project>

@@ -125,10 +125,14 @@ namespace ModernGUI.Controls
 
             g.Clear(SkinManager.ColorScheme.PrimaryColor);
 
-            if (_baseTabControl == null) return;
-
+            if (_baseTabControl == null)
+            {
+                return;
+            }
             if (!_animationManager.IsAnimating() || _tabRects == null || _tabRects.Count != _baseTabControl.TabCount)
+            {
                 UpdateTabRects();
+            }
 
             var animationProgress = _animationManager.GetProgress();
 
@@ -169,7 +173,10 @@ namespace ModernGUI.Controls
         {
             base.OnMouseUp(e);
 
-            if (_tabRects == null) UpdateTabRects();
+            if (_tabRects == null) 
+            { 
+                UpdateTabRects(); 
+            }
             for (var i = 0; i < _tabRects.Count; i++)
             {
                 if (_tabRects[i].Contains(e.Location))

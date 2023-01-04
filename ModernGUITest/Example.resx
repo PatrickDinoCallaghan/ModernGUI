@@ -57,6 +57,30 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="Column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Column2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Column3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>8, 8</value>
+  </metadata>
+  <metadata name="Column3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="multiSelectTreeview1.SelectedNodes" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj03LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkEAQAAAIoBU3lz
+        dGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuTGlzdGAxW1tTeXN0ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9k
+        ZSwgU3lzdGVtLldpbmRvd3MuRm9ybXMsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3
+        YTVjNTYxOTM0ZTA4OV1dAwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24EAAAfU3lzdGVtLldpbmRvd3Mu
+        Rm9ybXMuVHJlZU5vZGVbXQIAAAAICAkDAAAAAAAAAAEAAAAMBAAAAEZTeXN0ZW0uV2luZG93cy5Gb3Jt
+        cywgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BwMAAAAAAQAA
+        AAAAAAAEHVN5c3RlbS5XaW5kb3dzLkZvcm1zLlRyZWVOb2RlBAAAAAs=
+</value>
+  </data>
   <data name="navigtionMenu1.Items" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAC9Nb2Rlcm5HVUksIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5
@@ -67,27 +91,30 @@
         ZUlkbGU+a19fQmFja2luZ0ZpZWxkHDxJbWFnZUFjdGl2ZT5rX19CYWNraW5nRmllbGQBBAYABAQVU3lz
         dGVtLkRyYXdpbmcuQml0bWFwAwAAAAEVU3lzdGVtLkRyYXdpbmcuQml0bWFwAwAAABVTeXN0ZW0uRHJh
         d2luZy5CaXRtYXADAAAAAgAAAAYEAAAACU1lbnUgSXRlbQkFAAAACQYAAAAACQcAAAAJCAAAAAUFAAAA
-        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
+        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
 </value>
   </data>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>39</value>
+  </metadata>
 </root>

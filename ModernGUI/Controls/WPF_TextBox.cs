@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms.Design;
@@ -42,6 +43,68 @@ namespace ModernGUI.Controls.WPF
             get { return base.Child; }
             set { /* Do nothing to solve a problem with the serializer !! */ }
         }
+
         private System.Windows.Controls.TextBox box;
+
+        #region Textbox methods needed
+
+        public BorderStyle BorderStyle
+        {
+            get;
+            set;
+        }
+        public void Undo() { }
+        public void Cut() { }
+        public void Copy() { }
+        public void Paste() { }
+                     
+        public bool CanUndo
+        { get; set; }
+
+        public string SelectedText
+        {
+            get;
+            set;
+        }
+
+        public bool ContainsText()
+        {
+            return true;
+        }
+
+        public int MaxLength
+        {
+            get; set;
+        }
+
+        public int SelectionStart
+        {
+            get; set;
+        }
+        public int SelectionLength
+        {
+            get; set;
+        }
+        public int TextLength
+        {
+            get; set;
+        }
+        public void Clear()
+        {
+
+        }
+
+        public char PasswordChar
+        {
+            get;
+            set;
+        }
+
+        public new void SelectAll()
+        {
+
+
+        }
+        #endregion 
     }
 }

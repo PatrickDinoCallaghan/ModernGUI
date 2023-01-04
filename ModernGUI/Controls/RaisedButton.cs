@@ -27,7 +27,9 @@ namespace ModernGUI.Controls
             {
                 _icon = value;
                 if (AutoSize)
+                {
                     Size = GetPreferredSize();
+                }
                 Invalidate();
             }
         }

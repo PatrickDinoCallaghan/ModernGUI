@@ -56,5 +56,40 @@ namespace ModernGUITest
         {
             this.wpfTextEditor1.Save();
         }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+        private int colorSchemeIndex = 1;
+
+        private void ChangeColorScheme_raisedButton_Click(object sender, EventArgs e)
+        {
+            colorSchemeIndex++;
+            if (colorSchemeIndex > 3) colorSchemeIndex = 0;
+
+            //These are just example color schemes
+            switch (colorSchemeIndex)
+            {
+                case 0:
+                    _SkinManager.ColorScheme = new ColorScheme(ColorSchemes.BlueGrey);
+                    break;
+                case 1:
+                    _SkinManager.ColorScheme = new ColorScheme(ColorSchemes.Indigo);
+                    break;
+                case 2:
+                    _SkinManager.ColorScheme = new ColorScheme(ColorSchemes.Green);
+                    break;
+                case 3:
+                    _SkinManager.ColorScheme = new ColorScheme(ColorSchemes.Red);
+                    break;
+            }
+        }
+
+        private void ChangeTheme_raisedButton_Click(object sender, EventArgs e)
+        {
+
+            _SkinManager.Theme = _SkinManager.Theme == SkinManager.Themes.DARK ? SkinManager.Themes.LIGHT : SkinManager.Themes.DARK;
+        }
     }
 }

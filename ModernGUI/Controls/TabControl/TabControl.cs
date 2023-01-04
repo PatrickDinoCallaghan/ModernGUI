@@ -11,6 +11,8 @@ namespace ModernGUI.Controls
         [Browsable(false)]
         public MouseState MouseState { get; set; }
 
+
+        //Removes tabs from control so they arn't shown
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == 0x1328 && !DesignMode) m.Result = (IntPtr)1;
