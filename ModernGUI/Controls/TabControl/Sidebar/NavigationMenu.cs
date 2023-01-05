@@ -88,8 +88,15 @@ namespace ModernGUI.Controls
             }
             set
             {
-                this._isExpanded = value;
-                this.RedrawButtons();
+                if (this._isExpanded != value)
+                {
+
+                    this._isExpanded = value;
+                    this.RedrawButtons();
+
+                    OnExpanderChanged?.Invoke(this, value, this.Size);
+                }
+
             }
         }
         public Size ItemImageSize
@@ -169,6 +176,9 @@ namespace ModernGUI.Controls
 
         public event NavigtionMenu.OnSelectEventHandler OnItemSelected;
         public delegate void OnSelectEventHandler(object sender, string path, EventArgs e);
+
+        public delegate void OnExpanderVisibilityChanged(object sender, bool visibilty, Size size);
+        public event NavigtionMenu.OnExpanderVisibilityChanged OnExpanderChanged;
 
         private readonly AnimationManager _animationManager;
         int _previousSelectedTabIndex;
@@ -465,8 +475,14 @@ namespace ModernGUI.Controls
         {
             foreach (Control expandable in this.expandables)
             {
-                expandable.Visible = Visible;
+                if (expandable.Visible != Visible)
+                {
+                    expandable.Visible = Visible;
+                }
             }
+
+
+               
         }
 
         private void Expand(CButton selected = null)
