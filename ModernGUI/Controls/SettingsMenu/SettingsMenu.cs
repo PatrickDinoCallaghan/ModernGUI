@@ -32,6 +32,8 @@ namespace ModernGUI.Controls
         private ModernGUI.Controls.ToolStripMenuItem ThemeToolStripMenuItem;
         private CustomContextMenuStripItem DarkModeToolStripMenuItem;
 
+        ToolTip tooltip = new ToolTip();
+
 
         public SettingsMenu()
         {
@@ -47,6 +49,7 @@ namespace ModernGUI.Controls
 
             this.Icon = global::ModernGUI.Properties.Resources.Settings;
 
+            tooltip.SetToolTip(this, "Settings");
             InitializeComponent();
             SetupMenu();
         }

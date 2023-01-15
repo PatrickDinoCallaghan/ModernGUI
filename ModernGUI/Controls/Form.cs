@@ -461,6 +461,8 @@ namespace ModernGUI.Controls
             base.OnResize(e);
 
             _settingsMenu.Location = new Point(this.Size.Width - _settingsMenu.Width, STATUS_BAR_HEIGHT);
+            _RedoButton.Location = new Point(this.Size.Width - _settingsMenu.Width - _RedoButton.Width, STATUS_BAR_HEIGHT);
+            _UndoButton.Location = new Point(this.Size.Width - _settingsMenu.Width - _RedoButton.Width - _UndoButton.Width, STATUS_BAR_HEIGHT);
             _minButtonBounds = new Rectangle((Width - SkinManager.FORM_PADDING / 2) - 3 * STATUS_BAR_BUTTON_WIDTH, 0, STATUS_BAR_BUTTON_WIDTH, STATUS_BAR_HEIGHT);
             _maxButtonBounds = new Rectangle((Width - SkinManager.FORM_PADDING / 2) - 2 * STATUS_BAR_BUTTON_WIDTH, 0, STATUS_BAR_BUTTON_WIDTH, STATUS_BAR_HEIGHT);
             _xButtonBounds = new Rectangle((Width - SkinManager.FORM_PADDING / 2) - STATUS_BAR_BUTTON_WIDTH, 0, STATUS_BAR_BUTTON_WIDTH, STATUS_BAR_HEIGHT);
@@ -572,9 +574,38 @@ namespace ModernGUI.Controls
             set { _settingsMenu.Visible = value; }
         }
 
+
+        [Browsable(true)]
+        [EditorBrowsable(EditorBrowsableState.Always)]
+        public bool EnableUndoRedo
+        {
+            get { return _UndoButton.Visible; }
+            set { _UndoButton.Visible = value;
+                _RedoButton.Visible = value;
+            }
+        }
+
+
+
+        RedoButton _RedoButton;
+
+        UndoButton _UndoButton;
+
+        public delegate void OnUndoClicked();
+        public OnUndoClicked UndoClicked;
+
+        public delegate void OnRedoClicked();
+        public OnRedoClicked RedoClicked;
         private void Initialize()
         {
             _settingsMenu = new SettingsMenu();
+
+
+            _RedoButton = new RedoButton();
+            _UndoButton = new UndoButton();
+
+            _RedoButton.Click += (e, s) => RedoClicked.Invoke();
+            _UndoButton.Click += (e, s) => UndoClicked.Invoke();
 
             this.SuspendLayout();
             // 
@@ -590,8 +621,25 @@ namespace ModernGUI.Controls
             _settingsMenu.Size = new Size(ACTION_BAR_HEIGHT, ACTION_BAR_HEIGHT);
             _settingsMenu.Location = new Point(this.Size.Width - _settingsMenu.Width, STATUS_BAR_HEIGHT);
             _settingsMenu.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            //
+            // Redo Button
+            //
+            _RedoButton.Size = new Size(ACTION_BAR_HEIGHT, ACTION_BAR_HEIGHT);
+            _RedoButton.Location = new Point(this.Size.Width - _settingsMenu.Width - _RedoButton.Width, STATUS_BAR_HEIGHT);
+            _RedoButton.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+
+            //
+            // Undo Button
+            //
+            _UndoButton.Size = new Size(ACTION_BAR_HEIGHT, ACTION_BAR_HEIGHT);
+            _UndoButton.Location = new Point(this.Size.Width - _settingsMenu.Width - _RedoButton.Width - _UndoButton.Width, STATUS_BAR_HEIGHT);
+            _UndoButton.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
 
             this.Controls.Add(_settingsMenu);
+
+            this.Controls.Add(_RedoButton);
+
+            this.Controls.Add(_UndoButton);
 
 
             this.ResumeLayout(false);

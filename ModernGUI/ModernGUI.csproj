@@ -66,6 +66,9 @@
     <Compile Update="Controls\StarRatingControl.cs" />
     <Compile Update="Controls\TimeControls\TimePicker.cs" />
     <Compile Update="Controls\TreeView\MultiSelectTreeview.cs" />
+    <Compile Update="Controls\SettingsMenu\FormHeaderButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
 
 </Project>
