@@ -160,6 +160,8 @@ namespace ModernGUI.Controls
             // This enables the form to trigger the MouseMove event even when mouse is over another control
             Application.AddMessageFilter(new MouseMessageFilter());
             MouseMessageFilter.MouseMove += OnGlobalMouseMove;
+
+            Initialize();
         }
 
         protected override void WndProc(ref Message m)
@@ -458,6 +460,7 @@ namespace ModernGUI.Controls
         {
             base.OnResize(e);
 
+            _settingsMenu.Location = new Point(this.Size.Width - _settingsMenu.Width, STATUS_BAR_HEIGHT);
             _minButtonBounds = new Rectangle((Width - SkinManager.FORM_PADDING / 2) - 3 * STATUS_BAR_BUTTON_WIDTH, 0, STATUS_BAR_BUTTON_WIDTH, STATUS_BAR_HEIGHT);
             _maxButtonBounds = new Rectangle((Width - SkinManager.FORM_PADDING / 2) - 2 * STATUS_BAR_BUTTON_WIDTH, 0, STATUS_BAR_BUTTON_WIDTH, STATUS_BAR_HEIGHT);
             _xButtonBounds = new Rectangle((Width - SkinManager.FORM_PADDING / 2) - STATUS_BAR_BUTTON_WIDTH, 0, STATUS_BAR_BUTTON_WIDTH, STATUS_BAR_HEIGHT);
@@ -558,6 +561,46 @@ namespace ModernGUI.Controls
 
             //Form title
             g.DrawString(Text, SkinManager.openSans[12, OpenSans.Weight.Medium], SkinManager.ColorScheme.TextBrush, new Rectangle(SkinManager.FORM_PADDING, STATUS_BAR_HEIGHT, Width, ACTION_BAR_HEIGHT), new StringFormat { LineAlignment = StringAlignment.Center });
+
+        }
+
+        [Browsable(true)]
+        [EditorBrowsable(EditorBrowsableState.Always)]
+        public bool ShowSettingsMenu
+        {
+            get { return _settingsMenu.Visible; }
+            set { _settingsMenu.Visible = value; }
+        }
+
+        private void Initialize()
+        {
+            _settingsMenu = new SettingsMenu();
+
+            this.SuspendLayout();
+            // 
+            // Form
+            // 
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Name = "Form";
+            this.Load += new System.EventHandler(this.Form_Load);
+
+            //
+            // Settings Menu
+            //
+            _settingsMenu.Size = new Size(ACTION_BAR_HEIGHT, ACTION_BAR_HEIGHT);
+            _settingsMenu.Location = new Point(this.Size.Width - _settingsMenu.Width, STATUS_BAR_HEIGHT);
+            _settingsMenu.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+
+            this.Controls.Add(_settingsMenu);
+
+
+            this.ResumeLayout(false);
+
+        }
+        private SettingsMenu _settingsMenu;
+        private void Form_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void InitializeComponent()
@@ -568,13 +611,7 @@ namespace ModernGUI.Controls
             // 
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Name = "Form";
-            this.Load += new System.EventHandler(this.Form_Load);
             this.ResumeLayout(false);
-
-        }
-
-        private void Form_Load(object sender, EventArgs e)
-        {
 
         }
     }

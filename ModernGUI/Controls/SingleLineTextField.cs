@@ -32,6 +32,8 @@ namespace ModernGUI.Controls
         public bool UseSystemPasswordChar { get { return _baseTextBox.UseSystemPasswordChar; } set { _baseTextBox.UseSystemPasswordChar = value; } }
         public char PasswordChar { get { return _baseTextBox.PasswordChar; } set { _baseTextBox.PasswordChar = value; } }
 
+        public bool ReadOnly { get; set; }
+
         public void SelectAll() { _baseTextBox.SelectAll(); }
         public void Clear() { _baseTextBox.Clear(); }
         public void Focus() { _baseTextBox.Focus(); }

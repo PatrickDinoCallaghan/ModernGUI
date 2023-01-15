@@ -480,9 +480,6 @@ namespace ModernGUI.Controls
                     expandable.Visible = Visible;
                 }
             }
-
-
-               
         }
 
         private void Expand(CButton selected = null)

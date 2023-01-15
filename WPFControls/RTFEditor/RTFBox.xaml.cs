@@ -2,6 +2,7 @@
 using ModernGUI.WPF.Controls.RTFEditor;
 using System;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -62,11 +63,6 @@ namespace RTFEditor
                     }
                 }
             }
-        }
-
-        private void OnPaste(object sender, DataObjectPastingEventArgs e)
-        {
-            new Thread(() => { System.Windows.MessageBox.Show("Hello"); }).Start();
         }
 
         #region Rendering Finished Event
@@ -624,6 +620,19 @@ namespace RTFEditor
         }
 
         #endregion
+
+     
+        public byte[] Save()
+        {
+            TextRange tr = new TextRange(RichTextControl.Document.ContentStart, RichTextControl.Document.ContentEnd);
+            MemoryStream ms = new MemoryStream();
+            tr.Save(ms, DataFormats.Rtf);
+            return ms.ToArray();
+        }
+
+        public void Load() 
+        { 
+        }
 
     }
 }

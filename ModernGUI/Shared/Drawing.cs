@@ -1,4 +1,5 @@
 ﻿using System.Drawing.Drawing2D;
+using System.Runtime.InteropServices;
 
 namespace ModernGUI.Shared
 {
@@ -39,6 +40,16 @@ namespace ModernGUI.Shared
             return gp;
         }
 
+        public static GraphicsPath CreateEllipse(float x, float y, float width, float height, float radius)
+        {
+            GraphicsPath grPath = new GraphicsPath();
+            grPath.AddEllipse(x, y, width, height);
+            grPath.CloseFigure();
+
+            return grPath;
+
+        }
+
         public static GraphicsPath CreateRoundRect(Rectangle rect, float radius)
         {
             return CreateRoundRect(rect.X, rect.Y, rect.Width, rect.Height, radius);
@@ -46,4 +57,6 @@ namespace ModernGUI.Shared
 
 
     }
+
+
 }

@@ -5,9 +5,9 @@ using System.Windows.Forms.Integration;
 namespace ModernGUI.Controls.WPF
 {
     [Designer(typeof(ControlDesigner))]
-    //[DesignerSerializer("System.Windows.Forms.Design.ControlCodeDomSerializer, System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.Serialization.CodeDomSerializer, System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     public partial class WPFTextEditor : ElementHost
     {
+
         public WPFTextEditor()
         {
             box = new RTFEditor.RTFBox();
@@ -15,14 +15,6 @@ namespace ModernGUI.Controls.WPF
             this.Size = new System.Drawing.Size(600, 385);
         }
 
-
-        /*
-        public override string Text
-        {
-            get { return box.Text; }
-            set { box.Text = value; }
-        }
-        */
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public new System.Windows.UIElement Child
@@ -33,10 +25,11 @@ namespace ModernGUI.Controls.WPF
 
         public void Save()
         {
-            MessageBox.Show(box.GetRTF());
-            
+            //MessageBox.Show(box.GetRTF());
+            MessageBox.Show(BitConverter.ToString(box.Save()).ToString());
         }
 
         private RTFEditor.RTFBox box;
+
     }
 }

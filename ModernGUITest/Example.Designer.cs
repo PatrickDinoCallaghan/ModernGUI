@@ -37,21 +37,23 @@
             ModernGUI.Controls.CalendarHighlightRange calendarHighlightRange5 = new ModernGUI.Controls.CalendarHighlightRange();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Example));
             this.tabControl1 = new ModernGUI.Controls.TabControl();
+            this.Home_tabPage = new System.Windows.Forms.TabPage();
             this.tab1 = new System.Windows.Forms.TabPage();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.raisedButton1 = new ModernGUI.Controls.RaisedButton();
             this.wpfTextEditor1 = new ModernGUI.Controls.WPF.WPFTextEditor();
             this.tab2 = new System.Windows.Forms.TabPage();
             this.TabSelector1 = new ModernGUI.Controls.TabSelector();
             this.tabControl2 = new ModernGUI.Controls.TabControl();
             this.TextField_tabPage = new System.Windows.Forms.TabPage();
-            this.ChangeColorScheme_raisedButton = new ModernGUI.Controls.RaisedButton();
-            this.ChangeTheme_raisedButton = new ModernGUI.Controls.RaisedButton();
             this.SingleLineTextField3 = new ModernGUI.Controls.SingleLineTextField();
             this.raisedButton2 = new ModernGUI.Controls.RaisedButton();
             this.SingleLineTextField1 = new ModernGUI.Controls.SingleLineTextField();
             this.SingleLineTextField2 = new ModernGUI.Controls.SingleLineTextField();
             this.Button1 = new ModernGUI.Controls.RaisedButton();
             this.SelectionBox_tabPage = new System.Windows.Forms.TabPage();
+            this.ToggleSwitch_label = new ModernGUI.Controls.Label();
+            this.toggleSwitch1 = new ModernGUI.Controls.ToggleSwitch();
             this.RadioButton4 = new ModernGUI.Controls.RadioButton();
             this.RadioButton1 = new ModernGUI.Controls.RadioButton();
             this.RadioButton2 = new ModernGUI.Controls.RadioButton();
@@ -88,7 +90,9 @@
             this.FlatButton3 = new ModernGUI.Controls.FlatButton();
             this.FlatButton2 = new ModernGUI.Controls.FlatButton();
             this.FlatButton1 = new ModernGUI.Controls.FlatButton();
+            this.label3 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
+            this.Home_tabPage.SuspendLayout();
             this.tab1.SuspendLayout();
             this.tab2.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -106,6 +110,7 @@
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.Home_tabPage);
             this.tabControl1.Controls.Add(this.tab1);
             this.tabControl1.Controls.Add(this.tab2);
             this.tabControl1.Depth = 0;
@@ -116,8 +121,19 @@
             this.tabControl1.Size = new System.Drawing.Size(998, 435);
             this.tabControl1.TabIndex = 1;
             // 
+            // Home_tabPage
+            // 
+            this.Home_tabPage.Controls.Add(this.label3);
+            this.Home_tabPage.Location = new System.Drawing.Point(4, 24);
+            this.Home_tabPage.Name = "Home_tabPage";
+            this.Home_tabPage.Size = new System.Drawing.Size(990, 407);
+            this.Home_tabPage.TabIndex = 2;
+            this.Home_tabPage.Text = "Home";
+            this.Home_tabPage.UseVisualStyleBackColor = true;
+            // 
             // tab1
             // 
+            this.tab1.Controls.Add(this.checkBox7);
             this.tab1.Controls.Add(this.raisedButton1);
             this.tab1.Controls.Add(this.wpfTextEditor1);
             this.tab1.Location = new System.Drawing.Point(4, 24);
@@ -127,6 +143,17 @@
             this.tab1.TabIndex = 0;
             this.tab1.Text = "WPFControls";
             this.tab1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox7
+            // 
+            this.checkBox7.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBox7.AutoSize = true;
+            this.checkBox7.Location = new System.Drawing.Point(572, 89);
+            this.checkBox7.Name = "checkBox7";
+            this.checkBox7.Size = new System.Drawing.Size(74, 25);
+            this.checkBox7.TabIndex = 23;
+            this.checkBox7.Text = "checkBox7";
+            this.checkBox7.UseVisualStyleBackColor = true;
             // 
             // raisedButton1
             // 
@@ -142,7 +169,6 @@
             this.raisedButton1.TabIndex = 1;
             this.raisedButton1.Text = "raisedButton1";
             this.raisedButton1.UseVisualStyleBackColor = true;
-            this.raisedButton1.Click += new System.EventHandler(this.raisedButton1_Click);
             // 
             // wpfTextEditor1
             // 
@@ -159,11 +185,10 @@
             this.tab2.Location = new System.Drawing.Point(4, 24);
             this.tab2.Margin = new System.Windows.Forms.Padding(0);
             this.tab2.Name = "tab2";
-            this.tab2.Size = new System.Drawing.Size(990, 391);
+            this.tab2.Size = new System.Drawing.Size(990, 407);
             this.tab2.TabIndex = 1;
             this.tab2.Text = "Controls";
             this.tab2.UseVisualStyleBackColor = true;
-            this.tab2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // TabSelector1
             // 
@@ -205,8 +230,6 @@
             // TextField_tabPage
             // 
             this.TextField_tabPage.BackColor = System.Drawing.Color.White;
-            this.TextField_tabPage.Controls.Add(this.ChangeColorScheme_raisedButton);
-            this.TextField_tabPage.Controls.Add(this.ChangeTheme_raisedButton);
             this.TextField_tabPage.Controls.Add(this.SingleLineTextField3);
             this.TextField_tabPage.Controls.Add(this.raisedButton2);
             this.TextField_tabPage.Controls.Add(this.SingleLineTextField1);
@@ -220,42 +243,6 @@
             this.TextField_tabPage.TabIndex = 0;
             this.TextField_tabPage.Text = "TextField";
             // 
-            // ChangeColorScheme_raisedButton
-            // 
-            this.ChangeColorScheme_raisedButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ChangeColorScheme_raisedButton.AutoSize = true;
-            this.ChangeColorScheme_raisedButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ChangeColorScheme_raisedButton.Depth = 0;
-            this.ChangeColorScheme_raisedButton.Icon = null;
-            this.ChangeColorScheme_raisedButton.Location = new System.Drawing.Point(715, 255);
-            this.ChangeColorScheme_raisedButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.ChangeColorScheme_raisedButton.MouseState = ModernGUI.MouseState.HOVER;
-            this.ChangeColorScheme_raisedButton.Name = "ChangeColorScheme_raisedButton";
-            this.ChangeColorScheme_raisedButton.Primary = true;
-            this.ChangeColorScheme_raisedButton.Size = new System.Drawing.Size(184, 36);
-            this.ChangeColorScheme_raisedButton.TabIndex = 23;
-            this.ChangeColorScheme_raisedButton.Text = "Change color scheme";
-            this.ChangeColorScheme_raisedButton.UseVisualStyleBackColor = true;
-            this.ChangeColorScheme_raisedButton.Click += new System.EventHandler(this.ChangeColorScheme_raisedButton_Click);
-            // 
-            // ChangeTheme_raisedButton
-            // 
-            this.ChangeTheme_raisedButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ChangeTheme_raisedButton.AutoSize = true;
-            this.ChangeTheme_raisedButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ChangeTheme_raisedButton.Depth = 0;
-            this.ChangeTheme_raisedButton.Icon = null;
-            this.ChangeTheme_raisedButton.Location = new System.Drawing.Point(552, 255);
-            this.ChangeTheme_raisedButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.ChangeTheme_raisedButton.MouseState = ModernGUI.MouseState.HOVER;
-            this.ChangeTheme_raisedButton.Name = "ChangeTheme_raisedButton";
-            this.ChangeTheme_raisedButton.Primary = true;
-            this.ChangeTheme_raisedButton.Size = new System.Drawing.Size(126, 36);
-            this.ChangeTheme_raisedButton.TabIndex = 22;
-            this.ChangeTheme_raisedButton.Text = "Change Theme";
-            this.ChangeTheme_raisedButton.UseVisualStyleBackColor = true;
-            this.ChangeTheme_raisedButton.Click += new System.EventHandler(this.ChangeTheme_raisedButton_Click);
-            // 
             // SingleLineTextField3
             // 
             this.SingleLineTextField3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -268,6 +255,7 @@
             this.SingleLineTextField3.MouseState = ModernGUI.MouseState.HOVER;
             this.SingleLineTextField3.Name = "SingleLineTextField3";
             this.SingleLineTextField3.PasswordChar = '\0';
+            this.SingleLineTextField3.ReadOnly = false;
             this.SingleLineTextField3.SelectedText = "";
             this.SingleLineTextField3.SelectionLength = 0;
             this.SingleLineTextField3.SelectionStart = 0;
@@ -305,6 +293,7 @@
             this.SingleLineTextField1.MouseState = ModernGUI.MouseState.HOVER;
             this.SingleLineTextField1.Name = "SingleLineTextField1";
             this.SingleLineTextField1.PasswordChar = '\0';
+            this.SingleLineTextField1.ReadOnly = false;
             this.SingleLineTextField1.SelectedText = "";
             this.SingleLineTextField1.SelectionLength = 0;
             this.SingleLineTextField1.SelectionStart = 0;
@@ -325,6 +314,7 @@
             this.SingleLineTextField2.MouseState = ModernGUI.MouseState.HOVER;
             this.SingleLineTextField2.Name = "SingleLineTextField2";
             this.SingleLineTextField2.PasswordChar = '\0';
+            this.SingleLineTextField2.ReadOnly = false;
             this.SingleLineTextField2.SelectedText = "";
             this.SingleLineTextField2.SelectionLength = 0;
             this.SingleLineTextField2.SelectionStart = 0;
@@ -353,6 +343,8 @@
             // SelectionBox_tabPage
             // 
             this.SelectionBox_tabPage.BackColor = System.Drawing.Color.White;
+            this.SelectionBox_tabPage.Controls.Add(this.ToggleSwitch_label);
+            this.SelectionBox_tabPage.Controls.Add(this.toggleSwitch1);
             this.SelectionBox_tabPage.Controls.Add(this.RadioButton4);
             this.SelectionBox_tabPage.Controls.Add(this.RadioButton1);
             this.SelectionBox_tabPage.Controls.Add(this.RadioButton2);
@@ -370,6 +362,30 @@
             this.SelectionBox_tabPage.Size = new System.Drawing.Size(932, 306);
             this.SelectionBox_tabPage.TabIndex = 1;
             this.SelectionBox_tabPage.Text = "SelectionBox";
+            // 
+            // ToggleSwitch_label
+            // 
+            this.ToggleSwitch_label.AutoSize = true;
+            this.ToggleSwitch_label.Depth = 0;
+            this.ToggleSwitch_label.Font = new System.Drawing.Font("Open Sans Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ToggleSwitch_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.ToggleSwitch_label.Location = new System.Drawing.Point(361, 19);
+            this.ToggleSwitch_label.MouseState = ModernGUI.MouseState.HOVER;
+            this.ToggleSwitch_label.Name = "ToggleSwitch_label";
+            this.ToggleSwitch_label.Size = new System.Drawing.Size(110, 23);
+            this.ToggleSwitch_label.TabIndex = 26;
+            this.ToggleSwitch_label.Text = "ToggleSwitch";
+            // 
+            // toggleSwitch1
+            // 
+            this.toggleSwitch1.Location = new System.Drawing.Point(305, 23);
+            this.toggleSwitch1.Name = "toggleSwitch1";
+            this.toggleSwitch1.OffFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.toggleSwitch1.OffText = "OFF";
+            this.toggleSwitch1.OnFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.toggleSwitch1.OnText = "ON";
+            this.toggleSwitch1.Size = new System.Drawing.Size(50, 19);
+            this.toggleSwitch1.TabIndex = 25;
             // 
             // RadioButton4
             // 
@@ -907,7 +923,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Divider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.Divider1.Depth = 0;
-            this.Divider1.Location = new System.Drawing.Point(172, 516);
+            this.Divider1.Location = new System.Drawing.Point(212, 516);
             this.Divider1.Margin = new System.Windows.Forms.Padding(0);
             this.Divider1.MouseState = ModernGUI.MouseState.HOVER;
             this.Divider1.Name = "Divider1";
@@ -967,6 +983,15 @@
             this.FlatButton1.Text = "Primary";
             this.FlatButton1.UseVisualStyleBackColor = true;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(205, 206);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 15);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "label3";
+            // 
             // Example
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -980,8 +1005,15 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "Example";
             this.Text = "Example";
-            this.Load += new System.EventHandler(this.Example_Load);
+            this.Controls.SetChildIndex(this.tabControl1, 0);
+            this.Controls.SetChildIndex(this.FlatButton1, 0);
+            this.Controls.SetChildIndex(this.FlatButton2, 0);
+            this.Controls.SetChildIndex(this.FlatButton3, 0);
+            this.Controls.SetChildIndex(this.Divider1, 0);
+            this.Controls.SetChildIndex(this.navigtionMenu1, 0);
             this.tabControl1.ResumeLayout(false);
+            this.Home_tabPage.ResumeLayout(false);
+            this.Home_tabPage.PerformLayout();
             this.tab1.ResumeLayout(false);
             this.tab1.PerformLayout();
             this.tab2.ResumeLayout(false);
@@ -1049,12 +1081,15 @@
         private TabPage Graph_tabPage;
         private ModernGUI.Controls.Label label1;
         private ModernGUI.Controls.MultiSelectTreeview multiSelectTreeview1;
-        private ModernGUI.Controls.RaisedButton ChangeColorScheme_raisedButton;
-        private ModernGUI.Controls.RaisedButton ChangeTheme_raisedButton;
         private ModernGUI.Controls.FlatButton FlatButton3;
         private ModernGUI.Controls.FlatButton FlatButton2;
         private ModernGUI.Controls.FlatButton FlatButton1;
         private ModernGUI.Controls.Divider Divider1;
         private ModernGUI.Controls.RaisedButton raisedButton6;
+        private CheckBox checkBox7;
+        private ModernGUI.Controls.Label ToggleSwitch_label;
+        private ModernGUI.Controls.ToggleSwitch toggleSwitch1;
+        private TabPage Home_tabPage;
+        private Label label3;
     }
 }

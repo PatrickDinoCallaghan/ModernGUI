@@ -59,7 +59,14 @@ namespace ModernGUI.Shared
             HSLColor hSLColor = HSLColor.FromColor(color);
             return hSLColor.HighlighedColor(Highlight_Factor);
         }
+        public static Color ToGrayScale(this Color originalColor)
+        {
+            if (originalColor.Equals(Color.Transparent))
+                return originalColor;
 
+            int grayScale = (int)((originalColor.R * .299) + (originalColor.G * .587) + (originalColor.B * .114));
+            return Color.FromArgb(grayScale, grayScale, grayScale);
+        }
     }
     public class HSLColor
     {

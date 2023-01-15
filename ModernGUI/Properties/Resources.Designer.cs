@@ -183,6 +183,34 @@ namespace ModernGUI.Properties
                 object obj = ResourceManager.GetObject("ImgMenuHide", resourceCulture);
                 return ((Image)(obj));
             }
+        }       /// <summary>
+                ///   Looks up a localized resource of type Image.
+                /// </summary>
+        internal static Image Settings
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("Settings", resourceCulture);
+                return ((Image)(obj));
+            }
+        }
+        internal static Image Undo
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("undo", resourceCulture);
+                return ((Image)(obj));
+            }
+        }       /// <summary>
+                ///   Looks up a localized resource of type Image.
+                /// </summary>
+        internal static Image Redo
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("redo", resourceCulture);
+                return ((Image)(obj));
+            }
         }
     }
 }

@@ -10,6 +10,13 @@ namespace ModernGUI
         //Forms to control
         private readonly List<ModernGUI.Controls.Form> _formsToManage = new List<ModernGUI.Controls.Form>();
 
+
+        public delegate void OnThemeChanged(ColorSchemes NewColorScheme);
+        public OnThemeChanged ThemeChanged;
+
+        public delegate void OnSchemeChanged(bool DarkMode);
+        public OnSchemeChanged DarkModeChanged;
+
         //Theme
         private Themes _theme;
         public Themes Theme
@@ -19,6 +26,14 @@ namespace ModernGUI
             {
                 _theme = value;
                 UpdateBackgrounds();
+                if (_theme == Themes.LIGHT)
+                {
+                    DarkModeChanged?.Invoke(false);
+                }
+                else
+                {
+                    DarkModeChanged?.Invoke(true);
+                }
             }
         }
 
@@ -30,6 +45,7 @@ namespace ModernGUI
             {
                 _colorScheme = value;
                 UpdateBackgrounds();
+                ThemeChanged?.Invoke(_colorScheme.CurrentScheme);
             }
         }
 
@@ -227,6 +243,8 @@ namespace ModernGUI
 
         #endregion
 
+        #region Get Color/Brush Methods
+
         public Color GetPrimaryTextColor()
         {
             return Theme == Themes.LIGHT ? PRIMARY_TEXT_BLACK : PRIMARY_TEXT_WHITE;
@@ -336,6 +354,8 @@ namespace ModernGUI
         {
             return Theme == Themes.LIGHT ? DATAGRIDVIEW_BACKGROUND_LIGHT : DATAGRIDVIEW_BACKGROUND_DARK;
         }
+
+        #endregion
 
         //Other constants
         public int FORM_PADDING = 14;
@@ -466,7 +486,9 @@ namespace ModernGUI
             //recursive call
             foreach (Control control in controlToUpdate.Controls)
             {
-                UpdateControl(control, newBackColor);
+
+                    UpdateControl(control, newBackColor);
+       
             }
 
             controlToUpdate.Invalidate();

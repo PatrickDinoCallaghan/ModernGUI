@@ -20,6 +20,7 @@ namespace ModernGUI.Controls
         public Image ImageIdle { get; set; }
 
         public Image ImageActive { get; set; }
+
     }
 
 }

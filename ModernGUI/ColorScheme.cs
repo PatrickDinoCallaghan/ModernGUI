@@ -20,6 +20,8 @@
         public readonly Pen PrimaryPen, DarkPrimaryPen, LightPrimaryPen, AccentPen, TextPen;
         public readonly Brush PrimaryBrush, DarkPrimaryBrush, LightPrimaryBrush, AccentBrush, TextBrush;
 
+        public ColorSchemes CurrentScheme;
+
         /// <summary>
         /// Defines the Color Scheme to be used for all forms.
         /// </summary>
@@ -85,6 +87,8 @@
             LightPrimaryBrush = new SolidBrush(LightPrimaryColor);
             AccentBrush = new SolidBrush(AccentColor);
             TextBrush = new SolidBrush(TextColor);
+
+            CurrentScheme = scheme;
         }
     }
 

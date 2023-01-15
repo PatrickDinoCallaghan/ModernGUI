@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 
 namespace ModernGUI.Controls
 {
+    // This needs revision. possibily a rewrite
     public class ComboBox : System.Windows.Forms.ComboBox, IControl
     {
         // For some reason, even when overriding the AutoSize property, it doesn't appear on the properties panel, so we have to create a new one.
