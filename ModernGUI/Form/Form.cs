@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using ModernGUI.Shared;
+using System.ComponentModel;
 using System.Drawing.Text;
 using System.Runtime.InteropServices;
 
@@ -163,6 +164,8 @@ namespace ModernGUI.Controls
 
             Initialize();
         }
+
+        #region Esthetic style and animation
 
         protected override void WndProc(ref Message m)
         {
@@ -566,6 +569,13 @@ namespace ModernGUI.Controls
 
         }
 
+
+        #endregion
+
+        #region Form Menu Icons(Top Left)
+
+        private SettingsMenu _settingsMenu;
+
         [Browsable(true)]
         [EditorBrowsable(EditorBrowsableState.Always)]
         public bool ShowSettingsMenu
@@ -573,39 +583,93 @@ namespace ModernGUI.Controls
             get { return _settingsMenu.Visible; }
             set { _settingsMenu.Visible = value; }
         }
+        RedoButton _RedoButton;
 
+        UndoButton _UndoButton;
 
         [Browsable(true)]
         [EditorBrowsable(EditorBrowsableState.Always)]
         public bool EnableUndoRedo
         {
             get { return _UndoButton.Visible; }
-            set { _UndoButton.Visible = value;
+            set
+            {
+                _UndoButton.Visible = value;
                 _RedoButton.Visible = value;
             }
         }
 
-
-
-        RedoButton _RedoButton;
-
-        UndoButton _UndoButton;
+        #region Form Menu Events
 
         public delegate void OnUndoClicked();
         public OnUndoClicked UndoClicked;
 
         public delegate void OnRedoClicked();
         public OnRedoClicked RedoClicked;
+        #endregion
+
+        #endregion
+
+
+        #region Blur and unblur
+
+        private PictureBox Blur_pb;
+        public Control _BlurControl;
+        public void Blur(Control blurControl = null)
+        {
+            DrawingControl.SuspendDrawing(this);
+            // On blur control initialization
+            if (_BlurControl == null)
+            {
+                Blur_pb = new PictureBox();
+                Blur_pb.Anchor = (AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Bottom);
+                this.Controls.Add(Blur_pb);
+                Blur_pb.BringToFront();
+            }
+
+            // If blur control has changed
+            if (blurControl != _BlurControl && blurControl != null)
+            {
+                _BlurControl = blurControl;
+                Blur_pb.Location = _BlurControl.Location;
+                Blur_pb.Size = _BlurControl.Size;
+            }
+            else
+            {
+                _BlurControl = this;
+                Blur_pb.Location = new Point(0, 0);
+                Blur_pb.Size = this.Size;
+            }
+
+            Bitmap bmp = ModernGUI.Controls.BlurButmapFilter.TakeSnapshot(_BlurControl);
+            ModernGUI.Controls.BlurButmapFilter.GaussianBlur(bmp, 4);
+
+            Blur_pb.Image = bmp;
+            Blur_pb.Visible = true;
+            Blur_pb.BringToFront();
+
+            DrawingControl.ResumeDrawing(this);
+        }
+
+        public void UnBlur()
+        {
+            Blur_pb.Image = null;
+            Blur_pb.Visible = false;
+            Blur_pb.SendToBack();
+        }
+
+        #endregion
+
         private void Initialize()
         {
             _settingsMenu = new SettingsMenu();
-
+            Blur_pb = new PictureBox();
 
             _RedoButton = new RedoButton();
             _UndoButton = new UndoButton();
 
-            _RedoButton.Click += (e, s) => RedoClicked.Invoke();
-            _UndoButton.Click += (e, s) => UndoClicked.Invoke();
+            _RedoButton.Click += (e, s) => RedoClicked?.Invoke();
+            _UndoButton.Click += (e, s) => UndoClicked?.Invoke();
 
             this.SuspendLayout();
             // 
@@ -613,7 +677,7 @@ namespace ModernGUI.Controls
             // 
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Name = "Form";
-            this.Load += new System.EventHandler(this.Form_Load);
+
 
             //
             // Settings Menu
@@ -635,54 +699,20 @@ namespace ModernGUI.Controls
             _UndoButton.Location = new Point(this.Size.Width - _settingsMenu.Width - _RedoButton.Width - _UndoButton.Width, STATUS_BAR_HEIGHT);
             _UndoButton.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
 
+
+
+
             this.Controls.Add(_settingsMenu);
-
             this.Controls.Add(_RedoButton);
-
             this.Controls.Add(_UndoButton);
 
 
             this.ResumeLayout(false);
 
         }
-        private SettingsMenu _settingsMenu;
-        private void Form_Load(object sender, EventArgs e)
-        {
 
-        }
 
-        private void InitializeComponent()
-        {
-            this.SuspendLayout();
-            // 
-            // Form
-            // 
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Name = "Form";
-            this.ResumeLayout(false);
-
-        }
     }
 
-    public class MouseMessageFilter : IMessageFilter
-    {
-        private const int WM_MOUSEMOVE = 0x0200;
 
-        public static event MouseEventHandler MouseMove;
-
-        public bool PreFilterMessage(ref Message m)
-        {
-
-            if (m.Msg == WM_MOUSEMOVE)
-            {
-                if (MouseMove != null)
-                {
-                    int x = Control.MousePosition.X, y = Control.MousePosition.Y;
-
-                    MouseMove(null, new MouseEventArgs(MouseButtons.None, 0, x, y, 0));
-                }
-            }
-            return false;
-        }
-    }
 }

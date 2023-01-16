@@ -28,16 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            ModernGUI.Controls.CalendarHighlightRange calendarHighlightRange1 = new ModernGUI.Controls.CalendarHighlightRange();
-            ModernGUI.Controls.CalendarHighlightRange calendarHighlightRange2 = new ModernGUI.Controls.CalendarHighlightRange();
-            ModernGUI.Controls.CalendarHighlightRange calendarHighlightRange3 = new ModernGUI.Controls.CalendarHighlightRange();
-            ModernGUI.Controls.CalendarHighlightRange calendarHighlightRange4 = new ModernGUI.Controls.CalendarHighlightRange();
-            ModernGUI.Controls.CalendarHighlightRange calendarHighlightRange5 = new ModernGUI.Controls.CalendarHighlightRange();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            ModernGUI.Controls.CalendarHighlightRange calendarHighlightRange11 = new ModernGUI.Controls.CalendarHighlightRange();
+            ModernGUI.Controls.CalendarHighlightRange calendarHighlightRange12 = new ModernGUI.Controls.CalendarHighlightRange();
+            ModernGUI.Controls.CalendarHighlightRange calendarHighlightRange13 = new ModernGUI.Controls.CalendarHighlightRange();
+            ModernGUI.Controls.CalendarHighlightRange calendarHighlightRange14 = new ModernGUI.Controls.CalendarHighlightRange();
+            ModernGUI.Controls.CalendarHighlightRange calendarHighlightRange15 = new ModernGUI.Controls.CalendarHighlightRange();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Example));
             this.tabControl1 = new ModernGUI.Controls.TabControl();
             this.Home_tabPage = new System.Windows.Forms.TabPage();
+            this.UnBlur_flatButton = new ModernGUI.Controls.FlatButton();
+            this.Blur_flatButton = new ModernGUI.Controls.FlatButton();
+            this.label3 = new System.Windows.Forms.Label();
             this.tab1 = new System.Windows.Forms.TabPage();
             this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.raisedButton1 = new ModernGUI.Controls.RaisedButton();
@@ -90,7 +93,6 @@
             this.FlatButton3 = new ModernGUI.Controls.FlatButton();
             this.FlatButton2 = new ModernGUI.Controls.FlatButton();
             this.FlatButton1 = new ModernGUI.Controls.FlatButton();
-            this.label3 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.Home_tabPage.SuspendLayout();
             this.tab1.SuspendLayout();
@@ -123,6 +125,8 @@
             // 
             // Home_tabPage
             // 
+            this.Controls.Add(this.UnBlur_flatButton);
+            this.Home_tabPage.Controls.Add(this.Blur_flatButton);
             this.Home_tabPage.Controls.Add(this.label3);
             this.Home_tabPage.Location = new System.Drawing.Point(4, 24);
             this.Home_tabPage.Name = "Home_tabPage";
@@ -130,6 +134,51 @@
             this.Home_tabPage.TabIndex = 2;
             this.Home_tabPage.Text = "Home";
             this.Home_tabPage.UseVisualStyleBackColor = true;
+            // 
+            // UnBlur_flatButton
+            // 
+            this.UnBlur_flatButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.UnBlur_flatButton.AutoSize = true;
+            this.UnBlur_flatButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.UnBlur_flatButton.Depth = 0;
+            this.UnBlur_flatButton.Icon = null;
+            this.UnBlur_flatButton.Location = new System.Drawing.Point(402, 84);
+            this.UnBlur_flatButton.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
+            this.UnBlur_flatButton.MouseState = ModernGUI.MouseState.HOVER;
+            this.UnBlur_flatButton.Name = "UnBlur_flatButton";
+            this.UnBlur_flatButton.Primary = false;
+            this.UnBlur_flatButton.Size = new System.Drawing.Size(77, 36);
+            this.UnBlur_flatButton.TabIndex = 23;
+            this.UnBlur_flatButton.Text = "UnBlur";
+            this.UnBlur_flatButton.UseVisualStyleBackColor = true;
+            this.UnBlur_flatButton.Click += new System.EventHandler(this.UnBlur_flatButton_Click);
+            // 
+            // Blur_flatButton
+            // 
+            this.Blur_flatButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Blur_flatButton.AutoSize = true;
+            this.Blur_flatButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Blur_flatButton.Depth = 0;
+            this.Blur_flatButton.Icon = null;
+            this.Blur_flatButton.Location = new System.Drawing.Point(36, 24);
+            this.Blur_flatButton.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
+            this.Blur_flatButton.MouseState = ModernGUI.MouseState.HOVER;
+            this.Blur_flatButton.Name = "Blur_flatButton";
+            this.Blur_flatButton.Primary = false;
+            this.Blur_flatButton.Size = new System.Drawing.Size(56, 36);
+            this.Blur_flatButton.TabIndex = 22;
+            this.Blur_flatButton.Text = "Blur";
+            this.Blur_flatButton.UseVisualStyleBackColor = true;
+            this.Blur_flatButton.Click += new System.EventHandler(this.Blur_flatButton_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(205, 206);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 15);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "label3";
             // 
             // tab1
             // 
@@ -739,14 +788,14 @@
             this.Column1,
             this.Column2,
             this.Column3});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.Depth = 0;
             this.dataGridView1.HeaderColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
             this.dataGridView1.HeaderHeight = 50;
@@ -755,8 +804,8 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeight = 40;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.RowTemplate.Height = 46;
             this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -825,27 +874,27 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.calendar1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            calendarHighlightRange1.DayOfWeek = System.DayOfWeek.Monday;
-            calendarHighlightRange1.EndTime = System.TimeSpan.Parse("17:00:00");
-            calendarHighlightRange1.StartTime = System.TimeSpan.Parse("08:00:00");
-            calendarHighlightRange2.DayOfWeek = System.DayOfWeek.Tuesday;
-            calendarHighlightRange2.EndTime = System.TimeSpan.Parse("17:00:00");
-            calendarHighlightRange2.StartTime = System.TimeSpan.Parse("08:00:00");
-            calendarHighlightRange3.DayOfWeek = System.DayOfWeek.Wednesday;
-            calendarHighlightRange3.EndTime = System.TimeSpan.Parse("17:00:00");
-            calendarHighlightRange3.StartTime = System.TimeSpan.Parse("08:00:00");
-            calendarHighlightRange4.DayOfWeek = System.DayOfWeek.Thursday;
-            calendarHighlightRange4.EndTime = System.TimeSpan.Parse("17:00:00");
-            calendarHighlightRange4.StartTime = System.TimeSpan.Parse("08:00:00");
-            calendarHighlightRange5.DayOfWeek = System.DayOfWeek.Friday;
-            calendarHighlightRange5.EndTime = System.TimeSpan.Parse("17:00:00");
-            calendarHighlightRange5.StartTime = System.TimeSpan.Parse("08:00:00");
+            calendarHighlightRange11.DayOfWeek = System.DayOfWeek.Monday;
+            calendarHighlightRange11.EndTime = System.TimeSpan.Parse("17:00:00");
+            calendarHighlightRange11.StartTime = System.TimeSpan.Parse("08:00:00");
+            calendarHighlightRange12.DayOfWeek = System.DayOfWeek.Tuesday;
+            calendarHighlightRange12.EndTime = System.TimeSpan.Parse("17:00:00");
+            calendarHighlightRange12.StartTime = System.TimeSpan.Parse("08:00:00");
+            calendarHighlightRange13.DayOfWeek = System.DayOfWeek.Wednesday;
+            calendarHighlightRange13.EndTime = System.TimeSpan.Parse("17:00:00");
+            calendarHighlightRange13.StartTime = System.TimeSpan.Parse("08:00:00");
+            calendarHighlightRange14.DayOfWeek = System.DayOfWeek.Thursday;
+            calendarHighlightRange14.EndTime = System.TimeSpan.Parse("17:00:00");
+            calendarHighlightRange14.StartTime = System.TimeSpan.Parse("08:00:00");
+            calendarHighlightRange15.DayOfWeek = System.DayOfWeek.Friday;
+            calendarHighlightRange15.EndTime = System.TimeSpan.Parse("17:00:00");
+            calendarHighlightRange15.StartTime = System.TimeSpan.Parse("08:00:00");
             this.calendar1.HighlightRanges = new ModernGUI.Controls.CalendarHighlightRange[] {
-        calendarHighlightRange1,
-        calendarHighlightRange2,
-        calendarHighlightRange3,
-        calendarHighlightRange4,
-        calendarHighlightRange5};
+        calendarHighlightRange11,
+        calendarHighlightRange12,
+        calendarHighlightRange13,
+        calendarHighlightRange14,
+        calendarHighlightRange15};
             this.calendar1.Location = new System.Drawing.Point(234, 3);
             this.calendar1.Name = "calendar1";
             this.calendar1.Size = new System.Drawing.Size(693, 274);
@@ -983,15 +1032,6 @@
             this.FlatButton1.Text = "Primary";
             this.FlatButton1.UseVisualStyleBackColor = true;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(205, 206);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 15);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "label3";
-            // 
             // Example
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1003,7 +1043,9 @@
             this.Controls.Add(this.FlatButton2);
             this.Controls.Add(this.FlatButton1);
             this.Controls.Add(this.tabControl1);
+            this.EnableUndoRedo = true;
             this.Name = "Example";
+            this.ShowSettingsMenu = true;
             this.Text = "Example";
             this.Controls.SetChildIndex(this.tabControl1, 0);
             this.Controls.SetChildIndex(this.FlatButton1, 0);
@@ -1091,5 +1133,7 @@
         private ModernGUI.Controls.ToggleSwitch toggleSwitch1;
         private TabPage Home_tabPage;
         private Label label3;
+        private ModernGUI.Controls.FlatButton UnBlur_flatButton;
+        private ModernGUI.Controls.FlatButton Blur_flatButton;
     }
 }

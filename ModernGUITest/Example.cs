@@ -20,5 +20,16 @@ namespace ModernGUITest
             _SkinManager.Theme = SkinManager.Themes.LIGHT;
             _SkinManager.ColorScheme = new ColorScheme(ColorSchemes.BlueGrey);
         }
+
+        private void Blur_flatButton_Click(object sender, EventArgs e)
+        {
+            this.Blur();
+            UnBlur_flatButton.BringToFront();
+        }
+
+        private void UnBlur_flatButton_Click(object sender, EventArgs e)
+        {
+            this.UnBlur();
+        }
     }
 }

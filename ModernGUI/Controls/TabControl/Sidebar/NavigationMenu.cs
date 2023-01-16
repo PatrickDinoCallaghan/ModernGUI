@@ -458,7 +458,7 @@ namespace ModernGUI.Controls
             return _baseTabControl.TabPages.OfType<TabPage>().FirstOrDefault(tab => tab.Text.Trim() == TabText);
         }
 
-        private void Collapse()
+        public void Collapse()
         {
             if (this.origW == 0)
             {

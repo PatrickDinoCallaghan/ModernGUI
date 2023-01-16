@@ -461,7 +461,7 @@ namespace ModernGUI
             #region Divider
             if (controlToUpdate is Divider)
             {
-                controlToUpdate.BackColor = GetDividersColor();
+                controlToUpdate.BackColor = newBackColor;
             }
             #endregion
 
@@ -482,6 +482,12 @@ namespace ModernGUI
                 ((ModernGUI.Controls.NavigtionMenu)controlToUpdate).BackColor_Click = ControlPaint.Dark(_instance.ColorScheme.PrimaryColor);
             }
             #endregion
+
+            if (controlToUpdate is TableLayoutPanel)
+            {
+                // controlToUpdate.BackColor = GetDividersColor();
+                controlToUpdate.BackColor = newBackColor;
+            }
 
             //recursive call
             foreach (Control control in controlToUpdate.Controls)
