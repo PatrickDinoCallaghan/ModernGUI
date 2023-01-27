@@ -615,30 +615,34 @@ namespace ModernGUI.Controls
 
         private PictureBox Blur_pb;
         public Control _BlurControl;
-        public void Blur(Control blurControl = null)
+        public void Blur(Control blurControl)
         {
             DrawingControl.SuspendDrawing(this);
             // On blur control initialization
-            if (_BlurControl == null)
-            {
-                Blur_pb = new PictureBox();
-                Blur_pb.Anchor = (AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Bottom);
-                this.Controls.Add(Blur_pb);
-                Blur_pb.BringToFront();
-            }
-
+     
             // If blur control has changed
-            if (blurControl != _BlurControl && blurControl != null)
-            {
-                _BlurControl = blurControl;
-                Blur_pb.Location = _BlurControl.Location;
-                Blur_pb.Size = _BlurControl.Size;
-            }
-            else
-            {
-                _BlurControl = this;
-                Blur_pb.Location = new Point(0, 0);
-                Blur_pb.Size = this.Size;
+            if (blurControl != _BlurControl)
+            {       
+                if (_BlurControl == null)
+                {
+                    Blur_pb = new PictureBox();
+                    Blur_pb.Anchor = (AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Bottom);
+                    this.Controls.Add(Blur_pb);
+                    Blur_pb.BringToFront();
+                }
+               
+                if (blurControl == this)
+                {
+                    _BlurControl = this;
+                    Blur_pb.Location = new Point(0, 0);
+                    Blur_pb.Size = this.Size;
+                }
+                else
+                {
+                    _BlurControl = blurControl;
+                    Blur_pb.Location = _BlurControl.Location;
+                    Blur_pb.Size = _BlurControl.Size;
+                }
             }
 
             Bitmap bmp = ModernGUI.Controls.BlurButmapFilter.TakeSnapshot(_BlurControl);

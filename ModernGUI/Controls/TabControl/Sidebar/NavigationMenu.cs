@@ -6,6 +6,7 @@ using System.Windows.Forms.Layout;
 using System.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Drawing.Text;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Menu;
 
 namespace ModernGUI.Controls
 {
@@ -175,7 +176,7 @@ namespace ModernGUI.Controls
         #endregion
 
         public event NavigtionMenu.OnSelectEventHandler OnItemSelected;
-        public delegate void OnSelectEventHandler(object sender, string path, EventArgs e);
+        public delegate void OnSelectEventHandler(object sender, TabPage tab, EventArgs e);
 
         public delegate void OnExpanderVisibilityChanged(object sender, bool visibilty, Size size);
         public event NavigtionMenu.OnExpanderVisibilityChanged OnExpanderChanged;
@@ -202,6 +203,12 @@ namespace ModernGUI.Controls
                 {
                     _SelectedTabIndex = _baseTabControl.SelectedIndex;
                 };
+
+
+                this.BackColor = SkinManager.ColorScheme.PrimaryColor;
+                this.BackColor_Selected = ModernGUI.Shared.Drawing.HighlightColor(SkinManager.ColorScheme.PrimaryColor, 1.5f);
+                this.BackColor_Hover = ControlPaint.Dark(SkinManager.ColorScheme.PrimaryColor);
+                this.BackColor_Click = ControlPaint.Dark(SkinManager.ColorScheme.PrimaryColor);
             }
         }
 
@@ -504,14 +511,17 @@ namespace ModernGUI.Controls
                     this.SetSelection(button, btnItem);
                 }
                 NavigtionMenu.OnSelectEventHandler onItemSelected = this.OnItemSelected;
+
                 if (onItemSelected != null)
                 {
-                    onItemSelected((object)this, btnItem.Text, new EventArgs());
+                   
+                    onItemSelected((object)this, ReturnTabPageByText(btnItem.Text.Trim()), new EventArgs());
                 }
                 if (!this.OnItemClick.ContainsKey(button.ButtonItem.Text))
                 {
                     return;
                 }
+
                 Action<CButton> action = this.OnItemClick[button.ButtonItem.Text];
                 if (action == null)
                 {
@@ -551,7 +561,9 @@ namespace ModernGUI.Controls
             NavigtionMenu.OnSelectEventHandler onItemSelected = this.OnItemSelected;
             if (onItemSelected != null)
             {
-                onItemSelected((object)this, sbutton.Tag.ToString(), new EventArgs());
+                onItemSelected((object)this, ReturnTabPageByText(sbutton.Text.Trim()), new EventArgs());
+
+               // onItemSelected((object)this, sbutton.Tag.ToString(), new EventArgs());
             }
             if (!this.OnItemClick.ContainsKey(sbutton.Tag.ToString()))
             {

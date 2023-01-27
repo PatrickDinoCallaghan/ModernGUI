@@ -54,9 +54,5 @@ namespace ModernGUI.Shared
         {
             return CreateRoundRect(rect.X, rect.Y, rect.Width, rect.Height, radius);
         }
-
-
     }
-
-
 }

@@ -410,7 +410,6 @@ namespace ModernGUI.Controls
                 _baseTextBox.HelpRequested -= value;
             }
         }
-
         
         public event EventHandler HideSelectionChanged
         {
@@ -556,7 +555,6 @@ namespace ModernGUI.Controls
             }
         }
        
-
         public new event EventHandler MouseCaptureChanged
         {
             add
@@ -893,7 +891,6 @@ namespace ModernGUI.Controls
             }
         }
         
-
         public new event EventHandler TextChanged
         {
             add

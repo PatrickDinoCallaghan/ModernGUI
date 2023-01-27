@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
 
 namespace ModernGUI.Shared
 {
@@ -170,7 +172,6 @@ namespace ModernGUI.Shared
                 {
                     if (item1.ToLower() == item2.ToLower()) // Keeping it static will improve performace
                     {
-                        MessageBox.Show("Similar=" + item1 + " and " + item2);
                         return true;
                     }
                 }
@@ -183,7 +184,8 @@ namespace ModernGUI.Shared
 
             return false;
         }
-        public class JaroWinklerDistance // Programmed by leebickmtu from stack overflow. 10/07/2019 <= Not to be included in code metrics 
+
+        public static class JaroWinklerDistance
         {
             /* The Winkler modification will not be applied unless the 
              * percent match was at or above the mWeightThreshold percent 
@@ -278,8 +280,9 @@ namespace ModernGUI.Shared
 
             }
 
-
         }
+
+
         #endregion
         public static string BulletList(List<string> StringList, string AdditionalText = "") //This returns a bullet point list of every string within a list
         {
@@ -342,10 +345,15 @@ namespace ModernGUI.Shared
 
             return "0";
         }
+
+
+
+        // Allows you to take the jarowiklerDistance of a string through an extension method
+        public static double Similarities(this string value, string aString1)
+        {
+            return JaroWinklerDistance.distance(value, aString1);
+        }    
     }
-
-
-
 }
 
 
