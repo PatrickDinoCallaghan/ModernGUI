@@ -12,7 +12,7 @@ namespace ModernGUI.Controls
 	/// </summary>
 	[Serializable]
 	[ToolboxItem(false)]
-	public class AutoCompleteTextBox : TextBox
+	public partial class AutoCompleteTextBox : TextBox
 	{
 
 		#region Classes and Structures

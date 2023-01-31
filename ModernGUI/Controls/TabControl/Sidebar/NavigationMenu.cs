@@ -176,7 +176,7 @@ namespace ModernGUI.Controls
         #endregion
 
         public event NavigtionMenu.OnSelectEventHandler OnItemSelected;
-        public delegate void OnSelectEventHandler(object sender, TabPage tab, EventArgs e);
+        public delegate void OnSelectEventHandler(object sender, TabPage tab, CancelEventArgs e);
 
         public delegate void OnExpanderVisibilityChanged(object sender, bool visibilty, Size size);
         public event NavigtionMenu.OnExpanderVisibilityChanged OnExpanderChanged;
@@ -512,11 +512,25 @@ namespace ModernGUI.Controls
                 }
                 NavigtionMenu.OnSelectEventHandler onItemSelected = this.OnItemSelected;
 
+
                 if (onItemSelected != null)
                 {
-                   
-                    onItemSelected((object)this, ReturnTabPageByText(btnItem.Text.Trim()), new EventArgs());
+
+                    // Create the event args
+                    CancelEventArgs args = new CancelEventArgs();
+
+                    // Fire the event
+                    onItemSelected.DynamicInvoke(new object[] { (object)this, ReturnTabPageByText(btnItem.Text.Trim()), args });
+                    if (args.Cancel == true)
+                    {
+                        return;
+                    }
+
                 }
+
+
+
+
                 if (!this.OnItemClick.ContainsKey(button.ButtonItem.Text))
                 {
                     return;
@@ -554,16 +568,24 @@ namespace ModernGUI.Controls
         {
             CButton sbutton = (CButton)sender;
 
-            if (!((IEnumerable<string>)this.DisableToggling).Contains<string>(sbutton.Tag.ToString()))
-            {
-                this.SetSelection(sbutton);
-            }
             NavigtionMenu.OnSelectEventHandler onItemSelected = this.OnItemSelected;
             if (onItemSelected != null)
             {
-                onItemSelected((object)this, ReturnTabPageByText(sbutton.Text.Trim()), new EventArgs());
 
-               // onItemSelected((object)this, sbutton.Tag.ToString(), new EventArgs());
+                // Create the event args
+                CancelEventArgs args = new CancelEventArgs();
+
+                // Fire the event
+                onItemSelected.DynamicInvoke(new object[] { (object)this, ReturnTabPageByText(sbutton.Text.Trim()), args });
+                if (args.Cancel == true)
+                {
+                    return;
+                }
+
+            }
+            if (!((IEnumerable<string>)this.DisableToggling).Contains<string>(sbutton.Tag.ToString()))
+            {
+                this.SetSelection(sbutton);
             }
             if (!this.OnItemClick.ContainsKey(sbutton.Tag.ToString()))
             {

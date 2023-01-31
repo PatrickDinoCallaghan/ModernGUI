@@ -715,7 +715,160 @@ namespace ModernGUI.Controls
 
         }
 
+       
+        public bool PauseUserControlUpdatedEvent { get; set; } = false;
+        public delegate void UserChangedValueOfControl();
 
+        public UserChangedValueOfControl OnValueOfControlChangedByUser;
+
+        #region Fire Controll updated method when users change value of a control
+
+        protected override void OnControlAdded(ControlEventArgs e)
+        {
+            SubscribeEvents(e.Control);
+            base.OnControlAdded(e);
+        }
+
+        private void SubscribeEvents(System.Windows.Forms.Control control)
+        {
+            foreach (System.Windows.Forms.Control innerControl in control.Controls)
+            {
+                SubscribeEvents(innerControl);
+            }
+
+            control.Enter += ControlEntered;
+            control.Leave += ControlLeft;
+        }
+
+        object SelectedControl = null;
+        private bool SelectedControlContentChanged;
+
+        private void ControlEntered(object sender, EventArgs e)
+        {
+            if (SelectedControl != sender)
+            {
+                SelectedControl = sender;
+                SelectedControlContentChanged = false;
+                if (sender.GetType() == typeof(System.Windows.Forms.TextBox))
+                {
+                    ((System.Windows.Forms.TextBox)sender).TextChanged += new EventHandler(OnContentChanged);
+                }
+                if (sender.GetType() == typeof(System.Windows.Forms.ComboBox))
+                {
+                    ((System.Windows.Forms.ComboBox)sender).SelectedIndexChanged += new EventHandler(OnContentChanged);
+                }
+                if (sender.GetType() == typeof(System.Windows.Forms.CheckBox))
+                {
+                    ((System.Windows.Forms.CheckBox)sender).CheckedChanged += new EventHandler(OnContentChanged);
+                }
+                if (sender.GetType() == typeof(ModernGUI.Controls.SingleLineTextField))
+                {
+                    ((ModernGUI.Controls.SingleLineTextField)sender).TextChanged += new EventHandler(OnContentChanged);
+                }
+                if (sender.GetType() == typeof(System.Windows.Forms.DataGridView))
+                {
+                    ((DataGridView)sender).CellValueChanged += new DataGridViewCellEventHandler(OnContentChanged);
+                    ((DataGridView)sender).CurrentCellDirtyStateChanged += new EventHandler(OnContentChanged);
+                }
+                if (sender.GetType() == typeof(ModernGUI.Controls.DataGridView))
+                {
+                    ((ModernGUI.Controls.DataGridView)sender).CellValueChanged += new DataGridViewCellEventHandler(OnContentChanged);
+                    ((ModernGUI.Controls.DataGridView)sender).CurrentCellDirtyStateChanged += new EventHandler(OnContentChanged);
+                }
+
+                if (sender.GetType() == typeof(System.Windows.Forms.MonthCalendar))
+                {
+                    ((MonthCalendar)sender).DateChanged += new DateRangeEventHandler(OnContentChanged);
+                }
+
+                if (sender.GetType() == typeof(ModernGUI.Controls.RadioButton))
+                {
+                    ((RadioButton)sender).CheckedChanged += new EventHandler(OnContentChanged);
+                }
+
+                if (sender.GetType() == typeof(ModernGUI.Controls.ToggleSwitch))
+                {
+                    ((ToggleSwitch)sender).CheckedChanged += new ToggleSwitch.CheckedChangedDelegate(OnContentChanged);
+                }
+                if (sender.GetType() == typeof(ModernGUI.Controls.Calendar))
+                {
+                    // This needs to be added when any object on the calendar changes
+                }
+
+            }
+        }
+
+        private void OnContentChanged(object? sender, EventArgs e)
+        {
+            SelectedControlContentChanged = true;
+        }
+
+        private void ControlLeft(object sender, EventArgs e)
+        {
+            if (SelectedControl == sender)
+            {
+                if (sender.GetType() == typeof(System.Windows.Forms.TextBox))
+                {
+                    ((System.Windows.Forms.TextBox)sender).TextChanged -= new EventHandler(OnContentChanged);
+                }
+                if (sender.GetType() == typeof(System.Windows.Forms.ComboBox))
+                {
+                    ((System.Windows.Forms.ComboBox)sender).SelectedIndexChanged -= new EventHandler(OnContentChanged);
+                }
+                if (sender.GetType() == typeof(System.Windows.Forms.CheckBox))
+                {
+                    ((System.Windows.Forms.CheckBox)sender).CheckedChanged -= new EventHandler(OnContentChanged);
+                }
+                if (sender.GetType() == typeof(ModernGUI.Controls.SingleLineTextField))
+                {
+                    ((ModernGUI.Controls.SingleLineTextField)sender).TextChanged -= new EventHandler(OnContentChanged);
+                }
+                if (sender.GetType() == typeof(System.Windows.Forms.DataGridView))
+                {
+                    ((DataGridView)sender).CellValueChanged -= new DataGridViewCellEventHandler(OnContentChanged);
+                    ((DataGridView)sender).CurrentCellDirtyStateChanged -= new EventHandler(OnContentChanged);
+                }
+                if (sender.GetType() == typeof(ModernGUI.Controls.DataGridView))
+                {
+                    ((ModernGUI.Controls.DataGridView)sender).CellValueChanged -= new DataGridViewCellEventHandler(OnContentChanged);
+                    ((ModernGUI.Controls.DataGridView)sender).CurrentCellDirtyStateChanged -= new EventHandler(OnContentChanged);
+                }
+                if (sender.GetType() == typeof(System.Windows.Forms.MonthCalendar))
+                {
+                    ((MonthCalendar)sender).DateChanged -= new DateRangeEventHandler(OnContentChanged);
+                }
+
+                if (sender.GetType() == typeof(ModernGUI.Controls.RadioButton))
+                {
+                    ((RadioButton)sender).CheckedChanged -= new EventHandler(OnContentChanged);
+                }
+
+                if (sender.GetType() == typeof(ModernGUI.Controls.ToggleSwitch))
+                {
+                    ((ToggleSwitch)sender).CheckedChanged -= new ToggleSwitch.CheckedChangedDelegate(OnContentChanged);
+                }
+                if (sender.GetType() == typeof(ModernGUI.Controls.Calendar))
+                {
+                    // This needs to be added when any object on the calendar changes
+                }
+            }
+
+            if (SelectedControlContentChanged == true && PauseUserControlUpdatedEvent == false)
+            {
+                ControlUpdated();
+                SelectedControlContentChanged = false;
+            }
+        }
+
+        /// <summary>
+        /// This is called when a model might have to be updated.
+        /// </summary>
+        private void ControlUpdated()
+        {
+            OnValueOfControlChangedByUser?.Invoke();
+
+        }
+        #endregion
     }
 
 
