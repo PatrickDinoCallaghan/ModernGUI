@@ -19,7 +19,7 @@ namespace ModernGUITest
             _SkinManager.AddFormToManage(this);
             _SkinManager.Theme = SkinManager.Themes.LIGHT;
             _SkinManager.ColorScheme = new ColorScheme(ColorSchemes.BlueGrey);
-
+            dataGridView1.Rows.Add(4);
         }
 
         private void Blur_flatButton_Click(object sender, EventArgs e)

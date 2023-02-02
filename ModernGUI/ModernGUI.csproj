@@ -62,6 +62,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Controls\MouseOnlyNumericUpDown.cs" />
     <Compile Update="Controls\Spinner.cs" />
     <Compile Update="Controls\StarRatingControl.cs" />
     <Compile Update="Controls\TimeControls\TimePicker.cs" />

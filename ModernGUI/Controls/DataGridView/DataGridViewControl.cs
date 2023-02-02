@@ -10,7 +10,6 @@ namespace ModernGUI.Controls
     [ToolboxBitmap(typeof(System.Windows.Forms.DataGridView)), ToolboxItem(true), ToolboxItemFilter("System.Windows.Forms"), Description("Displays data in a customizable grid."), DesignTimeVisible(true)]
     public class DataGridView : System.Windows.Forms.DataGridView, IComponent, IControl
     {
-
         [Browsable(false)]
         public int Depth { get; set; }
         [Browsable(false)]
@@ -20,7 +19,7 @@ namespace ModernGUI.Controls
 
         #region Feilds
         private int _RowHeight = 30;
-        private int _HeaderHeight = 35;
+        private int _HeaderHeight = 25;
         private bool _ReadOnly = false;
         private Color _HeaderColor = Color.FromArgb(109, 122, 224);
 
@@ -527,22 +526,16 @@ namespace ModernGUI.Controls
         {
             get
             {
-                if (_AllrowHeight > -1)
+
+                int returnRowHeight = 0;
+                foreach (DataGridViewRow row in this.Rows)
                 {
-                    return _AllrowHeight;
-                }
-                else
-                {
-                    int returnRowHeight = 0;
-                    foreach (DataGridViewRow row in this.Rows)
+                    if (row.Visible == true)
                     {
-                        if (row.Visible == true)
-                        {
-                            returnRowHeight += row.Height;
-                        }
+                        returnRowHeight += _RowHeight;
                     }
-                    return returnRowHeight;
                 }
+                return returnRowHeight;
             }
         }
 
@@ -575,7 +568,7 @@ namespace ModernGUI.Controls
                     ScrollBar.Minimum = 0;
                     ScrollBar.SmallChange = 5;
 
-                    ScrollBar.Maximum = this.RowCount * 5;
+                    ScrollBar.Maximum = this.RowCount *5;
                     ScrollBar.Location = new Point(this.Location.X + this.Width, this.Location.Y + _HeaderHeight);
 
                     ScrollBar.BringToFront();

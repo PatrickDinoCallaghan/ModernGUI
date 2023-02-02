@@ -721,7 +721,7 @@ namespace ModernGUI.Controls
 
         public UserChangedValueOfControl OnValueOfControlChangedByUser;
 
-        #region Fire Controll updated method when users change value of a control
+        #region Fire Controllupdated() method when users change value of a control
 
         protected override void OnControlAdded(ControlEventArgs e)
         {
@@ -767,8 +767,8 @@ namespace ModernGUI.Controls
                 }
                 if (sender.GetType() == typeof(System.Windows.Forms.DataGridView))
                 {
-                    ((DataGridView)sender).CellValueChanged += new DataGridViewCellEventHandler(OnContentChanged);
-                    ((DataGridView)sender).CurrentCellDirtyStateChanged += new EventHandler(OnContentChanged);
+                    ((System.Windows.Forms.DataGridView)sender).CellValueChanged += new DataGridViewCellEventHandler(OnContentChanged);
+                    ((System.Windows.Forms.DataGridView)sender).CurrentCellDirtyStateChanged += new EventHandler(OnContentChanged);
                 }
                 if (sender.GetType() == typeof(ModernGUI.Controls.DataGridView))
                 {

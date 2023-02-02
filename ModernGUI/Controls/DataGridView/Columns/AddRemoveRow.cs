@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Reflection;
+using System.Windows.Forms;
 
 namespace ModernGUI.Controls.Columns
 {
@@ -15,6 +16,9 @@ namespace ModernGUI.Controls.Columns
         {
             ((AddRemove)SelectionControl).OnAddClicked += AddClicked;
             ((AddRemove)SelectionControl).OnRemoveClicked += RemoveClicked;
+
+            this.Resizable = DataGridViewTriState.False ;
+            this.Width = 50;
         }
 
         private void AddClicked(int RowIndex)
@@ -173,7 +177,12 @@ namespace ModernGUI.Controls.Columns
             Resizable = DataGridViewTriState.False;
 
             base.HeaderText = "";
+
+            this.ReadOnly = true;
+
         }
+
+
 
         #region Set Up Column
         protected override void OnDataGridViewChanged()
@@ -182,6 +191,7 @@ namespace ModernGUI.Controls.Columns
             if (DataGridView != null)
             {
                 Activate();
+
             }
         }
 
@@ -197,6 +207,18 @@ namespace ModernGUI.Controls.Columns
             DataGridView.RowsRemoved += DataGridView_ColumnEowNoChanged;
             DataGridView.ColumnAdded += DataGridView_ColumnEowNoChanged;
             DataGridView.ColumnRemoved += DataGridView_ColumnEowNoChanged;
+            DataGridView.SelectionChanged += dgvMyControl_SelectionChanged;
+
+        }
+
+        private void dgvMyControl_SelectionChanged(object sender, EventArgs e)
+        {
+
+            if (DataGridView.CurrentCell.ColumnIndex == this.Index)
+            {
+                DataGridView.ClearSelection();
+            }
+
         }
 
         private void DataGridView_ColumnEowNoChanged(object? sender, EventArgs e)
@@ -223,6 +245,7 @@ namespace ModernGUI.Controls.Columns
             SelectionControl.Visible = false;
 
             Width = SelectionControl.Width;
+
             SelectionControl.BackColor = DataGridView.BackgroundColor;
 
             DataGridView.RowTemplate.Height = SelectionControl.Height + 1;
@@ -264,6 +287,8 @@ namespace ModernGUI.Controls.Columns
 
             SelectionControl.DrawToBitmap(SelectionControlImage, new Rectangle(0, 0, SelectionControlImage.Width, SelectionControlImage.Height));
 
+            //SelectionControl.DrawToBitmap(SelectionControlImage, new Rectangle(0, 0, SelectionControl.Width, SelectionControl.Height));
+
             DefaultCellStyle.NullValue = SelectionControlImage;
 
             SelectionControl.Visible = false;
@@ -297,7 +322,7 @@ namespace ModernGUI.Controls.Columns
 
         public void SetPosition(int ColumnIndex, int RowIndex)
         {
-            Rectangle celrec = DataGridView.GetCellDisplayRectangle(ColumnIndex, RowIndex, true);//.Rows[e.RowIndex].Cells[e.ColumnIndex].GetContentBounds();
+            Rectangle celrec = DataGridView.GetCellDisplayRectangle(ColumnIndex, RowIndex, true);
 
             int x_Offet = (celrec.Width - SelectionControl.Width) / 2;
             int y_Offet = (celrec.Height - SelectionControl.Height) / 2;

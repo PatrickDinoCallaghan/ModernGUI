@@ -72,10 +72,9 @@ namespace ModernGUI.Controls
             Remove_Btn.FlatAppearance.BorderSize = 0;
             Remove_Btn.FlatAppearance.MouseDownBackColor = SystemColors.InactiveCaption;
             Remove_Btn.FlatStyle = FlatStyle.Flat;
-            Remove_Btn.Location = new Point(41, 0);
+            Remove_Btn.Location = new Point(26, 0);
             Remove_Btn.Name = "Remove_Btn";
-            Remove_Btn.Size = new Size(40, 39);
-            Remove_Btn.TabIndex = 4;
+            Remove_Btn.Size = new Size(25, 24);
             Remove_Btn.UseVisualStyleBackColor = true;
             Remove_Btn.Click += new EventHandler(Remove_Btn_Click);
             // 
@@ -89,8 +88,7 @@ namespace ModernGUI.Controls
             Add_Btn.FlatStyle = FlatStyle.Flat;
             Add_Btn.Location = new Point(0, 0);
             Add_Btn.Name = "Add_Btn";
-            Add_Btn.Size = new Size(40, 39);
-            Add_Btn.TabIndex = 3;
+            Add_Btn.Size = new Size(25, 24);
             Add_Btn.UseVisualStyleBackColor = true;
             Add_Btn.Click += new EventHandler(Add_Btn_Click);
             // 
@@ -101,7 +99,7 @@ namespace ModernGUI.Controls
             Controls.Add(Remove_Btn);
             Controls.Add(Add_Btn);
             Name = "AddRemove";
-            Size = new Size(80, 39);
+            Size = new Size(50, 24);
             ResumeLayout(false);
 
         }

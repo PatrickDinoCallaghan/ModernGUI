@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             ModernGUI.Controls.CalendarHighlightRange calendarHighlightRange1 = new ModernGUI.Controls.CalendarHighlightRange();
             ModernGUI.Controls.CalendarHighlightRange calendarHighlightRange2 = new ModernGUI.Controls.CalendarHighlightRange();
             ModernGUI.Controls.CalendarHighlightRange calendarHighlightRange3 = new ModernGUI.Controls.CalendarHighlightRange();
@@ -48,6 +47,8 @@
             this.TabSelector1 = new ModernGUI.Controls.TabSelector();
             this.tabControl2 = new ModernGUI.Controls.TabControl();
             this.TextField_tabPage = new System.Windows.Forms.TabPage();
+            this.autoCompleteBaseTextbox1 = new ModernGUI.Controls.AutoCompleteBaseTextbox();
+            this.fieldLabel1 = new ModernGUI.Controls.FieldLabel();
             this.SingleLineTextField3 = new ModernGUI.Controls.SingleLineTextField();
             this.raisedButton2 = new ModernGUI.Controls.RaisedButton();
             this.SingleLineTextField1 = new ModernGUI.Controls.SingleLineTextField();
@@ -74,13 +75,13 @@
             this.raisedButton3 = new ModernGUI.Controls.RaisedButton();
             this.ProgressBar1 = new ModernGUI.Controls.ProgressBar();
             this.DGV_tabPage = new System.Windows.Forms.TabPage();
-            this.DGVListBoxStyle_raisedButton = new ModernGUI.Controls.RaisedButton();
-            this.MoveDGV_raisedButton = new ModernGUI.Controls.RaisedButton();
-            this.ReadonlyDGV_raisedButton = new ModernGUI.Controls.RaisedButton();
             this.dataGridView1 = new ModernGUI.Controls.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new ModernGUI.Controls.Columns.AddRemoveColumn();
+            this.DGVListBoxStyle_raisedButton = new ModernGUI.Controls.RaisedButton();
+            this.MoveDGV_raisedButton = new ModernGUI.Controls.RaisedButton();
+            this.ReadonlyDGV_raisedButton = new ModernGUI.Controls.RaisedButton();
             this.Calendar_tabPage = new System.Windows.Forms.TabPage();
             this.monthView1 = new ModernGUI.Controls.MonthView();
             this.calendar1 = new ModernGUI.Controls.Calendar();
@@ -93,8 +94,6 @@
             this.FlatButton3 = new ModernGUI.Controls.FlatButton();
             this.FlatButton2 = new ModernGUI.Controls.FlatButton();
             this.FlatButton1 = new ModernGUI.Controls.FlatButton();
-            this.autoCompleteBaseTextbox1 = new ModernGUI.Controls.AutoCompleteBaseTextbox();
-            this.fieldLabel1 = new ModernGUI.Controls.FieldLabel();
             this.tabControl1.SuspendLayout();
             this.Home_tabPage.SuspendLayout();
             this.tab1.SuspendLayout();
@@ -276,6 +275,32 @@
             this.TextField_tabPage.Size = new System.Drawing.Size(932, 306);
             this.TextField_tabPage.TabIndex = 0;
             this.TextField_tabPage.Text = "TextField";
+            // 
+            // autoCompleteBaseTextbox1
+            // 
+            this.autoCompleteBaseTextbox1.BackColor = System.Drawing.SystemColors.Window;
+            this.autoCompleteBaseTextbox1.BorderColor = System.Drawing.Color.LightSteelBlue;
+            this.autoCompleteBaseTextbox1.Location = new System.Drawing.Point(332, 206);
+            this.autoCompleteBaseTextbox1.Name = "autoCompleteBaseTextbox1";
+            this.autoCompleteBaseTextbox1.Padding = new System.Windows.Forms.Padding(4);
+            this.autoCompleteBaseTextbox1.PopupWidth = 120;
+            this.autoCompleteBaseTextbox1.SelectedItemBackColor = System.Drawing.SystemColors.Highlight;
+            this.autoCompleteBaseTextbox1.SelectedItemForeColor = System.Drawing.SystemColors.HighlightText;
+            this.autoCompleteBaseTextbox1.Size = new System.Drawing.Size(128, 22);
+            this.autoCompleteBaseTextbox1.TabIndex = 22;
+            // 
+            // fieldLabel1
+            // 
+            this.fieldLabel1.AutoSize = true;
+            this.fieldLabel1.Depth = 0;
+            this.fieldLabel1.Font = new System.Drawing.Font("Open Sans Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.fieldLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.fieldLabel1.Location = new System.Drawing.Point(149, 205);
+            this.fieldLabel1.MouseState = ModernGUI.MouseState.HOVER;
+            this.fieldLabel1.Name = "fieldLabel1";
+            this.fieldLabel1.Size = new System.Drawing.Size(187, 23);
+            this.fieldLabel1.TabIndex = 23;
+            this.fieldLabel1.Text = "Autocomplete Textbox:";
             // 
             // SingleLineTextField3
             // 
@@ -700,10 +725,10 @@
             // 
             // DGV_tabPage
             // 
+            this.DGV_tabPage.Controls.Add(this.dataGridView1);
             this.DGV_tabPage.Controls.Add(this.DGVListBoxStyle_raisedButton);
             this.DGV_tabPage.Controls.Add(this.MoveDGV_raisedButton);
             this.DGV_tabPage.Controls.Add(this.ReadonlyDGV_raisedButton);
-            this.DGV_tabPage.Controls.Add(this.dataGridView1);
             this.DGV_tabPage.Location = new System.Drawing.Point(4, 24);
             this.DGV_tabPage.Name = "DGV_tabPage";
             this.DGV_tabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -711,6 +736,61 @@
             this.DGV_tabPage.TabIndex = 5;
             this.DGV_tabPage.Text = "DGV";
             this.DGV_tabPage.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDragDrop = false;
+            this.dataGridView1.AllowUserToResize = false;
+            this.dataGridView1.ColumnHeadersHeight = 25;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.Depth = 0;
+            this.dataGridView1.HeaderColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
+            this.dataGridView1.HeaderHeight = 25;
+            this.dataGridView1.Location = new System.Drawing.Point(248, 112);
+            this.dataGridView1.MouseState = ModernGUI.MouseState.HOVER;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowHeight = 30;
+            this.dataGridView1.RowTemplate.Height = 30;
+            this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(256, 150);
+            this.dataGridView1.TabIndex = 4;
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.FillWeight = 95.07868F;
+            this.Column1.HeaderText = "Column1";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.FillWeight = 95.07868F;
+            this.Column2.HeaderText = "Column2";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.FillWeight = 109.8425F;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // DGVListBoxStyle_raisedButton
             // 
@@ -762,62 +842,6 @@
             this.ReadonlyDGV_raisedButton.TabIndex = 1;
             this.ReadonlyDGV_raisedButton.Text = "ReadOnly";
             this.ReadonlyDGV_raisedButton.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDragDrop = false;
-            this.dataGridView1.AllowUserToResize = false;
-            this.dataGridView1.ColumnHeadersHeight = 50;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.Depth = 0;
-            this.dataGridView1.HeaderColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(81)))), ((int)(((byte)(181)))));
-            this.dataGridView1.HeaderHeight = 50;
-            this.dataGridView1.Location = new System.Drawing.Point(19, 15);
-            this.dataGridView1.MouseState = ModernGUI.MouseState.HOVER;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeight = 40;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.RowTemplate.Height = 46;
-            this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(504, 262);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.FillWeight = 134.7586F;
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.FillWeight = 134.7586F;
-            this.Column2.HeaderText = "Column2";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.FillWeight = 61.28387F;
-            this.Column3.Name = "Column3";
-            this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // Calendar_tabPage
             // 
@@ -1035,32 +1059,6 @@
             this.FlatButton1.Text = "Primary";
             this.FlatButton1.UseVisualStyleBackColor = true;
             // 
-            // autoCompleteBaseTextbox1
-            // 
-            this.autoCompleteBaseTextbox1.BackColor = System.Drawing.SystemColors.Window;
-            this.autoCompleteBaseTextbox1.BorderColor = System.Drawing.Color.LightSteelBlue;
-            this.autoCompleteBaseTextbox1.Location = new System.Drawing.Point(332, 206);
-            this.autoCompleteBaseTextbox1.Name = "autoCompleteBaseTextbox1";
-            this.autoCompleteBaseTextbox1.Padding = new System.Windows.Forms.Padding(4);
-            this.autoCompleteBaseTextbox1.PopupWidth = 120;
-            this.autoCompleteBaseTextbox1.SelectedItemBackColor = System.Drawing.SystemColors.Highlight;
-            this.autoCompleteBaseTextbox1.SelectedItemForeColor = System.Drawing.SystemColors.HighlightText;
-            this.autoCompleteBaseTextbox1.Size = new System.Drawing.Size(128, 22);
-            this.autoCompleteBaseTextbox1.TabIndex = 22;
-            // 
-            // fieldLabel1
-            // 
-            this.fieldLabel1.AutoSize = true;
-            this.fieldLabel1.Depth = 0;
-            this.fieldLabel1.Font = new System.Drawing.Font("Open Sans Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.fieldLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.fieldLabel1.Location = new System.Drawing.Point(149, 205);
-            this.fieldLabel1.MouseState = ModernGUI.MouseState.HOVER;
-            this.fieldLabel1.Name = "fieldLabel1";
-            this.fieldLabel1.Size = new System.Drawing.Size(187, 23);
-            this.fieldLabel1.TabIndex = 23;
-            this.fieldLabel1.Text = "Autocomplete Textbox:";
-            // 
             // Example
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1144,10 +1142,6 @@
         private ModernGUI.Controls.RaisedButton DGVListBoxStyle_raisedButton;
         private ModernGUI.Controls.RaisedButton MoveDGV_raisedButton;
         private ModernGUI.Controls.RaisedButton ReadonlyDGV_raisedButton;
-        private ModernGUI.Controls.DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private ModernGUI.Controls.Columns.AddRemoveColumn Column3;
         private TabPage Calendar_tabPage;
         private ModernGUI.Controls.MonthView monthView1;
         private ModernGUI.Controls.Calendar calendar1;
@@ -1168,5 +1162,9 @@
         private ModernGUI.Controls.FlatButton Blur_flatButton;
         private ModernGUI.Controls.AutoCompleteBaseTextbox autoCompleteBaseTextbox1;
         private ModernGUI.Controls.FieldLabel fieldLabel1;
+        private ModernGUI.Controls.DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private ModernGUI.Controls.Columns.AddRemoveColumn Column3;
     }
 }
