@@ -1,4 +1,5 @@
 ﻿using ModernGUI.Animations;
+using System.CodeDom;
 using System.ComponentModel;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
@@ -99,13 +100,14 @@ namespace ModernGUI.Controls
 
         protected override void OnRenderItemText(ToolStripItemTextRenderEventArgs e)
         {
+
             var g = e.Graphics;
             g.TextRenderingHint = TextRenderingHint.AntiAlias;
 
             var itemRect = GetItemRect(e.Item);
-            var textRect = new Rectangle(24, itemRect.Y, itemRect.Width - (24 + 16), itemRect.Height);
+            var textRect = new Rectangle(30, itemRect.Y, itemRect.Width - (24 + 16), itemRect.Height);
             g.DrawString(
-                e.Text,
+               e.Text,
                  SkinManager.openSans[10, OpenSans.Weight.Medium],
                 e.Item.Enabled ? SkinManager.GetPrimaryTextBrush() : SkinManager.GetDisabledOrHintBrush(),
                 textRect,

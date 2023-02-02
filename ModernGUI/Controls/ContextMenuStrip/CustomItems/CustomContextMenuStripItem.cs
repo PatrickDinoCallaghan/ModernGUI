@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing.Text;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -24,6 +25,16 @@ namespace ModernGUI.Controls
 
         internal AnimationManager AnimationManager;
         internal Point AnimationSource;
+
+        public new bool Enabled { get { return base.Enabled; } set { base.Enabled = value; BaseControl.Enabled = value; EnabledChildControls(value); } }
+         
+        private void EnabledChildControls(bool Enabled)
+        {
+            foreach (Control item in BaseControl.Controls)
+            {
+                item.Enabled = Enabled;
+            }
+        }
 
         public new string Text { get { return BaseControl.Text; } set { BaseControl.Text = value; } }
 
@@ -48,7 +59,9 @@ namespace ModernGUI.Controls
             BackColor = SkinManager.GetApplicationBackgroundColor();
             BaseControl.Dock = DockStyle.Fill;
             BaseControl.ForeColor = Color.Red;
+
         }
+
 
         #region Color
 
@@ -65,8 +78,10 @@ namespace ModernGUI.Controls
         }
         protected override void OnPaint(PaintEventArgs e)
         {
+
             var g = e.Graphics;
             g.Clear(SkinManager.GetApplicationBackgroundColor());
+
         }
 
 
@@ -74,8 +89,6 @@ namespace ModernGUI.Controls
         {
             var g = e.Graphics;
             g.Clear(SkinManager.GetApplicationBackgroundColor());
-            BaseControl.label.ForeColor = SkinManager.GetPrimaryTextColor();
-            BaseControl.label.BackColor = SkinManager.GetApplicationBackgroundColor();
             Parent.BackColor = SkinManager.GetApplicationBackgroundColor(); 
         }
 

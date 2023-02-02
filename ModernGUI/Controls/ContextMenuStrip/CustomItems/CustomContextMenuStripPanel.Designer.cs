@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label = new System.Windows.Forms.Label();
+            this.label = new RedrawLabel();
             this.SuspendLayout();
 
             // 
@@ -37,7 +37,7 @@
             this.label.AutoSize = false;
             this.label.Font = SkinManager.openSans[10, OpenSans.Weight.Medium];
             this.label.ForeColor = Color.Red;
-            this.label.Location = new System.Drawing.Point(3, 0);
+            this.label.Location = new System.Drawing.Point(-10, 0);
             this.label.Name = "label1";
             this.label.TabIndex = 0;
             this.label.Text = "";
@@ -66,6 +66,6 @@
 
         #endregion
 
-        public System.Windows.Forms.Label label;
+        public RedrawLabel label;
     }
 }
