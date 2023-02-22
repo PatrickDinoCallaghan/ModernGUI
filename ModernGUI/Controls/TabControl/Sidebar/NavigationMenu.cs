@@ -695,7 +695,7 @@ namespace ModernGUI.Controls
     {
         private IContainer components;
         private ImageList imageList1;
-        private Panel pnlContainer;
+        private System.Windows.Forms.Panel pnlContainer;
         private CButton selectedBtn;
         private List<PictureBox> expandables;
         private PictureBox ImgExpand_PicBox;
@@ -703,18 +703,18 @@ namespace ModernGUI.Controls
         private PictureBox MenuDropdown_PicBox;
         private PictureBox MenuHide_PicBox;
         private System.Windows.Forms.ToolTip toolTip1;
-        public Panel HederPanel;
+        public System.Windows.Forms.Panel HederPanel;
 
         private void InitializeComponent()
         {
             this.components = (IContainer)new System.ComponentModel.Container();
             this.imageList1 = new ImageList(this.components);
-            this.HederPanel = new Panel();
+            this.HederPanel = new System.Windows.Forms.Panel();
             this.MenuDropdown_PicBox = new PictureBox();
             this.MenuHide_PicBox = new PictureBox();
             this.ImgCollapse_PicBox = new PictureBox();
             this.ImgExpand_PicBox = new PictureBox();
-            this.pnlContainer = new Panel();
+            this.pnlContainer = new System.Windows.Forms.Panel();
             this.expandables = new List<PictureBox>();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.HederPanel.SuspendLayout();

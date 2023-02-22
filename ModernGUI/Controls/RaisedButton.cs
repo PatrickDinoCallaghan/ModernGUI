@@ -83,16 +83,26 @@ namespace ModernGUI.Controls
                 ClientRectangle.Height - 1,
                 1f))
             {
-                g.FillPath(Primary ? SkinManager.ColorScheme.PrimaryBrush : SkinManager.GetRaisedButtonBackgroundBrush(), backgroundPath);
+                if (this.Enabled)
+                {
+                    g.FillPath(Primary ? SkinManager.ColorScheme.PrimaryBrush : SkinManager.GetRaisedButtonBackgroundBrush(), backgroundPath);
+                }
+                else
+                {
+                    g.FillPath(Primary ? new SolidBrush(Shared.Drawing.HighlightColor(((SolidBrush)SkinManager.ColorScheme.PrimaryBrush).Color, 1.5f)) : new SolidBrush(Shared.Drawing.HighlightColor(((SolidBrush)SkinManager.GetRaisedButtonBackgroundBrush()).Color, 0.5f)), backgroundPath);
+
+                }
+
+
             }
 
-            if (_animationManager.IsAnimating())
+            if (_animationManager.IsAnimating()&& Enabled == true)
             {
                 for (int i = 0; i < _animationManager.GetAnimationCount(); i++)
                 {
                     var animationValue = _animationManager.GetProgress(i);
                     var animationSource = _animationManager.GetSource(i);
-                    var rippleBrush = new SolidBrush(Color.FromArgb((int)(51 - (animationValue * 50)), Color.White));
+                    var rippleBrush = new SolidBrush(System.Drawing.Color.FromArgb((int)(51 - (animationValue * 50)), Color.White));
                     var rippleSize = (int)(animationValue * Width * 2);
                     g.FillEllipse(rippleBrush, new Rectangle(animationSource.X - rippleSize / 2, animationSource.Y - rippleSize / 2, rippleSize, rippleSize));
                 }

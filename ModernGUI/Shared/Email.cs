@@ -1,4 +1,6 @@
-﻿namespace ModernGUI.Shared
+﻿using System.Net.Mail;
+
+namespace ModernGUI.Shared
 {
     public static class Email
     {
@@ -177,5 +179,7 @@
                 return bRes;
             }
         }
+
+
     }
 }

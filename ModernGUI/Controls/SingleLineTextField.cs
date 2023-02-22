@@ -32,7 +32,7 @@ namespace ModernGUI.Controls
         public bool UseSystemPasswordChar { get { return _baseTextBox.UseSystemPasswordChar; } set { _baseTextBox.UseSystemPasswordChar = value; } }
         public char PasswordChar { get { return _baseTextBox.PasswordChar; } set { _baseTextBox.PasswordChar = value; } }
 
-        public bool ReadOnly { get; set; }
+        public bool ReadOnly { get { return _baseTextBox.ReadOnly;  } set { _baseTextBox.ReadOnly = value; } }
 
         public void SelectAll() { _baseTextBox.SelectAll(); }
         public void Clear() { _baseTextBox.Clear(); }
@@ -1145,6 +1145,24 @@ namespace ModernGUI.Controls
                     strip.SelectAll.Enabled = !string.IsNullOrEmpty(Text);
                 }
             }
+
+            protected override void OnKeyPress(KeyPressEventArgs e)
+            {
+
+                if (_ReadOnly)
+                {
+                    e.Handled = true;
+                    return;
+                }
+                base.OnKeyPress(e);
+
+
+            }
+
+            private bool _ReadOnly = false;
+            public new bool ReadOnly { get { return _ReadOnly; } set { _ReadOnly = value; } }
+
+
         }
 
         private class TextBoxContextMenuStrip : ContextMenuStrip

@@ -1,6 +1,6 @@
 ﻿namespace ModernGUI.Animations
 {
-    enum AnimationType
+   public enum AnimationType
     {
         Linear,
         EaseInOut,

@@ -138,8 +138,19 @@ namespace ModernGUI.Controls
                 textRect,
                 new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center }
                 );
+
+            if (WarningBorder)
+            {
+                ControlPaint.DrawBorder(g, ClientRectangle,
+                                             Color.Red, 2, ButtonBorderStyle.Inset,
+                                             Color.Red, 2, ButtonBorderStyle.Inset,
+                                             Color.Red, 2, ButtonBorderStyle.Inset,
+                                             Color.Red, 2, ButtonBorderStyle.Inset);
+            }
+
         }
 
+        public bool WarningBorder { get; set; } = false;
         private Size GetPreferredSize()
         {
             return GetPreferredSize(new Size(0, 0));

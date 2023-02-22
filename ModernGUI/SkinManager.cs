@@ -1,4 +1,5 @@
 ﻿using ModernGUI.Controls;
+using System.Windows.Forms;
 
 namespace ModernGUI
 {
@@ -43,6 +44,7 @@ namespace ModernGUI
             get { return _colorScheme; }
             set
             {
+
                 _colorScheme = value;
                 UpdateBackgrounds();
                 ThemeChanged?.Invoke(_colorScheme.CurrentScheme);
@@ -350,6 +352,95 @@ namespace ModernGUI
             return Theme == Themes.LIGHT ? BACKGROUND_LIGHT : BACKGROUND_DARK;
         }
 
+
+        private Dictionary<UserControl, Color> UserControlOriginalBackcolor = new Dictionary<UserControl, Color>();
+        public Color GetUserControlBackgroundColor(UserControl userControl)
+        {
+
+            if (Theme == Themes.DARK)
+            {
+
+                if (!UserControlOriginalBackcolor.ContainsKey(userControl))
+                {
+                    //PanelOriginalBackcolor.Remove(userControl);
+                    UserControlOriginalBackcolor.Add(userControl, userControl.BackColor);
+                }
+
+                return BACKGROUND_DARK;
+            }
+            else
+            {
+                if (UserControlOriginalBackcolor.ContainsKey(userControl))
+                {
+                    return UserControlOriginalBackcolor[userControl];
+                }
+                else
+                {
+                    return userControl.BackColor;
+                }
+            }
+
+
+        }
+
+        private Dictionary<System.Windows.Forms.Panel, Color> PanelOriginalBackcolor = new Dictionary<System.Windows.Forms.Panel, Color>();
+        public Color GetPanelBackgroundColor(System.Windows.Forms.Panel userControl)
+        {
+            if (Theme == Themes.DARK)
+            {
+
+                if (!PanelOriginalBackcolor.ContainsKey(userControl) )
+                {
+                    //PanelOriginalBackcolor.Remove(userControl);
+                    PanelOriginalBackcolor.Add(userControl, userControl.BackColor);
+                }
+
+                return BACKGROUND_DARK;
+            }
+            else
+            {
+                if (PanelOriginalBackcolor.ContainsKey(userControl))
+                {
+                    return PanelOriginalBackcolor[userControl];
+                }
+                else
+                {
+                    return userControl.BackColor;
+                }
+            }
+
+        }
+        public Color GetPanelBackgroundColor(ModernGUI.Controls.Panel userControl)
+        {
+            return GetPanelBackgroundColor((System.Windows.Forms.Panel)userControl);
+        }
+        private Dictionary<TheArtOfDev.HtmlRenderer.WinForms.HtmlPanel, Color> HtmlPanelOriginalBackcolor = new Dictionary<TheArtOfDev.HtmlRenderer.WinForms.HtmlPanel, Color>();
+        public Color GetPanelBackgroundColor(TheArtOfDev.HtmlRenderer.WinForms.HtmlPanel userControl)
+        {
+            if (Theme == Themes.DARK)
+            {
+
+                if (!HtmlPanelOriginalBackcolor.ContainsKey(userControl))
+                {
+                    //PanelOriginalBackcolor.Remove(userControl);
+                    HtmlPanelOriginalBackcolor.Add(userControl, userControl.BackColor);
+                }
+
+                return BACKGROUND_DARK;
+            }
+            else
+            {
+                if (HtmlPanelOriginalBackcolor.ContainsKey(userControl))
+                {
+                    return HtmlPanelOriginalBackcolor[userControl];
+                }
+                else
+                {
+                    return userControl.BackColor;
+                }
+            }
+
+        }
         public Color GetDataGridviewBackground()
         {
             return Theme == Themes.LIGHT ? DATAGRIDVIEW_BACKGROUND_LIGHT : DATAGRIDVIEW_BACKGROUND_DARK;
@@ -369,6 +460,8 @@ namespace ModernGUI
             Theme = Themes.LIGHT;
             ColorScheme = new ColorScheme(ColorSchemes.Indigo);
         }
+
+        
 
         public static SkinManager Instance => _instance ?? (_instance = new SkinManager());
 
@@ -472,6 +565,55 @@ namespace ModernGUI
             }
             #endregion
 
+            #region WPF Text box controlls
+            if (controlToUpdate is (ModernGUI.Controls.WPF.WPFTextBox))
+            {
+
+
+                ((ModernGUI.Controls.WPF.WPFTextBox)controlToUpdate).BackColor = GetDataGridviewBackground();
+
+            }
+
+            if (controlToUpdate is (ModernGUI.Controls.WPF.WPFTextEditor))
+            {
+
+
+                ((ModernGUI.Controls.WPF.WPFTextEditor)controlToUpdate).BackColor = GetDataGridviewBackground();
+
+            }
+
+            #endregion
+
+            #region HtmlPanel
+            if (controlToUpdate is (TheArtOfDev.HtmlRenderer.WinForms.HtmlPanel))
+            {
+                controlToUpdate.BackColor = GetPanelBackgroundColor((TheArtOfDev.HtmlRenderer.WinForms.HtmlPanel)controlToUpdate);
+            }
+
+            #endregion
+
+            if (controlToUpdate is (System.Windows.Forms.ComboBox))
+            {
+                //TODO: Needs implimentation
+
+            }
+
+            if (controlToUpdate is (System.Windows.Forms.Label))
+            {
+                ((System.Windows.Forms.Label)controlToUpdate).ForeColor = GetPrimaryTextColor();
+
+               // ((System.Windows.Forms.Label)controlToUpdate).Font = openSans[12, OpenSans.Weight.Regular];
+            }
+    
+
+            #region TableLayoutPanel
+            if (controlToUpdate is TableLayoutPanel)
+            {
+                // controlToUpdate.BackColor = GetDividersColor();
+                controlToUpdate.BackColor = newBackColor;
+            }
+            #endregion
+            
             #region Navigation Menu
 
             if (controlToUpdate.GetType() == typeof(ModernGUI.Controls.NavigtionMenu))
@@ -480,24 +622,47 @@ namespace ModernGUI
                 ((ModernGUI.Controls.NavigtionMenu)controlToUpdate).BackColor_Selected = ModernGUI.Shared.Drawing.HighlightColor(_instance.ColorScheme.PrimaryColor, 1.5f);
                 ((ModernGUI.Controls.NavigtionMenu)controlToUpdate).BackColor_Hover = ControlPaint.Dark(_instance.ColorScheme.PrimaryColor);
                 ((ModernGUI.Controls.NavigtionMenu)controlToUpdate).BackColor_Click = ControlPaint.Dark(_instance.ColorScheme.PrimaryColor);
+                return; // This needs to return, beacuse this is a composite of panel controls and will be changded by the panel update 
+            }
+            if (controlToUpdate?.Parent?.GetType() == typeof(ModernGUI.Controls.NavigtionMenu))
+            {
+                return;
             }
             #endregion
 
-            if (controlToUpdate is TableLayoutPanel)
+            #region Panel
+
+            if (controlToUpdate.GetType() == typeof(System.Windows.Forms.Panel))
             {
-                // controlToUpdate.BackColor = GetDividersColor();
-                controlToUpdate.BackColor = newBackColor;
+                if (controlToUpdate is System.Windows.Forms.Panel)
+                {
+                    controlToUpdate.BackColor = GetPanelBackgroundColor((System.Windows.Forms.Panel)controlToUpdate); //Color.FromArgb(newBackColor.ToArgb() ^ 0xffffff);
+                }
             }
+            if (controlToUpdate.GetType() == typeof(ModernGUI.Controls.Panel))
+            {
+                if (controlToUpdate is ModernGUI.Controls.Panel)
+                {
+                    controlToUpdate.BackColor = GetPanelBackgroundColor((ModernGUI.Controls.Panel)controlToUpdate); //Color.FromArgb(newBackColor.ToArgb() ^ 0xffffff);
+                }
+            }
+            #endregion
+
+            #region UserControl
+            if (controlToUpdate is (System.Windows.Forms.UserControl))
+            {
+                controlToUpdate.BackColor = GetUserControlBackgroundColor((System.Windows.Forms.UserControl)controlToUpdate);
+            }
+            #endregion
 
             //recursive call
             foreach (Control control in controlToUpdate.Controls)
             {
-
-                    UpdateControl(control, newBackColor);
-       
+                 UpdateControl(control, newBackColor);
             }
 
             controlToUpdate.Invalidate();
         }
+
     }
 }

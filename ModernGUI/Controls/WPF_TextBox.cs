@@ -1,9 +1,12 @@
-﻿using System.ComponentModel;
+﻿using Newtonsoft.Json.Linq;
+using System.ComponentModel;
+using System.Drawing;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms.Design;
 using System.Windows.Forms.Integration;
+using System.Windows.Media;
 
 namespace ModernGUI.Controls.WPF
 {
@@ -44,6 +47,37 @@ namespace ModernGUI.Controls.WPF
             set { /* Do nothing to solve a problem with the serializer !! */ }
         }
 
+        public new System.Drawing.Color BackColor
+        {
+            get
+            {
+                if (box != null)
+                {
+                    if (((SolidColorBrush)box.Background) != null)
+                    {
+                        return System.Drawing.Color.FromArgb(((SolidColorBrush)box.Background).Color.A,
+                  ((SolidColorBrush)box.Background).Color.R,
+                  ((SolidColorBrush)box.Background).Color.G,
+                  ((SolidColorBrush)box.Background).Color.B);
+
+                    }
+
+                }
+
+                return base.BackColor;
+            }
+            set {
+
+
+
+
+                 System.Windows.Media.Color color = System.Windows.Media.Color.FromRgb(value.R, value.G, value.B);
+               box.Background = new SolidColorBrush(color);
+
+              //this.BackColor = value; 
+               
+            }
+        }
         private System.Windows.Controls.TextBox box;
 
         #region Textbox methods needed

@@ -174,5 +174,30 @@ namespace ModernGUI.Shared
                 return Path.GetDirectoryName(path);
             }
         }
+
+        /// <summary>
+        ///This checks controls recursive parents to see if this control is nested within parent of control from parent control name
+        /// </summary>
+        /// <param name="control">Control whos parents you are checking</param>
+        /// <param name="controlName">name of parent</param>
+        public static bool ControlHasParent(Control control, string controlName)
+        {
+            if (control.Parent != null)
+            {
+                if (control.Parent.Name == controlName)
+                {
+                    return true;
+                }
+                else
+                {
+                    return ControlHasParent(control.Parent, controlName);
+
+                }
+            }
+            else
+            {
+               return false;
+            }
+        }
     }
 }

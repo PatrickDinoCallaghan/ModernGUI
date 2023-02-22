@@ -1,6 +1,6 @@
 ﻿namespace ModernGUI.Animations
 {
-    class AnimationManager
+    public class AnimationManager
     {
         public bool InterruptAnimation { get; set; }
         public double Increment { get; set; }

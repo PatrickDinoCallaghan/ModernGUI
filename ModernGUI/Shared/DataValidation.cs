@@ -3,7 +3,8 @@
 namespace ModernGUI.Shared
 {
     public static class DataValidation
-    {            /// <summary>
+    {           
+        /// <summary>
                  /// This checks if the object is either null or a blank string, ie inval == "" or inval == null
                  /// </summary>
                  /// <param name="inval">Object you are checking is empty or null</param>
@@ -67,7 +68,28 @@ namespace ModernGUI.Shared
         {
             return Regex.IsMatch(value, @"^[a-zA-Z0-9]+$"); ;
         }
+        public static bool OnlyNumbers(string value)
+        {
+            return Regex.IsMatch(value, @"^[0-9]([.,][0-9]{1,3})?$"); ;
+        }
+        public static bool IsValidEmail(string email)
+        {
+            var trimmedEmail = email.Trim();
 
+            if (trimmedEmail.EndsWith("."))
+            {
+                return false; // suggested by @TK-421
+            }
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == trimmedEmail;
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
         public static class KeyboardInput
         {

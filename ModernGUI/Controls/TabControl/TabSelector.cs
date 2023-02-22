@@ -65,7 +65,7 @@ namespace ModernGUI.Controls
             };
             _animationManager.OnAnimationProgress += sender => Invalidate();
         }
-        private int CalculateTextAlpha(int tabIndex, double animationProgress)
+        public int CalculateTextAlpha(int tabIndex, double animationProgress)
         {
             int primaryA = SkinManager.ACTION_BAR_TEXT.A;
             int secondaryA = SkinManager.ACTION_BAR_TEXT_SECONDARY.A;
@@ -84,7 +84,7 @@ namespace ModernGUI.Controls
             }
             return secondaryA + (int)((primaryA - secondaryA) * animationProgress);
         }
-        private void UpdateTabRects()
+        public void UpdateTabRects()
         {
             _tabRects = new List<Rectangle>();
 
@@ -114,10 +114,7 @@ namespace ModernGUI.Controls
 
             _baseTabControl.SizeMode = TabSizeMode.Fixed;
             _baseTabControl.ItemSize = new Size(SumTabRectWidth / _baseTabControl.TabPages.Count, 20);
-
-
         }
-
         protected override void OnPaint(PaintEventArgs e)
         {
             var g = e.Graphics;
@@ -187,6 +184,5 @@ namespace ModernGUI.Controls
 
             _animationSource = e.Location;
         }
-
     }
 }

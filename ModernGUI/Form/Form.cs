@@ -23,7 +23,7 @@ namespace ModernGUI.Controls
         public static extern bool ReleaseCapture();
 
         [DllImport("user32.dll")]
-        public static extern int TrackPopupMenuEx(IntPtr hmenu, uint fuFlags, int x, int y, IntPtr hwnd, IntPtr lptpm);
+        public static extern int TrackPopupMenuEx(IntPtr hmenu, uint fuFlags, int x, int y, IntPtr hunwnd, IntPtr lptpm);
 
         [DllImport("user32.dll")]
         public static extern IntPtr GetSystemMenu(IntPtr hWnd, bool bRevert);
@@ -610,7 +610,6 @@ namespace ModernGUI.Controls
 
         #endregion
 
-
         #region Blur and unblur
 
         private PictureBox Blur_pb;
@@ -715,9 +714,8 @@ namespace ModernGUI.Controls
 
         }
 
-       
         public bool PauseUserControlUpdatedEvent { get; set; } = false;
-        public delegate void UserChangedValueOfControl();
+        public delegate void UserChangedValueOfControl(object sender);
 
         public UserChangedValueOfControl OnValueOfControlChangedByUser;
 
@@ -757,9 +755,13 @@ namespace ModernGUI.Controls
                 {
                     ((System.Windows.Forms.ComboBox)sender).SelectedIndexChanged += new EventHandler(OnContentChanged);
                 }
+                if (sender.GetType() == typeof(ModernGUI.Controls.Checkbox))
+                {
+                    ((ModernGUI.Controls.Checkbox)sender).CheckedChanged += new EventHandler(OnContentChanged);
+                }
                 if (sender.GetType() == typeof(System.Windows.Forms.CheckBox))
                 {
-                    ((System.Windows.Forms.CheckBox)sender).CheckedChanged += new EventHandler(OnContentChanged);
+                    ((System.Windows.Forms.CheckBox)sender).CheckedChanged -= new EventHandler(OnContentChanged);
                 }
                 if (sender.GetType() == typeof(ModernGUI.Controls.SingleLineTextField))
                 {
@@ -819,6 +821,10 @@ namespace ModernGUI.Controls
                 {
                     ((System.Windows.Forms.CheckBox)sender).CheckedChanged -= new EventHandler(OnContentChanged);
                 }
+                if (sender.GetType() == typeof(ModernGUI.Controls.Checkbox))
+                {
+                    ((ModernGUI.Controls.Checkbox)sender).CheckedChanged -= new EventHandler(OnContentChanged);
+                }
                 if (sender.GetType() == typeof(ModernGUI.Controls.SingleLineTextField))
                 {
                     ((ModernGUI.Controls.SingleLineTextField)sender).TextChanged -= new EventHandler(OnContentChanged);
@@ -855,7 +861,7 @@ namespace ModernGUI.Controls
 
             if (SelectedControlContentChanged == true && PauseUserControlUpdatedEvent == false)
             {
-                ControlUpdated();
+                ControlUpdated(sender);
                 SelectedControlContentChanged = false;
             }
         }
@@ -863,9 +869,9 @@ namespace ModernGUI.Controls
         /// <summary>
         /// This is called when a model might have to be updated.
         /// </summary>
-        private void ControlUpdated()
+        private void ControlUpdated(object sender)
         {
-            OnValueOfControlChangedByUser?.Invoke();
+            OnValueOfControlChangedByUser?.Invoke(sender);
 
         }
         #endregion

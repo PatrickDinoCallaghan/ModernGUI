@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows.Forms.Design;
 using System.Windows.Forms.Integration;
+using System.Windows.Media;
 
 namespace ModernGUI.Controls.WPF
 {
@@ -31,5 +32,40 @@ namespace ModernGUI.Controls.WPF
 
         private RTFEditor.RTFBox box;
 
+
+
+        public new System.Drawing.Color BackColor
+        {
+            get
+            {
+                if (box != null)
+                {
+                    if (((SolidColorBrush)box.Background)!=null)
+                    {
+                        return System.Drawing.Color.FromArgb(((SolidColorBrush)box.Background).Color.A,
+                  ((SolidColorBrush)box.Background).Color.R,
+                  ((SolidColorBrush)box.Background).Color.G,
+                  ((SolidColorBrush)box.Background).Color.B);
+
+                    }
+
+                }
+
+                return base.BackColor; 
+            }
+            set
+            {
+
+
+
+
+             System.Windows.Media.Color color = System.Windows.Media.Color.FromRgb(value.R, value.G, value.B);
+                //(System.Windows.Media.Color)
+                box.Background = new SolidColorBrush(color);
+
+              ///  this.BackColor = value;
+
+            }
+        }
     }
 }
